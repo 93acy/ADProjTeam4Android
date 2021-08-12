@@ -29,4 +29,7 @@ public class RetrofitClient {
     public API getAPI () {
         return retrofit.create(API.class);
     }
+
+    public HawkerListingAPI getHawkerListingAPI() {return retrofit.create(HawkerListingAPI.class);}
+
 }
