@@ -8,11 +8,11 @@
     <item
         android:id="@+id/nav_hawkerSearch"
         android:icon="@drawable/search_icon"
-        android:title="HawkerSearch"/>
+        android:title="Hawker Search"/>
     <item
         android:id="@+id/nav_courierSearch"
         android:icon="@drawable/nav_shipping_icon"
-        android:title="CourierSearch"/>
+        android:title="Courier Search"/>
     <item
         android:id="@+id/nav_myAccount"
         android:icon="@drawable/account_icon"
