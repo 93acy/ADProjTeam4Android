@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/nav_home"
+        android:icon="@drawable/home_icon"
+        android:title="Home"/>
+    <item
+        android:id="@+id/nav_hawkerSearch"
+        android:icon="@drawable/search_icon"
+        android:title="HawkerSearch"/>
+    <item
+        android:id="@+id/nav_courierSearch"
+        android:icon="@drawable/nav_shipping_icon"
+        android:title="CourierSearch"/>
+    <item
+        android:id="@+id/nav_myAccount"
+        android:icon="@drawable/account_icon"
+        android:title="My Account"/>
+</menu>
