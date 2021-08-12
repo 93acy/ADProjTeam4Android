@@ -1,0 +1,2 @@
+rootProject.name = "ADProjTeam4"
+include ':app'
