@@ -24,9 +24,6 @@ public class CreateHawkerListingActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_hawker_listing);
 
-
-
-
         hawkerName = findViewById(R.id.hawkerName);
         hawkerAddress = findViewById(R.id.hawkerAddress);
         hawkerPostalCode = findViewById(R.id.hawkerPostalCode);
@@ -40,7 +37,8 @@ public class CreateHawkerListingActivity extends AppCompatActivity {
             }
         });
     }
-    private void registerhawker() {
+
+        private void registerhawker() {
         String name = hawkerName.getText().toString().trim();
         String address = hawkerAddress.getText().toString().trim();
         String postalCode= hawkerPostalCode.getText().toString().trim();
