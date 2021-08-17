@@ -1,14 +1,12 @@
 package com.example.adprojteam4;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import java.io.IOException;
+import androidx.appcompat.app.AppCompatActivity;
 
 import okhttp3.ResponseBody;
 import retrofit2.Call;
@@ -43,10 +41,10 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     private void registerUser() {
-        String userName = etUsername.getText().toString().trim();
+        String username = etUsername.getText().toString().trim();
         String password = etPassword.getText().toString().trim();
 
-        if (userName.isEmpty()) {
+        if (username.isEmpty()) {
             etUsername.setError("Username is required");
             etUsername.requestFocus();
             return;
@@ -57,21 +55,14 @@ public class RegisterActivity extends AppCompatActivity {
         }
 
         Call<ResponseBody> call = RetrofitClient
-                .getInstance()
+                .getInstance(this)
                 .getAPI()
-                .createUser(new User(userName, password));
+                .register(new User(username, password));
 
         call.enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-                String s = "";
-                try {
-                    s = response.body().string();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-
-                if (s.equals("SUCCESS")) {
+                if (response.isSuccessful()) {
                     Toast.makeText(RegisterActivity.this, "Successfully registered. Please login", Toast.LENGTH_LONG).show();
                     startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
                 } else {
