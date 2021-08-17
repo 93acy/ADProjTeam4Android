@@ -10,13 +10,14 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ListingAdaptor extends RecyclerView.Adapter<ListingAdaptor.ViewHolder> {
 
-    private List<HawkerListing>  hawkerListingList;
+    private ArrayList<HawkerListing>  hawkerListingList;
 
-    public ListingAdaptor(List<HawkerListing> hawkerListingList) {
+    public ListingAdaptor(ArrayList<HawkerListing> hawkerListingList) {
         this.hawkerListingList = hawkerListingList;
     }
 
@@ -41,6 +42,11 @@ public class ListingAdaptor extends RecyclerView.Adapter<ListingAdaptor.ViewHold
     @Override
     public int getItemCount() {
         return hawkerListingList.size();
+    }
+
+    public void filterList(ArrayList<HawkerListing> filteredList){
+        hawkerListingList = filteredList;
+        notifyDataSetChanged();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
