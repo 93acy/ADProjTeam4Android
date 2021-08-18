@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
@@ -43,7 +44,7 @@ public class ViewHawkerListingActivity extends AppCompatActivity {
         setContentView(R.layout.activity_view_hawker_listing);
 
         Call<List<HawkerListing>> call = RetrofitClient
-                .getInstance()
+                .getInstance(this)
                 .getHawkerListingAPI()
                 .viewAllHawkerListings();
 
@@ -103,7 +104,7 @@ public class ViewHawkerListingActivity extends AppCompatActivity {
     }
 
     private void fetchListings() {
-        RetrofitClient.getInstance().getHawkerListingAPI().viewAllHawkerListings().enqueue(new Callback<List<HawkerListing>>() {
+        RetrofitClient.getInstance(this).getHawkerListingAPI().viewAllHawkerListings().enqueue(new Callback<List<HawkerListing>>() {
             @Override
             public void onResponse(Call<List<HawkerListing>> call, Response<List<HawkerListing>> response) {
                 if(response.isSuccessful() && response.body()!=null){
