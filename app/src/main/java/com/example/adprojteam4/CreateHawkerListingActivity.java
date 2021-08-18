@@ -24,6 +24,9 @@ public class CreateHawkerListingActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_hawker_listing);
 
+
+
+
         hawkerName = findViewById(R.id.hawkerName);
         hawkerAddress = findViewById(R.id.hawkerAddress);
         hawkerPostalCode = findViewById(R.id.hawkerPostalCode);
@@ -37,8 +40,7 @@ public class CreateHawkerListingActivity extends AppCompatActivity {
             }
         });
     }
-
-        private void registerhawker() {
+    private void registerhawker() {
         String name = hawkerName.getText().toString().trim();
         String address = hawkerAddress.getText().toString().trim();
         String postalCode= hawkerPostalCode.getText().toString().trim();
@@ -56,7 +58,7 @@ public class CreateHawkerListingActivity extends AppCompatActivity {
         // the rest can just fuck it
 
         Call<ResponseBody> call = RetrofitClient
-                .getInstance()
+                .getInstance(this)
                 .getHawkerListingAPI()
                 .addNewHawkerListing(new HawkerListing(name, address, postalCode, stallNo));
 
@@ -73,8 +75,7 @@ public class CreateHawkerListingActivity extends AppCompatActivity {
                 if (s.equals("SUCCESS")) {
                     Toast.makeText(CreateHawkerListingActivity.this, "Successfully Listed!", Toast.LENGTH_LONG).show();
                     startActivity(new Intent(CreateHawkerListingActivity.this, ViewHawkerListingActivity.class));
-                }
-                else {
+                } else {
                     Toast.makeText(CreateHawkerListingActivity.this, "Listing already exists!", Toast.LENGTH_LONG).show();
                 }
             }

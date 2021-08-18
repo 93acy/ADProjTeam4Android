@@ -6,13 +6,13 @@ import retrofit2.http.Body;
 import retrofit2.http.POST;
 
 public interface API {
-    @POST("/users/register")
-    Call<ResponseBody> createUser (
+    @POST("/register")
+    Call<ResponseBody> register (
             @Body User user
     );
 
-    @POST("/users/login")
-    Call<ResponseBody> checkUser (
-            @Body User user
+    @POST("/authenticate")
+    Call<JwtResponse> authenticate(
+            @Body JwtRequest jwtRequest
     );
 }
