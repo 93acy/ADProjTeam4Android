@@ -60,7 +60,15 @@ public class ViewHawkerListingActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent =  new Intent(ViewHawkerListingActivity.this, CreateHawkerListingActivity.class);
                 startActivity(intent);
+            }
+        });
+        findViewById((R.id.nav_myAccount)).setOnClickListener(new View.OnClickListener(){
 
+
+            @Override
+            public void onClick(View v) {
+                Intent intent =  new Intent(ViewHawkerListingActivity.this, MainActivity.class);
+                startActivity(intent);
             }
         });
 
