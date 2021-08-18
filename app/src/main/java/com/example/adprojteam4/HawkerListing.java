@@ -8,7 +8,40 @@ public class HawkerListing {
     private String address;
     private String postalCode;
     private String stallNo;
-//    private Long stallImage;
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getPostalCode() {
+        return postalCode;
+    }
+
+    public void setPostalCode(String postalCode) {
+        this.postalCode = postalCode;
+    }
+
+    public String getStallNo() {
+        return stallNo;
+    }
+
+    public void setStallNo(String stallNo) {
+        this.stallNo = stallNo;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    //    private Long stallImage;
     private String name;
 //    private Long ogpId;
 //    private Long lastEditedId1;
