@@ -1,6 +1,7 @@
 package com.example.adprojteam4;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -23,9 +24,6 @@ public class CreateHawkerListingActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_hawker_listing);
-
-
-
 
         hawkerName = findViewById(R.id.hawkerName);
         hawkerAddress = findViewById(R.id.hawkerAddress);

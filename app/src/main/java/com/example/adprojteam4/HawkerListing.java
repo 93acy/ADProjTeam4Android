@@ -8,6 +8,7 @@ public class HawkerListing {
     private String address;
     private String postalCode;
     private String stallNo;
+    private Long stallImage;
 
     public String getAddress() {
         return address;
