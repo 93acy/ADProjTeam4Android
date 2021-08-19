@@ -14,13 +14,14 @@ public class DashboardActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
 
-        findViewById((R.id.nav_myAccount)).setOnClickListener(new View.OnClickListener(){
+        findViewById((R.id.nav_hawkerSearch)).setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
                 Intent intent =  new Intent(DashboardActivity.this, ViewHawkerListingActivity.class);
                 startActivity(intent);
             }
         });
+
 
         String welcomeText = "Welcome " + getIntent().getStringExtra("username") + "!";
         TextView tvWelcome = findViewById(R.id.tvWelcome);
