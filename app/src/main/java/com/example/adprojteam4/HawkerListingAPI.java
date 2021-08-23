@@ -14,7 +14,7 @@ import retrofit2.http.PUT;
 public interface HawkerListingAPI {
 
     @GET("/hawkerlisting/All")
-    Call<List<HawkerListing>> viewAllHawkerListings();
+    Call<List<List<String>>> viewAllHawkerListings();
 
     @POST("/hawkerlisting/add")
     Call<ResponseBody> addNewHawkerListing (

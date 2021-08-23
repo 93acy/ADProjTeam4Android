@@ -1,5 +1,7 @@
 package com.example.adprojteam4;
 
+import android.content.Context;
+import android.content.Intent;
 import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,16 +10,21 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.adprojteam4.CourierListing.ViewFoodItem;
 
 import java.util.List;
 
 public class ListingAdaptor extends RecyclerView.Adapter<ListingAdaptor.ViewHolder> {
 
-    private List<HawkerListing>  hawkerListingList;
+    private Context context;
+    private List<List<String>>  hawkerData;
 
-    public ListingAdaptor(List<HawkerListing> hawkerListingList) {
-        this.hawkerListingList = hawkerListingList;
+    public ListingAdaptor(Context context, List<List<String>> hawkerData) {
+        this.context = context;
+        this.hawkerData = hawkerData;
     }
 
     @NonNull
@@ -32,15 +39,26 @@ public class ListingAdaptor extends RecyclerView.Adapter<ListingAdaptor.ViewHold
     @Override
     public void onBindViewHolder(@NonNull ListingAdaptor.ViewHolder holder, int position) {
 
-        holder.hawkerName.setText(hawkerListingList.get(position).getName());
-        holder.hawkerAddress.setText(hawkerListingList.get(position).getAddress());
-        holder.hawkerPostalCode.setText(hawkerListingList.get(position).getPostalCode());
-        holder.hawkerStallNo.setText(hawkerListingList.get(position).getStallNo());
+        holder.hawkerName.setText(hawkerData.get(position).get(1));
+        holder.hawkerAddress.setText(hawkerData.get(position).get(2));
+        holder.hawkerPostalCode.setText(hawkerData.get(position).get(3));
+        holder.hawkerStallNo.setText(hawkerData.get(position).get(4));
+
+        holder.cardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context, ViewFoodItem.class);
+                String hawkerId = hawkerData.get(position).get(0);
+                intent.putExtra("hawkerId",hawkerId);
+                context.startActivity(intent);
+            }
+        });
+
     }
 
     @Override
     public int getItemCount() {
-        return hawkerListingList.size();
+        return hawkerData.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
@@ -50,6 +68,7 @@ public class ListingAdaptor extends RecyclerView.Adapter<ListingAdaptor.ViewHold
         TextView hawkerAddress;
         TextView hawkerPostalCode;
         TextView hawkerStallNo;
+        CardView cardView;
 
         public ViewHolder(@NonNull View listingView){
             super(listingView);
@@ -59,6 +78,7 @@ public class ListingAdaptor extends RecyclerView.Adapter<ListingAdaptor.ViewHold
             hawkerPostalCode = listingView.findViewById(R.id.listingPostalCode);
             hawkerImage= listingView.findViewById(R.id.listingImage);
             hawkerStallNo = listingView.findViewById(R.id.listingStallNo);
+            cardView = listingView.findViewById(R.id.cardView);
 
         }
     }

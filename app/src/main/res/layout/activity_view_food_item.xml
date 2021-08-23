@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".CourierListing.ViewFoodItem">
+
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/foodForm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/green"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:visibility="invisible">
+
+        <EditText
+            android:id="@+id/newFoodName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Food name"
+            app:layout_constraintEnd_toEndOf="@id/foodForm"
+            app:layout_constraintStart_toStartOf="@id/foodForm"
+            app:layout_constraintTop_toTopOf="@id/foodForm" />
+
+        <Button
+            android:id="@+id/cancle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:text="cancle"
+            app:layout_constraintBottom_toBottomOf="@id/foodForm"
+            app:layout_constraintEnd_toStartOf="@id/create"
+            app:layout_constraintStart_toStartOf="@id/foodForm"
+            app:layout_constraintTop_toBottomOf="@id/newFoodName" />
+
+        <Button
+            android:id="@+id/create"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="40dp"
+            android:text="create"
+            app:layout_constraintBottom_toBottomOf="@id/foodForm"
+            app:layout_constraintEnd_toEndOf="@id/foodForm"
+            app:layout_constraintStart_toEndOf="@+id/cancle"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <Button
+        android:id="@+id/confirm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="70dp"
+        android:layout_marginBottom="30dp"
+        android:text="Confirm"
+        android:textSize="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.699"
+        app:layout_constraintStart_toEndOf="@+id/createFood" />
+
+    <Button
+        android:id="@+id/createFood"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="70dp"
+        android:layout_marginBottom="30dp"
+        android:text="Create new food"
+        android:textSize="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

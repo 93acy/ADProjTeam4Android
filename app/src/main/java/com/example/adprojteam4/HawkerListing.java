@@ -21,6 +21,10 @@ public class HawkerListing {
         this.name = name;
     }
 
+    public HawkerListing(Long id) {
+        Id = id;
+    }
+
     public Long getId() {
         return Id;
     }
