@@ -40,7 +40,7 @@ public class ListingAdaptor extends RecyclerView.Adapter<ListingAdaptor.ViewHold
     public void onBindViewHolder(@NonNull ListingAdaptor.ViewHolder holder, int position) {
 
         holder.hawkerName.setText(hawkerData.get(position).get(1));
-        holder.hawkerAddress.setText(hawkerData.get(position).get(2));
+        holder.hawkerLocation.setText(hawkerData.get(position).get(2));
         holder.hawkerPostalCode.setText(hawkerData.get(position).get(3));
         holder.hawkerStallNo.setText(hawkerData.get(position).get(4));
 
@@ -65,7 +65,7 @@ public class ListingAdaptor extends RecyclerView.Adapter<ListingAdaptor.ViewHold
 
         ImageView hawkerImage;
         TextView hawkerName;
-        TextView hawkerAddress;
+        TextView hawkerLocation;
         TextView hawkerPostalCode;
         TextView hawkerStallNo;
         CardView cardView;
@@ -74,7 +74,7 @@ public class ListingAdaptor extends RecyclerView.Adapter<ListingAdaptor.ViewHold
             super(listingView);
 
             hawkerName = listingView.findViewById(R.id.listingName);
-            hawkerAddress = listingView.findViewById(R.id.listingAddress);
+            hawkerLocation = listingView.findViewById(R.id.locationArea);
             hawkerPostalCode = listingView.findViewById(R.id.listingPostalCode);
             hawkerImage= listingView.findViewById(R.id.listingImage);
             hawkerStallNo = listingView.findViewById(R.id.listingStallNo);

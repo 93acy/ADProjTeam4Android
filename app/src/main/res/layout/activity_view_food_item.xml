@@ -41,6 +41,7 @@
             android:id="@+id/cancle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
             android:layout_marginTop="40dp"
             android:text="cancle"
             app:layout_constraintBottom_toBottomOf="@id/foodForm"
@@ -53,11 +54,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="40dp"
+            android:layout_marginEnd="5dp"
             android:text="create"
             app:layout_constraintBottom_toBottomOf="@id/foodForm"
             app:layout_constraintEnd_toEndOf="@id/foodForm"
-            app:layout_constraintStart_toEndOf="@+id/cancle"/>
+            app:layout_constraintStart_toEndOf="@+id/cancle" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

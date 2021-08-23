@@ -102,7 +102,7 @@ public class FoodAdaptor extends RecyclerView.Adapter<FoodAdaptor.ViewHolder> {
                 return false;
             }
         });
-        //popWindow.setBackgroundDrawable(new ColorDrawable(0x00000000));
+
         popWindow.setBackgroundDrawable(new ColorDrawable(0xffffffff));
 
         popWindow.showAtLocation(v, Gravity.CENTER, 0, 0);

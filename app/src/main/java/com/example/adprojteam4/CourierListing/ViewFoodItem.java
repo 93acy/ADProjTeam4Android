@@ -6,6 +6,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -39,6 +41,7 @@ public class ViewFoodItem extends AppCompatActivity {
     RecyclerView.LayoutManager layoutManager;
     Long hawkerId;
     List<Double> prices = new ArrayList<>();
+    String newFoodName="";
 
 
     @Override
@@ -104,12 +107,26 @@ public class ViewFoodItem extends AppCompatActivity {
         foodForm = findViewById(R.id.foodForm);
         foodForm.setVisibility(View.VISIBLE);
         enterFoodName = findViewById(R.id.newFoodName);
-        String name = enterFoodName.getText().toString().trim();
         create = findViewById(R.id.create);
         cancle = findViewById(R.id.cancle);
 
+        enterFoodName.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
-        //HawkerListing hawkerListing = new HawkerListing(hawkerId);
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                newFoodName = enterFoodName.getText().toString().trim();
+            }
+        });
+
 
         create.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -117,7 +134,7 @@ public class ViewFoodItem extends AppCompatActivity {
                 Call<ResponseBody> call = RetrofitClient
                         .getInstance()
                         .getFoodAPI()
-                        .createFoodItem(new FoodItem(name));
+                        .createFoodItem(new FoodItem(newFoodName,hawkerId));
 
                 call.enqueue(new Callback<ResponseBody>() {
                     @Override
@@ -154,6 +171,7 @@ public class ViewFoodItem extends AppCompatActivity {
         });
 
     }
+
 }
 
 

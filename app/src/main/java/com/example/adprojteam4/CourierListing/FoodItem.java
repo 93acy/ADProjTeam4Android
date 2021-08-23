@@ -11,15 +11,7 @@ public class FoodItem {
     private Double upperPrice;
     private Double lowerPrice;
     private HawkerListing hawkerListing;
-
-    public FoodItem(Long id, String name, String description, String category, Double upperPrice, Double lowerPrice) {
-        this.id = id;
-        this.name = name;
-        this.description = description;
-        this.category = category;
-        this.upperPrice = upperPrice;
-        this.lowerPrice = lowerPrice;
-    }
+    private Long hawkerListingId;
 
     public FoodItem(String name) {
         this.name = name;
@@ -28,6 +20,11 @@ public class FoodItem {
     public FoodItem(String name, HawkerListing hawkerListing) {
         this.name = name;
         this.hawkerListing = hawkerListing;
+    }
+
+    public FoodItem(String name, Long hawkerListingId) {
+        this.name = name;
+        this.hawkerListingId = hawkerListingId;
     }
 
     public Long getId() {
