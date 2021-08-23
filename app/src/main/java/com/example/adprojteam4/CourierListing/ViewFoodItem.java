@@ -132,7 +132,6 @@ public class ViewFoodItem extends AppCompatActivity {
                         if (s.equals("SUCCESS")) {
                             Toast.makeText(ViewFoodItem.this, "Successfully created!", Toast.LENGTH_LONG).show();
                             foodForm.setVisibility(View.INVISIBLE);
-                            getFoodItem();
 
                         } else {
                             Toast.makeText(ViewFoodItem.this, "Food already exists!", Toast.LENGTH_LONG).show();
