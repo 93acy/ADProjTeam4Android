@@ -12,22 +12,22 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.ADProjTeam4"
+        android:theme="@style/Theme.nav"
         android:usesCleartextTraffic="true">
         <activity android:name=".CreateHawkerListingActivity">
+<!--        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>-->
+        </activity>
+        <activity android:name=".ViewHawkerListingActivity" >
+
 <!--        <intent-filter>-->
 <!--            <action android:name="android.intent.action.MAIN" />-->
 
 <!--            <category android:name="android.intent.category.LAUNCHER" />-->
 <!--        </intent-filter>-->
-        </activity>
-        <activity android:name=".ViewHawkerListingActivity" >
-
-        <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
-
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
         </activity>
         <activity android:name=".DashboardActivity" />
         <activity android:name=".RegisterActivity" />
@@ -38,11 +38,11 @@
 <!--        </intent-filter>-->
         <activity android:name=".LoginActivity" />
         <activity android:name=".MainActivity">
-<!--            <intent-filter>-->
-<!--                <action android:name="android.intent.action.MAIN" />-->
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-<!--                <category android:name="android.intent.category.LAUNCHER" />-->
-<!--            </intent-filter>-->
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
     </application>
 
