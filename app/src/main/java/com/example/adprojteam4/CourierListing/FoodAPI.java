@@ -10,13 +10,18 @@ import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.Path;
+import retrofit2.http.Query;
 
 public interface FoodAPI {
     @GET("/courier/hawker/{id}")
     Call<List<ArrayList<String>>> viewFoodItems(@Path("id") Long HawkerId);
 
     @POST("/courier/food")
-    Call<ResponseBody> createFoodItem(@Body FoodItem foodItem);
+    Call<ResponseBody> createFoodItem(@Body FoodItem foodItem, @Query("hawkerId") Long hawkerId);
+
+    @POST("/courier/foodItemDetail")
+    Call<ResponseBody> createCourierFoodItemDetails
+            (@Body List<CourierFoodItemDetails> courierFoodItemDetails, @Query("foodIds") List<Long> foodIds);
 
 
 }

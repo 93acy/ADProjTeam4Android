@@ -13,18 +13,14 @@ public class FoodItem {
     private HawkerListing hawkerListing;
     private Long hawkerListingId;
 
+    public FoodItem(String name, String category, String description) {
+        this.name = name;
+        this.description = description;
+        this.category = category;
+    }
+
     public FoodItem(String name) {
         this.name = name;
-    }
-
-    public FoodItem(String name, HawkerListing hawkerListing) {
-        this.name = name;
-        this.hawkerListing = hawkerListing;
-    }
-
-    public FoodItem(String name, Long hawkerListingId) {
-        this.name = name;
-        this.hawkerListingId = hawkerListingId;
     }
 
     public Long getId() {

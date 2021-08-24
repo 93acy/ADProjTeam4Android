@@ -5,6 +5,7 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -31,17 +32,18 @@ public class ViewFoodItem extends AppCompatActivity {
 
     RecyclerView recyclerView;
     ConstraintLayout foodForm;
-    EditText enterFoodName;
-    Button create;
-    Button cancle;
-    Button confirm;
-    Button createFood;
+    EditText foodName,category,description;
+    String name,cate,des;
+    Button create,cancle;
+    Button confirm,createFood;
     List<ArrayList<String>> foodItems = new ArrayList<>();
     FoodAdaptor fAdaptor;
     RecyclerView.LayoutManager layoutManager;
     Long hawkerId;
     List<Double> prices = new ArrayList<>();
-    String newFoodName="";
+    List<Long> foodIds = new ArrayList<>();
+    List<CourierFoodItemDetails> courierFoodItemDetails = new ArrayList<>();
+
 
 
     @Override
@@ -49,7 +51,7 @@ public class ViewFoodItem extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_food_item);
 
-        hawkerId = Long.parseLong(getIntent().getStringExtra("hawkerId"));
+
 
         recyclerView = findViewById(R.id.rv);
         confirm= findViewById(R.id.confirm);
@@ -57,7 +59,7 @@ public class ViewFoodItem extends AppCompatActivity {
 
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
-        fAdaptor = new FoodAdaptor(this, foodItems,prices);
+        fAdaptor = new FoodAdaptor(this, foodItems,prices,foodIds);
         recyclerView.setAdapter(fAdaptor);
 
         getFoodItem();
@@ -69,9 +71,18 @@ public class ViewFoodItem extends AppCompatActivity {
             }
         });
 
+        confirm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                createCourierFoodItemDetail();
+            }
+        });
+
     }
 
     private void getFoodItem() {
+
+        hawkerId = Long.parseLong(getIntent().getStringExtra("hawkerId"));
         Call<List<ArrayList<String>>> call = RetrofitClient
                 .getInstance()
                 .getFoodAPI()
@@ -106,24 +117,46 @@ public class ViewFoodItem extends AppCompatActivity {
     private void createFoodItem() {
         foodForm = findViewById(R.id.foodForm);
         foodForm.setVisibility(View.VISIBLE);
-        enterFoodName = findViewById(R.id.newFoodName);
+        foodName = findViewById(R.id.newFoodName);
+
+        category = (EditText)findViewById(R.id.categoryET);
+        description = findViewById(R.id.descriptionET);
         create = findViewById(R.id.create);
         cancle = findViewById(R.id.cancle);
+        foodName.setText(null);
+        category.setText(null);
+        description.setText(null);
 
-        enterFoodName.addTextChangedListener(new TextWatcher() {
+        foodName.addTextChangedListener(new TextWatcher() {
             @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
             @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
             @Override
             public void afterTextChanged(Editable editable) {
-                newFoodName = enterFoodName.getText().toString().trim();
+                name = foodName.getText().toString().trim();
+            }
+        });
+
+        category.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
+            @Override
+            public void afterTextChanged(Editable editable) {
+                cate = category.getText().toString().trim();
+            }
+        });
+
+        description.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
+            @Override
+            public void afterTextChanged(Editable editable) {
+                des = description.getText().toString().trim();
             }
         });
 
@@ -131,10 +164,11 @@ public class ViewFoodItem extends AppCompatActivity {
         create.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                FoodItem newFood = new FoodItem(name,cate,des);
                 Call<ResponseBody> call = RetrofitClient
                         .getInstance()
                         .getFoodAPI()
-                        .createFoodItem(new FoodItem(newFoodName,hawkerId));
+                        .createFoodItem(newFood,hawkerId);
 
                 call.enqueue(new Callback<ResponseBody>() {
                     @Override
@@ -147,8 +181,13 @@ public class ViewFoodItem extends AppCompatActivity {
                         }
 
                         if (s.equals("SUCCESS")) {
-                            Toast.makeText(ViewFoodItem.this, "Successfully created!", Toast.LENGTH_LONG).show();
+                            Toast.makeText(ViewFoodItem.this, "Successfully created! ", Toast.LENGTH_LONG).show();
                             foodForm.setVisibility(View.INVISIBLE);
+                            foodItems.clear();
+                            prices.clear();
+                            foodIds.clear();
+                            getFoodItem();
+                            Toast.makeText(ViewFoodItem.this, "Please add price again.", Toast.LENGTH_LONG).show();
 
                         } else {
                             Toast.makeText(ViewFoodItem.this, "Food already exists!", Toast.LENGTH_LONG).show();
@@ -160,7 +199,9 @@ public class ViewFoodItem extends AppCompatActivity {
                             Toast.makeText(ViewFoodItem.this, t.getMessage(), Toast.LENGTH_LONG).show();
                     }
                 });
+
             }
+
         });
 
         cancle.setOnClickListener(new View.OnClickListener() {
@@ -170,6 +211,54 @@ public class ViewFoodItem extends AppCompatActivity {
             }
         });
 
+    }
+
+    private void createCourierFoodItemDetail(){
+
+        for(int i=0;i<prices.size();i++) {
+
+            if (prices.get(i) == 0) {
+                Toast.makeText(ViewFoodItem.this, "Price cannot be 0!", Toast.LENGTH_LONG).show();
+                return;
+            }
+            else{
+                courierFoodItemDetails.add(new CourierFoodItemDetails(prices.get(i)));
+            }
+
+            if(i==prices.size()-1){
+                Call<ResponseBody> call = RetrofitClient
+                        .getInstance()
+                        .getFoodAPI()
+                        .createCourierFoodItemDetails(courierFoodItemDetails, foodIds);
+
+                call.enqueue(new Callback<ResponseBody>() {
+                    @Override
+                    public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                        String s = "";
+                        try {
+                            s = s + response.body().string();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+
+                        if (s.equals("SUCCESS")) {
+                            Toast.makeText(ViewFoodItem.this, "Successfully created!", Toast.LENGTH_LONG).show();
+                            Intent intent = new Intent(ViewFoodItem.this, NextActivity.class);
+                            ViewFoodItem.this.startActivity(intent);
+
+                        } else {
+
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<ResponseBody> call, Throwable t) {
+                        Toast.makeText(ViewFoodItem.this, t.getMessage(), Toast.LENGTH_LONG).show();
+                    }
+                });
+            }
+
+        }
     }
 
 }

@@ -27,11 +27,13 @@ public class FoodAdaptor extends RecyclerView.Adapter<FoodAdaptor.ViewHolder> {
     private Context context;
     private List<ArrayList<String>> foodItems;
     private List<Double> prices;
+    private List<Long> ids;
 
-    public FoodAdaptor(Context context, List<ArrayList<String>> foodItems, List<Double> prices) {
+    public FoodAdaptor(Context context, List<ArrayList<String>> foodItems, List<Double> prices,List<Long> ids) {
         this.context = context;
         this.foodItems = foodItems;
         this.prices = prices;
+        this.ids = ids;
     }
 
     @NonNull
@@ -45,8 +47,13 @@ public class FoodAdaptor extends RecyclerView.Adapter<FoodAdaptor.ViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull FoodAdaptor.ViewHolder holder, int position) {
         //holder.foodId.setText(foodItems.get(position).get(0));
+        Long foodId = Long.parseLong(foodItems.get(position).get(0));
         holder.foodName.setText(foodItems.get(position).get(1));
+        holder.category.setText(foodItems.get(position).get(2));
+        holder.description.setText(foodItems.get(position).get(3));
         holder.foodPrice.setText(prices.get(position).toString());
+
+        ids.add(foodId);
 
         holder.addPrice.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -59,6 +66,7 @@ public class FoodAdaptor extends RecyclerView.Adapter<FoodAdaptor.ViewHolder> {
             @Override
             public void onClick(View v) {
                 removeData(position);
+                ids.remove(position);
             }
         });
 
@@ -71,8 +79,7 @@ public class FoodAdaptor extends RecyclerView.Adapter<FoodAdaptor.ViewHolder> {
 
 
     public class ViewHolder extends RecyclerView.ViewHolder{
-        TextView foodName;
-        TextView foodPrice;
+        TextView foodName,foodPrice,category,description,dollar;
         Button addPrice,remove;
         CardView cardView;
 
@@ -81,6 +88,9 @@ public class FoodAdaptor extends RecyclerView.Adapter<FoodAdaptor.ViewHolder> {
 
             foodName = listingView.findViewById(R.id.foodName);
             foodPrice = listingView.findViewById(R.id.foodPrice);
+            category = listingView.findViewById(R.id.category);
+            description = listingView.findViewById(R.id.description);
+            dollar = listingView.findViewById(R.id.dollar);
             addPrice = listingView.findViewById(R.id.addPrice);
             remove = listingView.findViewById(R.id.remove);
             cardView = listingView.findViewById(R.id.cv);

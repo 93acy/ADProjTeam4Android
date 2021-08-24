@@ -8,7 +8,9 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="please enter the price">
+        android:text="Please enter the price:"
+        android:textSize="20sp"
+        android:textStyle="italic">
     </TextView>
 
     <EditText
@@ -31,7 +33,8 @@
         android:id="@+id/confirmFoodPrice"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="confirm">
+        android:text="confirm"
+        android:layout_marginLeft="50dp">
 
     </Button>
 
