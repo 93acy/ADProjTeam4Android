@@ -1,4 +1,28 @@
 <resources>
     <string name="app_name">ADProjTeam4</string>
+    <string-array name="foodTypeArray">
+        <item>fusion</item>
+        <item>singaporean</item>
+        <item>chinese</item>
+        <item>indian</item>
+        <item>japanese</item>
+        <item>western</item>
+        <item>malay</item>
+        <item>sea</item>
+    </string-array>
+    <string name="rice">rice</string>
+    <string name="noodles">noodles</string>
+    <string name="potato">potato</string>
+    <string name="others">others</string>
+    <string name="none">none</string>
+
+    <string name="pork">pork</string>
+    <string name="chicken">chicken</string>
+    <string name="beef">beef</string>
+    <string name="lamb">lamb</string>
+    <string name="fish">fish</string>
+    <string name="seafood">seafood</string>
+    <string name="proteinOthers">others</string>
+    <string name="proteinNone">none</string>
 
 </resources>

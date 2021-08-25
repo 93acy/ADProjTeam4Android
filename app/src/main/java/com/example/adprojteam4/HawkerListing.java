@@ -2,6 +2,8 @@ package com.example.adprojteam4;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.ArrayList;
+
 public class HawkerListing {
 
     private Long Id;
@@ -13,6 +15,9 @@ public class HawkerListing {
 //    private Long ogpId;
 //    private Long lastEditedId1;
 //    private String lastEditedDate1;
+    private String foodType;
+    private ArrayList<String> carbType;
+    private ArrayList<String> proteinType;
 
     public HawkerListing(String address, String postalCode, String stallNo, String name) {
         this.address = address;
@@ -59,5 +64,29 @@ public class HawkerListing {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getFoodType() {
+        return foodType;
+    }
+
+    public void setFoodType(String foodType) {
+        this.foodType = foodType;
+    }
+
+    public ArrayList<String> getCarbType() {
+        return carbType;
+    }
+
+    public void setCarbType(ArrayList<String> carbType) {
+        this.carbType = carbType;
+    }
+
+    public ArrayList<String> getProteinType() {
+        return proteinType;
+    }
+
+    public void setProteinType(ArrayList<String> proteinType) {
+        this.proteinType = proteinType;
     }
 }

@@ -22,6 +22,24 @@
         app:layout_constraintTop_toBottomOf="@+id/hlist_search_bar"
         tools:layout_editor_absoluteX="1dp" />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/recommendationsRecyclerView"
+        android:text="Recommendations"
+        android:textSize="20sp"
+        android:textColor="@color/black"
+        />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recommendationsRecyclerView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@id/editUserPrefs"
+        app:layout_constraintLeft_toLeftOf="parent"
+        tools:layout_editor_absoluteX="1dp" />
+
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavbar"
         android:layout_width="match_parent"
@@ -40,6 +58,14 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/editUserPrefs"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/bottomNavbar"
+        android:text="Edit User Preferences"/>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/addNewListing"
