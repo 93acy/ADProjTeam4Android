@@ -35,7 +35,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@+id/btnToLogin"
         android:backgroundTint="#96837E"
-        android:textColor="@color/black"/>
+        android:textColor="#444444"/>
 
 
     <Button
@@ -48,7 +48,7 @@
         app:layout_constraintLeft_toRightOf="@+id/btnToRegister"
         app:layout_constraintRight_toRightOf="parent"
         android:backgroundTint="#96837E"
-        android:textColor="@color/black"
+        android:textColor="#444444"
         android:layout_marginBottom="30dp"/>
 
     <FrameLayout

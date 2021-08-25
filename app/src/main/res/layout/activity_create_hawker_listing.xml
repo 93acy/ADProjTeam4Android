@@ -4,42 +4,63 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/userlogin_bg"
     tools:context=".CreateHawkerListingActivity">
+
+
+    <ImageView
+        android:id="@+id/RegisterHawkerImg"
+        android:layout_width="305dp"
+        android:layout_height="133dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/hawkers"
+        app:layout_constraintBottom_toTopOf="@+id/RegisterHawkerText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+    </ImageView>
 
     <TextView
         android:id="@+id/RegisterHawkerText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:fontFamily="cursive"
-        android:padding="10dp"
-        android:text="RegisterHawker"
-        android:textSize="40sp"
+        android:text="RegisterHawkers"
+        android:textColor="#444444"
+        android:textFontWeight="1000"
+        android:textSize="35sp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/RegisterHawkerText2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/RegisterHawkerImg" />
+
     <TextView
         android:id="@+id/RegisterHawkerText2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Hawker Registration"
-        android:textColor="#000"
-        android:textSize="20sp"
+        android:textSize="15sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/RegisterHawkerText" />
 
     <EditText
         android:id="@+id/hawkerName"
-        android:layout_width="match_parent"
+        android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         android:ems="10"
         android:hint="Stall Name"
         android:inputType="text"
         android:textSize="20sp"
+        android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -47,43 +68,45 @@
 
     <EditText
         android:id="@+id/hawkerAddress"
-        android:layout_width="match_parent"
+        android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         android:ems="10"
         android:hint="Address"
         android:inputType="text"
         android:textSize="20sp"
+        android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/hawkerName" />
 
     <EditText
         android:id="@+id/hawkerPostalCode"
-        android:layout_width="match_parent"
+        android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         android:ems="10"
         android:hint="Postal Code"
+        android:textColorHint="#777777"
         android:inputType="text"
         android:textSize="20sp"
+        android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/hawkerAddress" />
 
     <EditText
         android:id="@+id/hawkerStallNumber"
-        android:layout_width="match_parent"
+        android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         android:ems="10"
         android:hint="Stall Number"
+        android:textColorHint="#666666"
         android:inputType="text"
         android:textSize="20sp"
+        android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/hawkerPostalCode" />
 
@@ -92,13 +115,12 @@
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:text="REGISTER"
-        android:textColor="@android:color/background_dark"
-        android:textSize="16sp"
+        android:textSize="30sp"
         app:layout_constraintTop_toBottomOf="@id/hawkerStallNumber"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         android:layout_marginTop="30dp"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        android:backgroundTint="#806b63"/>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavbar"
