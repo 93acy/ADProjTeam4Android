@@ -1,6 +1,8 @@
 package com.example.adprojteam4.CourierListing;
 
 
+import com.example.adprojteam4.OrderFunction.CourierListing;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,8 +22,15 @@ public interface FoodAPI {
     Call<ResponseBody> createFoodItem(@Body FoodItem foodItem, @Query("hawkerId") Long hawkerId);
 
     @POST("/courier/foodItemDetail")
-    Call<ResponseBody> createCourierFoodItemDetails
-            (@Body List<CourierFoodItemDetails> courierFoodItemDetails, @Query("foodIds") List<Long> foodIds);
+    Call<ArrayList<String>> createCourierFoodItemDetails
+            (@Body List<CourierFoodItemDetails> courierFoodItemDetails,
+             @Query("foodIds") List<Long> foodIds);
+
+    @POST("/courier/courierListing")
+    Call<ResponseBody> createCourierListing
+            (@Body CourierListing courierListing,
+             @Query("courierFoodItemDetailIds") ArrayList<String> courierFoodItemDetailIds,
+             @Query("FoodID") ArrayList<String> FoodID);
 
 
 }

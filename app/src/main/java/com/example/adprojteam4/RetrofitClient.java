@@ -1,6 +1,7 @@
 package com.example.adprojteam4;
 
 import com.example.adprojteam4.CourierListing.FoodAPI;
+import com.example.adprojteam4.OrderFunction.CourierListingAPI;
 
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -37,4 +38,10 @@ public class RetrofitClient {
     public FoodAPI getFoodAPI() {
         return retrofit.create(FoodAPI.class);
     }
+
+    public CourierListingAPI getCourierListingAPI() {
+        return retrofit.create(CourierListingAPI.class);
+    }
+
+
 }

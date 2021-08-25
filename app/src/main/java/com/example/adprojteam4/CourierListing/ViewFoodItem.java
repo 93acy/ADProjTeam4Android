@@ -12,10 +12,8 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.adprojteam4.HawkerListing;
 import com.example.adprojteam4.R;
 import com.example.adprojteam4.RetrofitClient;
 
@@ -32,10 +30,10 @@ public class ViewFoodItem extends AppCompatActivity {
 
     RecyclerView recyclerView;
     ConstraintLayout foodForm;
-    EditText foodName,category,description;
-    String name,cate,des;
-    Button create,cancle;
-    Button confirm,createFood;
+    EditText foodName, category, description;
+    String name, cate, des;
+    Button create, cancle;
+    Button confirm, createFood;
     List<ArrayList<String>> foodItems = new ArrayList<>();
     FoodAdaptor fAdaptor;
     RecyclerView.LayoutManager layoutManager;
@@ -43,7 +41,7 @@ public class ViewFoodItem extends AppCompatActivity {
     List<Double> prices = new ArrayList<>();
     List<Long> foodIds = new ArrayList<>();
     List<CourierFoodItemDetails> courierFoodItemDetails = new ArrayList<>();
-
+    ArrayList<String> courierFoodItemDetailIds = new ArrayList<>();
 
 
     @Override
@@ -52,14 +50,13 @@ public class ViewFoodItem extends AppCompatActivity {
         setContentView(R.layout.activity_view_food_item);
 
 
-
         recyclerView = findViewById(R.id.rv);
-        confirm= findViewById(R.id.confirm);
-        createFood= findViewById(R.id.createFood);
+        confirm = findViewById(R.id.confirm);
+        createFood = findViewById(R.id.createFood);
 
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
-        fAdaptor = new FoodAdaptor(this, foodItems,prices,foodIds);
+        fAdaptor = new FoodAdaptor(this, foodItems, prices, foodIds);
         recyclerView.setAdapter(fAdaptor);
 
         getFoodItem();
@@ -98,7 +95,7 @@ public class ViewFoodItem extends AppCompatActivity {
 
                 if (response.body() != null) {
                     foodItems.addAll(response.body());
-                    for(int i=0; i< foodItems.size(); i++){
+                    for (int i = 0; i < foodItems.size(); i++) {
                         prices.add(0.0);
                     }
                     fAdaptor.notifyDataSetChanged();
@@ -119,7 +116,7 @@ public class ViewFoodItem extends AppCompatActivity {
         foodForm.setVisibility(View.VISIBLE);
         foodName = findViewById(R.id.newFoodName);
 
-        category = (EditText)findViewById(R.id.categoryET);
+        category = (EditText) findViewById(R.id.categoryET);
         description = findViewById(R.id.descriptionET);
         create = findViewById(R.id.create);
         cancle = findViewById(R.id.cancle);
@@ -129,9 +126,13 @@ public class ViewFoodItem extends AppCompatActivity {
 
         foodName.addTextChangedListener(new TextWatcher() {
             @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            }
+
             @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            }
+
             @Override
             public void afterTextChanged(Editable editable) {
                 name = foodName.getText().toString().trim();
@@ -140,9 +141,13 @@ public class ViewFoodItem extends AppCompatActivity {
 
         category.addTextChangedListener(new TextWatcher() {
             @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            }
+
             @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            }
+
             @Override
             public void afterTextChanged(Editable editable) {
                 cate = category.getText().toString().trim();
@@ -151,9 +156,13 @@ public class ViewFoodItem extends AppCompatActivity {
 
         description.addTextChangedListener(new TextWatcher() {
             @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            }
+
             @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            }
+
             @Override
             public void afterTextChanged(Editable editable) {
                 des = description.getText().toString().trim();
@@ -164,11 +173,11 @@ public class ViewFoodItem extends AppCompatActivity {
         create.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                FoodItem newFood = new FoodItem(name,cate,des);
+                FoodItem newFood = new FoodItem(name, cate, des);
                 Call<ResponseBody> call = RetrofitClient
                         .getInstance()
                         .getFoodAPI()
-                        .createFoodItem(newFood,hawkerId);
+                        .createFoodItem(newFood, hawkerId);
 
                 call.enqueue(new Callback<ResponseBody>() {
                     @Override
@@ -196,7 +205,7 @@ public class ViewFoodItem extends AppCompatActivity {
 
                     @Override
                     public void onFailure(Call<ResponseBody> call, Throwable t) {
-                            Toast.makeText(ViewFoodItem.this, t.getMessage(), Toast.LENGTH_LONG).show();
+                        Toast.makeText(ViewFoodItem.this, t.getMessage(), Toast.LENGTH_LONG).show();
                     }
                 });
 
@@ -213,54 +222,55 @@ public class ViewFoodItem extends AppCompatActivity {
 
     }
 
-    private void createCourierFoodItemDetail(){
+    private void createCourierFoodItemDetail() {
 
-        for(int i=0;i<prices.size();i++) {
+        for (int i = 0; i < prices.size(); i++) {
 
             if (prices.get(i) == 0) {
                 Toast.makeText(ViewFoodItem.this, "Price cannot be 0!", Toast.LENGTH_LONG).show();
                 return;
-            }
-            else{
+            } else {
                 courierFoodItemDetails.add(new CourierFoodItemDetails(prices.get(i)));
             }
 
-            if(i==prices.size()-1){
-                Call<ResponseBody> call = RetrofitClient
+            if (i == prices.size() - 1) {
+                Call<ArrayList<String>> call = RetrofitClient
                         .getInstance()
                         .getFoodAPI()
                         .createCourierFoodItemDetails(courierFoodItemDetails, foodIds);
 
-                call.enqueue(new Callback<ResponseBody>() {
+                call.enqueue(new Callback<ArrayList<String>>() {
+
                     @Override
-                    public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-                        String s = "";
-                        try {
-                            s = s + response.body().string();
-                        } catch (IOException e) {
-                            e.printStackTrace();
+                    public void onResponse(Call<ArrayList<String>> call, Response<ArrayList<String>> response) {
+                        if (!response.isSuccessful()) {
+                            Toast.makeText(ViewFoodItem.this, "fail to get response", Toast.LENGTH_LONG).show();
+                            return;
                         }
 
-                        if (s.equals("SUCCESS")) {
-                            Toast.makeText(ViewFoodItem.this, "Successfully created!", Toast.LENGTH_LONG).show();
-                            Intent intent = new Intent(ViewFoodItem.this, NextActivity.class);
+                        if (response.body() != null) {
+                            ArrayList<String> FoodID = new ArrayList<>();
+                            for(Long i : foodIds){
+                                FoodID.add(i.toString());
+                            }
+                            courierFoodItemDetailIds.addAll(response.body());
+                            Intent intent = new Intent(ViewFoodItem.this,CourierListingSummary.class);
+                            intent.putStringArrayListExtra("courierFoodItemDetailIds",courierFoodItemDetailIds);
+                            intent.putStringArrayListExtra("FoodID",FoodID);
                             ViewFoodItem.this.startActivity(intent);
-
-                        } else {
-
                         }
                     }
 
                     @Override
-                    public void onFailure(Call<ResponseBody> call, Throwable t) {
+                    public void onFailure(Call<ArrayList<String>> call, Throwable t) {
                         Toast.makeText(ViewFoodItem.this, t.getMessage(), Toast.LENGTH_LONG).show();
                     }
                 });
+
             }
-
         }
-    }
 
+    }
 }
 
 
