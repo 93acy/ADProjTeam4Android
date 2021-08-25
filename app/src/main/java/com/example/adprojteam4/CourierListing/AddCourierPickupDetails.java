@@ -28,7 +28,7 @@ public class AddCourierPickupDetails extends AppCompatActivity {
     EditText pickupDate,pickupLocation,orderBeforeTime,pickupTime;
     Button confirmBtn;
     String puTime,puDate,puLocation,ordBeforeTime;
-    List<Long> courierListingIds = new ArrayList<>();
+    long courierListingId;
     List<CourierListing> courierListing = new ArrayList<>();
 
     @Override
@@ -114,7 +114,7 @@ public class AddCourierPickupDetails extends AppCompatActivity {
         Call<ResponseBody> call = RetrofitClient
                 .getInstance()
                 .getFoodAPI()
-                .createCourierPickupDetails(courierListing,courierListingIds);
+                .createCourierPickupDetails(courierListing,courierListingId);
 
         call.enqueue(new Callback<ResponseBody>() {
             @Override
