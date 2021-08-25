@@ -70,7 +70,7 @@
             android:layout_marginStart="5dp"
             android:layout_marginTop="20dp"
             android:layout_marginBottom="5dp"
-            android:text="cancle"
+            android:text="cancel"
             app:layout_constraintBottom_toBottomOf="@id/foodForm"
             app:layout_constraintEnd_toStartOf="@id/create"
             app:layout_constraintStart_toStartOf="@id/foodForm"

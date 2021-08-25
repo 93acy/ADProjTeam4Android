@@ -12,10 +12,8 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.adprojteam4.HawkerListing;
 import com.example.adprojteam4.R;
 import com.example.adprojteam4.RetrofitClient;
 
@@ -243,7 +241,7 @@ public class ViewFoodItem extends AppCompatActivity {
 
                         if (s.equals("SUCCESS")) {
                             Toast.makeText(ViewFoodItem.this, "Successfully created!", Toast.LENGTH_LONG).show();
-                            Intent intent = new Intent(ViewFoodItem.this, NextActivity.class);
+                            Intent intent = new Intent(ViewFoodItem.this, AddCourierPickupDetails.class);
                             ViewFoodItem.this.startActivity(intent);
 
                         } else {

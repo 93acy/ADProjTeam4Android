@@ -23,5 +23,9 @@ public interface FoodAPI {
     Call<ResponseBody> createCourierFoodItemDetails
             (@Body List<CourierFoodItemDetails> courierFoodItemDetails, @Query("foodIds") List<Long> foodIds);
 
+    @POST("/courier/pickupDetails")
+    Call<ResponseBody> createCourierPickupDetails
+            (@Body CourierListing courierPickupDetails, @Query("courierListingIds") List<Long> courierListingIds);
+
 
 }

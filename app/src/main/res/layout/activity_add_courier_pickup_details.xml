@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".CourierListing.AddCourierPickupDetails"
+    android:orientation="vertical"
+    android:gravity="center">
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Delivery Date"
+        android:id="@+id/pickupDate"
+        android:inputType="date"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Order Before"
+        android:id="@+id/orderBeforeTime"
+        android:inputType="time"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Collection Location"
+        android:id="@+id/pickupLocation"/>
+
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Collection Time"
+        android:id="@+id/pickupTime"
+        android:inputType="time"/>
+
+
+
+    <Button
+        android:id="@+id/confirmBtn"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:text="CONFIRM"
+        />
+
+
+</LinearLayout>
