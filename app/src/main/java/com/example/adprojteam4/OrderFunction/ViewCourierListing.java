@@ -73,7 +73,7 @@ public class ViewCourierListing extends AppCompatActivity {
 
     private void getCourierListing() {
         Call<ArrayList<ArrayList<String>>> call = RetrofitClient
-                .getInstance()
+                .getInstance(this)
                 .getCourierListingAPI()
                 .viewAllCourierListings();
 

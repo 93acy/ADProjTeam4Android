@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.adprojteam4.CourierListing.ViewFoodItem;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ListingAdaptor extends RecyclerView.Adapter<ListingAdaptor.ViewHolder> {
@@ -58,6 +59,11 @@ public class ListingAdaptor extends RecyclerView.Adapter<ListingAdaptor.ViewHold
     @Override
     public int getItemCount() {
         return hawkerData.size();
+    }
+
+    public void filterList(ArrayList<List<String>> filteredList) {
+        hawkerData = filteredList;
+        notifyDataSetChanged();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {

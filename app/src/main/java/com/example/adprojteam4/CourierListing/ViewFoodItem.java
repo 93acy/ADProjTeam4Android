@@ -81,7 +81,7 @@ public class ViewFoodItem extends AppCompatActivity {
 
         hawkerId = Long.parseLong(getIntent().getStringExtra("hawkerId"));
         Call<List<ArrayList<String>>> call = RetrofitClient
-                .getInstance()
+                .getInstance(this)
                 .getFoodAPI()
                 .viewFoodItems(hawkerId);
 
@@ -175,7 +175,7 @@ public class ViewFoodItem extends AppCompatActivity {
             public void onClick(View view) {
                 FoodItem newFood = new FoodItem(name, cate, des);
                 Call<ResponseBody> call = RetrofitClient
-                        .getInstance()
+                        .getInstance(getBaseContext())
                         .getFoodAPI()
                         .createFoodItem(newFood, hawkerId);
 
@@ -235,7 +235,7 @@ public class ViewFoodItem extends AppCompatActivity {
 
             if (i == prices.size() - 1) {
                 Call<ArrayList<String>> call = RetrofitClient
-                        .getInstance()
+                        .getInstance(this)
                         .getFoodAPI()
                         .createCourierFoodItemDetails(courierFoodItemDetails, foodIds);
 

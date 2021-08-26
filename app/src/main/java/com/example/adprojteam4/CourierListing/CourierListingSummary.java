@@ -122,7 +122,7 @@ public class CourierListingSummary extends AppCompatActivity {
 
             CourierListing courierListing = new CourierListing(puLocation,puDate,puTime,ordBeforeTime);
             Call<ResponseBody> call = RetrofitClient
-                    .getInstance()
+                    .getInstance(this)
                     .getFoodAPI()
                     .createCourierListing(courierListing,courierFoodItemDetailIds,FoodID);
 

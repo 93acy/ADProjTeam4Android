@@ -44,68 +44,69 @@ public class ViewHawkerListingActivity extends AppCompatActivity {
         setContentView(R.layout.activity_view_hawker_listing);
 
         Call<List<List<String>>> call = RetrofitClient
-                .getInstance()
+                .getInstance(this)
                 .getHawkerListingAPI()
                 .viewAllHawkerListings();
 
 
         recyclerView = findViewById(R.id.recyclerView);
         progressBar = findViewById(R.id.progressBar);
-        layoutManager= new LinearLayoutManager(this);
+        layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
-        adaptor = new ListingAdaptor(this,hawkerData);
+        adaptor = new ListingAdaptor(this, hawkerData);
         recyclerView.setAdapter(adaptor);
         bottomNav = findViewById(R.id.bottomNavbar);
         findViewById(R.id.addNewListing).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent =  new Intent(ViewHawkerListingActivity.this, CreateHawkerListingActivity.class);
+                Intent intent = new Intent(ViewHawkerListingActivity.this, CreateHawkerListingActivity.class);
                 startActivity(intent);
             }
         });
-        findViewById((R.id.nav_myAccount)).setOnClickListener(new View.OnClickListener(){
+        findViewById((R.id.nav_myAccount)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent =  new Intent(ViewHawkerListingActivity.this, MainActivity.class);
+                Intent intent = new Intent(ViewHawkerListingActivity.this, MainActivity.class);
                 startActivity(intent);
             }
         });
 
         fetchListings();
+    }
 
-        keywordSearch.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-            }
+//        keywordSearch.addTextChangedListener(new TextWatcher() {
+//            @Override
+//            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+//            }
+//
+//            @Override
+//            public void onTextChanged(CharSequence s, int start, int before, int count) {
+//            }
+//
+//            @Override
+//            public void afterTextChanged(Editable s) {
+//                filter(s.toString());
+//            }
+//        });
+//
+//
+//        }
+//
+//        private void filter(String text) {
+//            ArrayList<List<String>> filteredList = new ArrayList<>();
+//
+//            for (List<String> item: hawkerData){
+//                if(item.get(1).toLowerCase().contains(text.toLowerCase())){
+//                filteredList.add(item);
+//                }
+//            }
+//            adaptor.filterList(filteredList);
+//
+//        }
 
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-                filter(s.toString());
-            }
-        });
-
-
-        }
-
-        private void filter(String text) {
-            ArrayList<HawkerListing> filteredList = new ArrayList<>();
-
-            for (List<String> item: hawkerData){
-                if(item.getStallNo().toLowerCase().contains(text.toLowerCase())){
-                filteredList.add(item);
-                }
-            }
-            adaptor.filterList(filteredList);
-
-        }
-
-    private void fetchListings() {
+    private void fetchListings(){
         Call<List<List<String>>> call = RetrofitClient
-                .getInstance()
+                .getInstance(this)
                 .getHawkerListingAPI()
                 .viewAllHawkerListings();
 
@@ -152,7 +153,7 @@ public class ViewHawkerListingActivity extends AppCompatActivity {
 
 
     }
-
+*/
 //        private BottomNavigationView.OnNavigationItemSelectedListener navListener =
 //                new BottomNavigationView.OnNavigationItemSelectedListener() {
 //                    @Override

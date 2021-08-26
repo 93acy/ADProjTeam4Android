@@ -99,7 +99,7 @@ public class SelectFood extends AppCompatActivity {
 
     private void getFoodItemInCourierListing() {
         Call<ArrayList<ArrayList<String>>> call = RetrofitClient
-                .getInstance()
+                .getInstance(this)
                 .getCourierListingAPI()
                 .selectFoodItems(CourierListingId,hawkerId);
 

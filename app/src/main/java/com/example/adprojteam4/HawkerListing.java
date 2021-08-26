@@ -9,6 +9,7 @@ public class HawkerListing {
     private String postalCode;
     private String stallNo;
     private Long stallImage;
+    private String name;
 
     public String getAddress() {
         return address;
@@ -42,8 +43,7 @@ public class HawkerListing {
         this.name = name;
     }
 
-    //    private Long stallImage;
-    private String name;
+    //    private Long stallImage
 //    private Long ogpId;
 //    private Long lastEditedId1;
 //    private String lastEditedDate1;

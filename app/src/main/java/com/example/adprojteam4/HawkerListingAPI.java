@@ -21,7 +21,6 @@ public interface HawkerListingAPI {
             @Body HawkerListing hawkerListing
     );
 
-
     @PUT("/hawkerlisting/update")
     Call<ResponseBody> updateHawkerListing (
         @Body HawkerListing hawkerListing
