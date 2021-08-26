@@ -38,6 +38,8 @@ public class SelectFood extends AppCompatActivity {
     ConstraintLayout btn,text;
     RelativeLayout rl;
     List<Integer> Quantity = new ArrayList<>();
+    //ArrayList<String> oneData;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -127,4 +129,5 @@ public class SelectFood extends AppCompatActivity {
         });
 
     }
+
 }

@@ -81,30 +81,30 @@ public class SelectFoodAdaptor extends RecyclerView.Adapter<SelectFoodAdaptor.Vi
     }
 
 
-            @Override
-            public int getItemCount() {
+    @Override
+    public int getItemCount() {
 
-                return foodData.size();
-            }
-
-
-            public class ViewHolder extends RecyclerView.ViewHolder {
-                ImageView plus, minus;
-                TextView foodName, category, description, price, dollar, quantity;
-
-                public ViewHolder(@NonNull View listingView) {
-                    super(listingView);
-                    plus = listingView.findViewById(R.id.plus);
-                    minus = listingView.findViewById(R.id.minus);
-                    foodName = listingView.findViewById(R.id.food_name);
-                    category = listingView.findViewById(R.id.food_category);
-                    description = listingView.findViewById(R.id.food_description);
-                    price = listingView.findViewById(R.id.food_price);
-                    dollar = listingView.findViewById(R.id.food_dollar);
-                    quantity = listingView.findViewById(R.id.quantity);
+        return foodData.size();
+    }
 
 
-                }
-            }
+    public class ViewHolder extends RecyclerView.ViewHolder {
+        ImageView plus, minus;
+        TextView foodName, category, description, price, dollar, quantity;
+
+        public ViewHolder(@NonNull View listingView) {
+            super(listingView);
+            plus = listingView.findViewById(R.id.plus);
+            minus = listingView.findViewById(R.id.minus);
+            foodName = listingView.findViewById(R.id.food_name);
+            category = listingView.findViewById(R.id.food_category);
+            description = listingView.findViewById(R.id.food_description);
+            price = listingView.findViewById(R.id.food_price);
+            dollar = listingView.findViewById(R.id.food_dollar);
+            quantity = listingView.findViewById(R.id.quantity);
+
+
+        }
+    }
 
 }

@@ -30,7 +30,7 @@ public class CourierListingAdaptor extends RecyclerView.Adapter<CourierListingAd
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view= LayoutInflater.from(context)
+        View view = LayoutInflater.from(context)
                 .inflate(R.layout.courierlisting_item, parent, false);
         return new ViewHolder(view);
     }
@@ -48,7 +48,7 @@ public class CourierListingAdaptor extends RecyclerView.Adapter<CourierListingAd
             public void onClick(View view) {
 
                 Intent intent = new Intent(context, SelectFood.class);
-                intent.putStringArrayListExtra("courierListingData",data);
+                intent.putStringArrayListExtra("courierListingData", data);
                 context.startActivity(intent);
             }
         });
@@ -59,8 +59,8 @@ public class CourierListingAdaptor extends RecyclerView.Adapter<CourierListingAd
         return courierListingData.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder{
-        TextView hawkerName,locationArea,pickupTime,text;
+    public class ViewHolder extends RecyclerView.ViewHolder {
+        TextView hawkerName, locationArea, pickupTime, text;
         CardView cardView;
 
         public ViewHolder(@NonNull View listingView) {
@@ -73,9 +73,10 @@ public class CourierListingAdaptor extends RecyclerView.Adapter<CourierListingAd
         }
     }
 
-    public void filterList(ArrayList<ArrayList<String>> filteredList){
-        courierListingData = filteredList;
-        notifyDataSetChanged();
-    }
+        public void filterList(ArrayList<ArrayList<String>> filteredList) {
+            courierListingData = filteredList;
+            notifyDataSetChanged();
+        }
+
 
 }
