@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="20dp"
     tools:context=".MainActivity">
 
     <TextView
@@ -12,7 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="cursive"
-        android:padding="10dp"
+        android:layout_marginTop="30dp"
         android:text="Team4ADProject"
         android:textSize="40sp"
         android:textStyle="bold"
@@ -34,7 +33,7 @@
 
     <Button
         android:id="@+id/btnToRegister"
-        android:layout_width="match_parent"
+        android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"
         android:text="REGISTER"
@@ -42,12 +41,11 @@
         android:textColor="@android:color/background_dark"
         app:layout_constraintBottom_toTopOf="@+id/btnToLogin"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/btnToLogin"
-        android:layout_width="match_parent"
+        android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:text="LOGIN"
         android:textSize="16sp"
@@ -55,7 +53,6 @@
         app:layout_constraintBottom_toTopOf="@id/bottomNavbar"
         android:layout_marginBottom="30dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent" />
 
     <FrameLayout
