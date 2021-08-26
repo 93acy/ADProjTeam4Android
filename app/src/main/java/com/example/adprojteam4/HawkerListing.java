@@ -16,8 +16,8 @@ public class HawkerListing {
 //    private Long lastEditedId1;
 //    private String lastEditedDate1;
     private String foodType;
-    private ArrayList<String> carbType;
-    private ArrayList<String> proteinType;
+    private String carbType;
+    private String proteinType;
 
     public HawkerListing(String address, String postalCode, String stallNo, String name) {
         this.address = address;
@@ -74,19 +74,19 @@ public class HawkerListing {
         this.foodType = foodType;
     }
 
-    public ArrayList<String> getCarbType() {
+    public String getCarbType() {
         return carbType;
     }
 
-    public void setCarbType(ArrayList<String> carbType) {
+    public void setCarbType(String carbType) {
         this.carbType = carbType;
     }
 
-    public ArrayList<String> getProteinType() {
+    public String getProteinType() {
         return proteinType;
     }
 
-    public void setProteinType(ArrayList<String> proteinType) {
+    public void setProteinType(String proteinType) {
         this.proteinType = proteinType;
     }
 }
