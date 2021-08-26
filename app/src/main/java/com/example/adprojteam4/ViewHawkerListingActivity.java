@@ -56,6 +56,8 @@ public class ViewHawkerListingActivity extends AppCompatActivity {
         adaptor = new ListingAdaptor(this, hawkerData);
         recyclerView.setAdapter(adaptor);
         bottomNav = findViewById(R.id.bottomNavbar);
+
+        fetchListings();
         findViewById(R.id.addNewListing).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -71,7 +73,7 @@ public class ViewHawkerListingActivity extends AppCompatActivity {
             }
         });
 
-        fetchListings();
+
     }
 
 //        keywordSearch.addTextChangedListener(new TextWatcher() {

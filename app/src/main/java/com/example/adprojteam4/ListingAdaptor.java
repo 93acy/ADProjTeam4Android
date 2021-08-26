@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -13,6 +14,7 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.adprojteam4.CourierListing.ViewFoodItem;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,8 +45,7 @@ public class ListingAdaptor extends RecyclerView.Adapter<ListingAdaptor.ViewHold
         holder.hawkerLocation.setText(hawkerData.get(position).get(2));
         holder.hawkerPostalCode.setText(hawkerData.get(position).get(3));
         holder.hawkerStallNo.setText(hawkerData.get(position).get(4));
-
-        holder.cardView.setOnClickListener(new View.OnClickListener() {
+        holder.courierButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(context, ViewFoodItem.class);
@@ -74,6 +75,7 @@ public class ListingAdaptor extends RecyclerView.Adapter<ListingAdaptor.ViewHold
         TextView hawkerPostalCode;
         TextView hawkerStallNo;
         CardView cardView;
+        FloatingActionButton courierButton;
 
         public ViewHolder(@NonNull View listingView){
             super(listingView);
@@ -84,6 +86,7 @@ public class ListingAdaptor extends RecyclerView.Adapter<ListingAdaptor.ViewHold
             hawkerImage= listingView.findViewById(R.id.listingImage);
             hawkerStallNo = listingView.findViewById(R.id.listingStallNo);
             cardView = listingView.findViewById(R.id.cardView);
+            courierButton = listingView.findViewById(R.id.postCourierListing);
 
         }
     }
