@@ -38,6 +38,7 @@ public class ViewHawkerListingActivity extends AppCompatActivity {
     EditText keywordSearch;
     BottomNavigationView bottomNav;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,7 +49,7 @@ public class ViewHawkerListingActivity extends AppCompatActivity {
                 .getHawkerListingAPI()
                 .viewAllHawkerListings();
 
-
+        keywordSearch = findViewById(R.id.hlist_search_bar);
         recyclerView = findViewById(R.id.recyclerView);
         progressBar = findViewById(R.id.progressBar);
         layoutManager = new LinearLayoutManager(this);
@@ -58,6 +59,7 @@ public class ViewHawkerListingActivity extends AppCompatActivity {
         bottomNav = findViewById(R.id.bottomNavbar);
 
         fetchListings();
+
         findViewById(R.id.addNewListing).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -65,6 +67,8 @@ public class ViewHawkerListingActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+
         findViewById((R.id.nav_myAccount)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -73,40 +77,29 @@ public class ViewHawkerListingActivity extends AppCompatActivity {
             }
         });
 
+        keywordSearch.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
 
-    }
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+            }
 
-//        keywordSearch.addTextChangedListener(new TextWatcher() {
-//            @Override
-//            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-//            }
-//
-//            @Override
-//            public void onTextChanged(CharSequence s, int start, int before, int count) {
-//            }
-//
-//            @Override
-//            public void afterTextChanged(Editable s) {
-//                filter(s.toString());
-//            }
-//        });
-//
-//
-//        }
-//
-//        private void filter(String text) {
-//            ArrayList<List<String>> filteredList = new ArrayList<>();
-//
-//            for (List<String> item: hawkerData){
-//                if(item.get(1).toLowerCase().contains(text.toLowerCase())){
-//                filteredList.add(item);
-//                }
-//            }
-//            adaptor.filterList(filteredList);
-//
-//        }
+            @Override
+            public void afterTextChanged(Editable s) {
+                filter(s.toString());
+            }
+            });
+        }
 
-    private void fetchListings(){
+
+
+
+
+
+
+        private void fetchListings(){
         Call<List<List<String>>> call = RetrofitClient
                 .getInstance(this)
                 .getHawkerListingAPI()
@@ -133,7 +126,29 @@ public class ViewHawkerListingActivity extends AppCompatActivity {
                 Toast.makeText(ViewHawkerListingActivity.this, "Error" + t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
-    }}
+        }
+
+        private void filter(String text) {
+        List<List<String>> filteredList = new ArrayList<>();
+
+        for (List<String> item: hawkerData){
+            if(
+                    item.get(0).toLowerCase().contains(text.toLowerCase())
+//                            |item.get(3).toLowerCase().contains(text.toLowerCase())
+//                            |item.get(4).toLowerCase().contains(text.toLowerCase())
+//                            |item.get(5).toLowerCase().contains(text.toLowerCase())
+            ){
+
+                filteredList.add(item);
+            }
+        }
+        adaptor.filterList(filteredList);
+
+    }
+
+
+
+}
 
         /*private void fetchListings() {
         RetrofitClient.getInstance().getHawkerListingAPI().viewAllHawkerListings().enqueue(new Callback<List<HawkerListing>>() {
