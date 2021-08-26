@@ -2,22 +2,31 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:padding="10dp">
 
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Please enter the price:"
+        android:textAlignment="center"
         android:textSize="20sp"
-        android:textStyle="italic">
+        android:textStyle="italic"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="10dp">
     </TextView>
 
     <EditText
         android:id="@+id/textSetFoodPrice"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:ems="10">
+        android:ems="10"
+        android:textColor="#645151"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="10dp">
 
     </EditText>
     <!--
@@ -34,7 +43,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="confirm"
-        android:layout_marginLeft="50dp">
+        android:layout_marginLeft="63dp">
 
     </Button>
 

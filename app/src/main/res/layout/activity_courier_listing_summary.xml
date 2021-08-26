@@ -4,58 +4,72 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/userlogin_bg"
     tools:context=".CourierListing.CourierListingSummary">
+
+    <ImageView
+        android:id="@+id/CourierImg"
+        android:layout_width="305dp"
+        android:layout_height="133dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/courier"
+        app:layout_constraintBottom_toTopOf="@+id/title"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+    </ImageView>
 
     <TextView
         android:id="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="59dp"
-        android:layout_marginTop="79dp"
-        android:layout_marginEnd="59dp"
+        android:layout_marginTop="10dp"
         android:fontFamily="cursive"
         android:text="Courier Listing Details"
         android:textSize="35dp"
+        android:textColor="#444444"
+        android:textFontWeight="1000"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/CourierImg"/>
 
 
     <EditText
         android:id="@+id/pickupDate"
-        android:layout_width="match_parent"
+        android:layout_width="350dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="50dp"
-        android:layout_marginEnd="30dp"
+        android:layout_marginTop="30dp"
         android:hint="Delivery Date"
         android:inputType="date"
+        android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/title" />
 
     <EditText
         android:id="@+id/orderBeforeTime"
-        android:layout_width="match_parent"
+        android:layout_width="350dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="50dp"
-        android:layout_marginEnd="30dp"
+        android:layout_marginTop="30dp"
         android:hint="Order Before"
         android:inputType="time"
+        android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/pickupDate" />
 
     <EditText
         android:id="@+id/pickupLocation"
-        android:layout_width="match_parent"
+        android:layout_width="350dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="50dp"
-        android:layout_marginEnd="30dp"
+        android:layout_marginTop="30dp"
         android:hint="Collection Location"
+        android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/pickupTime" />
@@ -64,27 +78,24 @@
         android:id="@+id/pickupTime"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="50dp"
-        android:layout_marginEnd="30dp"
+        android:layout_marginTop="30dp"
         android:hint="Collection Time"
         android:inputType="time"
+        android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/orderBeforeTime" />
 
     <Button
         android:id="@+id/confirmBtn"
-        android:layout_width="wrap_content"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="154dp"
-        android:layout_marginTop="60dp"
-        android:layout_marginEnd="155dp"
-        android:layout_marginBottom="121dp"
+        android:layout_marginTop="30dp"
         android:text="CONFIRM"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/pickupLocation" />
+        app:layout_constraintTop_toBottomOf="@+id/pickupLocation"
+        android:backgroundTint="#806b63"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

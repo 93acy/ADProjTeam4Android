@@ -7,14 +7,18 @@
     android:layout_margin="8dp"
     app:cardCornerRadius="5dp"
     app:cardElevation="3dp"
+    android:background="#91E4DDD7"
+    android:backgroundTint="#91E4DDD7"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-    \
+
     <androidx.constraintlayout.widget.ConstraintLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:padding="10dp"
+        >
 
         <ImageView
             android:id="@+id/listingImage"

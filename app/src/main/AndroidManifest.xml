@@ -12,28 +12,28 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.ADProjTeam4"
+        android:theme="@style/Theme.nav"
         android:usesCleartextTraffic="true">
-        <activity android:name=".CourierListing.CourierListingStatus"></activity>
-        <activity android:name=".OrderFunction.ViewOrderStatus" />
-        <activity android:name=".OrderFunction.SelectFood" />
-        <activity android:name=".OrderFunction.ViewCourierListing">
+        <activity android:name=".CourierListing.CourierListingStatus" android:windowSoftInputMode="adjustPan"></activity>
+        <activity android:name=".OrderFunction.ViewOrderStatus" android:windowSoftInputMode="adjustPan"/>
+        <activity android:name=".OrderFunction.SelectFood" android:windowSoftInputMode="adjustPan"/>
+        <activity android:name=".OrderFunction.ViewCourierListing" android:windowSoftInputMode="adjustPan">
 <!--            <intent-filter>-->
 <!--                <action android:name="android.intent.action.MAIN" />-->
 
 <!--                <category android:name="android.intent.category.LAUNCHER" />-->
 <!--            </intent-filter>-->
         </activity>
-        <activity android:name=".CourierListing.CourierListingSummary" />
-        <activity android:name=".CourierListing.ViewFoodItem"/>
-        <activity android:name=".CreateHawkerListingActivity">
+        <activity android:name=".CourierListing.CourierListingSummary" android:windowSoftInputMode="adjustPan"/>
+        <activity android:name=".CourierListing.ViewFoodItem" android:windowSoftInputMode="adjustPan"/>
+        <activity android:name=".CreateHawkerListingActivity" android:windowSoftInputMode="adjustPan">
 <!--        <intent-filter>-->
 <!--            <action android:name="android.intent.action.MAIN" />-->
 
 <!--            <category android:name="android.intent.category.LAUNCHER" />-->
 <!--        </intent-filter>-->
         </activity>
-        <activity android:name=".ViewHawkerListingActivity" >
+        <activity android:name=".ViewHawkerListingActivity" android:windowSoftInputMode="adjustPan">
 
         <intent-filter>
             <action android:name="android.intent.action.MAIN" />
@@ -43,15 +43,15 @@
         </activity>
 
 
-        <activity android:name=".DashboardActivity" />
-        <activity android:name=".RegisterActivity" />
+        <activity android:name=".DashboardActivity" android:windowSoftInputMode="adjustPan"/>
+        <activity android:name=".RegisterActivity" android:windowSoftInputMode="adjustPan"/>
 <!--        <intent-filter>-->
 <!--            <action android:name="android.intent.action.MAIN" />-->
 
 <!--            <category android:name="android.intent.category.LAUNCHER" />-->
 <!--        </intent-filter>-->
-        <activity android:name=".LoginActivity" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".LoginActivity" android:windowSoftInputMode="adjustPan"/>
+        <activity android:name=".MainActivity" android:windowSoftInputMode="adjustPan">
 <!--            <intent-filter>-->
 <!--                <action android:name="android.intent.action.MAIN" />-->
 
