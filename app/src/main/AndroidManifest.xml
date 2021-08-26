@@ -35,11 +35,11 @@
             <!-- </intent-filter> -->
         </activity>
         <activity android:name=".ViewHawkerListingActivity">
-            <!--<intent-filter>
+            <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>-->
+            </intent-filter>
         </activity>
         <activity android:name=".DashboardActivity" />
         <activity android:name=".RegisterActivity" />

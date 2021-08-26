@@ -44,6 +44,7 @@ public class SelectFood extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_select_food);
 
+        //open a list with intents from "courierListingData"
         courierListingData.addAll(getIntent().getStringArrayListExtra("courierListingData"));
 
         btn = findViewById(R.id.btn_cl);
