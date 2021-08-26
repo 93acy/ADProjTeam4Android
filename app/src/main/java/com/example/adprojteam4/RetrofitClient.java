@@ -1,8 +1,5 @@
 package com.example.adprojteam4;
 
-import com.example.adprojteam4.CourierListing.FoodAPI;
-import com.example.adprojteam4.OrderFunction.CourierListingAPI;
-
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
@@ -17,6 +14,7 @@ public class RetrofitClient {
         retrofit = new Retrofit.Builder()
                 .baseUrl(BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
+                .client(okHttpClient(context))
                 .build();
     }
 
@@ -26,6 +24,12 @@ public class RetrofitClient {
             mInstance = new RetrofitClient();
         }
         return mInstance;
+    }
+
+    private OkHttpClient okHttpClient(Context context) {
+        return new OkHttpClient.Builder()
+                .addInterceptor(new AuthInterceptor(context))
+                .build();
     }
 
 

@@ -89,18 +89,18 @@
 
     <Button
         android:id="@+id/btnRegister3"
-        android:layout_width="match_parent"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:text="REGISTER"
         android:textColor="@android:color/background_dark"
         android:textSize="16sp"
-        app:layout_constraintBottom_toTopOf="@id/bottomNavbar"
+        app:layout_constraintTop_toBottomOf="@id/hawkerStallNumber"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        android:layout_marginBottom="30dp"
+        android:layout_marginTop="30dp"
         app:layout_constraintStart_toStartOf="parent" />
 
-        <com.google.android.material.bottomnavigation.BottomNavigationView
+    <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

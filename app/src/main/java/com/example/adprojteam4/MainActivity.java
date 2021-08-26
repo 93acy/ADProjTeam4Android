@@ -27,6 +27,24 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        findViewById((R.id.nav_hawkerSearch)).setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Intent intent =  new Intent(MainActivity.this, ViewHawkerListingActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        findViewById((R.id.nav_myAccount)).setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Intent intent =  new Intent(MainActivity.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
+
     }
 
 }

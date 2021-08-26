@@ -19,7 +19,6 @@ import retrofit2.Callback;
 public class LoginActivity extends AppCompatActivity {
 
     private EditText etUsername, etPassword;
-    SharedPreferences pref;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,7 +27,6 @@ public class LoginActivity extends AppCompatActivity {
 
         etUsername = findViewById(R.id.etUserName);
         etPassword = findViewById(R.id.etPassword);
-        pref = getSharedPreferences("user_details", MODE_PRIVATE);
 
         findViewById(R.id.btnLogin).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -46,7 +44,9 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void loginUser() {
-        final String username = etUsername.getText().toString().trim();
+        SessionManager sessionManager = new SessionManager(this);
+
+        String username = etUsername.getText().toString().trim();
         String password = etPassword.getText().toString().trim();
 
         if (username.isEmpty()) {
@@ -59,27 +59,24 @@ public class LoginActivity extends AppCompatActivity {
             return;
         }
 
-        Call<ResponseBody> call = RetrofitClient
-                .getInstance()
+        Call<JwtResponse> call = RetrofitClient
+                .getInstance(this)
                 .getAPI()
-                .checkUser(new User(username, password));
+                .authenticate(new JwtRequest(username, password));
 
-        call.enqueue(new Callback<ResponseBody>() {
+        call.enqueue(new Callback<JwtResponse>() {
             @Override
-            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-                String s = "";
+            public void onResponse(Call<JwtResponse> call, Response<JwtResponse> response) {
+                JwtResponse jwtResponse = null;
                 try {
-                    s = response.body().string();
-                } catch (IOException e) {
+                    jwtResponse = response.body();
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
 
-                if (s.equals("Success")) {
+                if (response.isSuccessful() && jwtResponse != null) {
+                    sessionManager.saveAuthToken(jwtResponse.getToken());
                     Toast.makeText(LoginActivity.this, "User logged in!", Toast.LENGTH_LONG).show();
-                    SharedPreferences.Editor editor = pref.edit();
-                    editor.putString("username", username);
-                    editor.putString("password", password);
-                    editor.commit();
                     startActivity(new Intent(LoginActivity.this, DashboardActivity.class).putExtra("username", username));
                 } else {
                     Toast.makeText(LoginActivity.this, "Incorrect Credentials! Try again!", Toast.LENGTH_LONG).show();
@@ -87,7 +84,7 @@ public class LoginActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<ResponseBody> call, Throwable t) {
+            public void onFailure(Call<JwtResponse> call, Throwable t) {
                 Toast.makeText(LoginActivity.this, t.getMessage(), Toast.LENGTH_LONG).show();
             }
         });

@@ -20,6 +20,8 @@ public interface HawkerListingAPI {
     Call<ResponseBody> addNewHawkerListing (
             @Body HawkerListing hawkerListing
     );
+
+
     @PUT("/hawkerlisting/update")
     Call<ResponseBody> updateHawkerListing (
         @Body HawkerListing hawkerListing

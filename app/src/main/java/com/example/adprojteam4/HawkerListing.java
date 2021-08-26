@@ -8,30 +8,7 @@ public class HawkerListing {
     private String address;
     private String postalCode;
     private String stallNo;
-//    private string stallImageUrl;
-    private String name;
-//    private Long ogpId;
-//    private Long lastEditedId1;
-//    private String lastEditedDate1;
-
-    public HawkerListing(String address, String postalCode, String stallNo, String name) {
-        this.address = address;
-        this.postalCode = postalCode;
-        this.stallNo = stallNo;
-        this.name = name;
-    }
-
-    public HawkerListing(Long id) {
-        Id = id;
-    }
-
-    public Long getId() {
-        return Id;
-    }
-
-    public void setId(Long id) {
-        Id = id;
-    }
+    private Long stallImage;
 
     public String getAddress() {
         return address;
@@ -62,6 +39,19 @@ public class HawkerListing {
     }
 
     public void setName(String name) {
+        this.name = name;
+    }
+
+    //    private Long stallImage;
+    private String name;
+//    private Long ogpId;
+//    private Long lastEditedId1;
+//    private String lastEditedDate1;
+
+    public HawkerListing(String address, String postalCode, String stallNo, String name) {
+        this.address = address;
+        this.postalCode = postalCode;
+        this.stallNo = stallNo;
         this.name = name;
     }
 }

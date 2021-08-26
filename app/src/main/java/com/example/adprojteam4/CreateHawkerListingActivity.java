@@ -1,6 +1,7 @@
 package com.example.adprojteam4;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -37,8 +38,7 @@ public class CreateHawkerListingActivity extends AppCompatActivity {
             }
         });
     }
-
-        private void registerhawker() {
+    private void registerhawker() {
         String name = hawkerName.getText().toString().trim();
         String address = hawkerAddress.getText().toString().trim();
         String postalCode= hawkerPostalCode.getText().toString().trim();
@@ -56,7 +56,7 @@ public class CreateHawkerListingActivity extends AppCompatActivity {
         // the rest can just fuck it
 
         Call<ResponseBody> call = RetrofitClient
-                .getInstance()
+                .getInstance(this)
                 .getHawkerListingAPI()
                 .addNewHawkerListing(new HawkerListing(name, address, postalCode, stallNo));
 
