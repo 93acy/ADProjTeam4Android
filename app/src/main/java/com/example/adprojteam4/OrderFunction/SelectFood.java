@@ -80,7 +80,7 @@ public class SelectFood extends AppCompatActivity {
             public void onClick(View view) {
 
                 Intent intent = new Intent(SelectFood.this, ViewOrderStatus.class);
-                //intent.putStringArrayListExtra("courierListingData", data);
+//                intent.putStringArrayListExtra("foodName", data);
                 SelectFood.this.startActivity(intent);
             }
 

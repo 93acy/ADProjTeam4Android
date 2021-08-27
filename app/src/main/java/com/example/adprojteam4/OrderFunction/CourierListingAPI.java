@@ -17,7 +17,13 @@ public interface CourierListingAPI {
             (@Path("id") Long courierListingId,@Query("hawkerId") Long hawkerId);
 
     @GET("/users/courierListingPickup/{id}")
-    Call<ArrayList<ArrayList<String>>> viewPickupDetails();
+    Call<ArrayList<ArrayList<String>>> viewPickupDetails
+            (@Path("id") Long userOrderId);
+
+    @GET("/users/orders/foodItems/{id}")
+    Call<ArrayList<ArrayList<String>>> viewOrderFoodItems
+            (@Path("id") Long userOrderId);
+
 
 
 }

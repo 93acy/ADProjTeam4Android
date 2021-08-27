@@ -22,26 +22,23 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class ViewOrderStatus extends AppCompatActivity {
-    ArrayList<String> courierListingData = new ArrayList<>();
-    ArrayList<String>orderFoodData = new ArrayList<>();
-    ArrayList<ArrayList<String>> pickupDetailsData = new ArrayList<ArrayList<String>>();
+    List<List<String>>orderFoodData = new ArrayList<>();
+    ArrayList<ArrayList<String>> pickupDetailsData = new ArrayList<>();
     TextView hawkerName,pickupTime,pickupLocation;
     RecyclerView recyclerView;
     LinearLayoutManager layoutManager;
     UserOrderAdaptor adaptor;
-    Long courierListingId,userOrderId,userId;
+    Long userOrderId;
     Button cancel,received;
     ConstraintLayout btmCl,topCl;
     RelativeLayout rl;
-    List<Integer> Quantity = new ArrayList<>();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_order_status);
 
-        orderFoodData.addAll(getIntent().getStringArrayListExtra("orderFoodData"));
-        courierListingData.addAll(getIntent().getStringArrayListExtra("courierListingData"));
         btmCl = findViewById(R.id.btm_cl);
         topCl=findViewById(R.id.top_cl);
         rl = findViewById(R.id.relativate);
@@ -52,29 +49,28 @@ public class ViewOrderStatus extends AppCompatActivity {
         cancel = findViewById(R.id.cancel_btn);
 
 
-        courierListingId = Long.parseLong("2");
-        userOrderId = Long.parseLong("1");
-        userId = Long.parseLong("1");
-
         recyclerView = findViewById(R.id.foodList_rv);
         layoutManager= new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
-//        adaptor = new UserOrderAdaptor(ViewOrderStatus.this,foodData, Quantity);
+        adaptor = new UserOrderAdaptor(ViewOrderStatus.this,orderFoodData);
         recyclerView.setAdapter(adaptor);
 
         getPickupDetailsInUserOrder();
+        getOrderFoodItem();
 
-        pickupTime.setText("Pickup Time: "+ pickupDetailsData.get(2));
-//        hawkerName.setText(pickupDetailsData.get(2));
-        pickupLocation.setText("Pickup Location:"+pickupDetailsData.get(1));
+
+
 
     }
 
     private void getPickupDetailsInUserOrder() {
+
+//        userOrderId = Long.parseLong(getIntent().getStringExtra("userOrderId"));
+        userOrderId=Long.parseLong("1");
         Call<ArrayList<ArrayList<String>>> call = RetrofitClient
                 .getInstance()
                 .getCourierListingAPI()
-                .viewPickupDetails();
+                .viewPickupDetails(userOrderId);
 
         call.enqueue(new Callback<ArrayList<ArrayList<String>>>() {
             @Override
@@ -85,6 +81,10 @@ public class ViewOrderStatus extends AppCompatActivity {
                 }
                 if (response.body() != null) {
                     pickupDetailsData.addAll(response.body());
+                    pickupLocation.setText("Pickup Location:" + pickupDetailsData.get(0).get(1));
+                    pickupTime.setText("Pickup Time: "+ pickupDetailsData.get(0).get(2));
+                    hawkerName.setText(pickupDetailsData.get(0).get(3));
+
                 }
             }
 
@@ -96,37 +96,34 @@ public class ViewOrderStatus extends AppCompatActivity {
 
     }
 
+    private void getOrderFoodItem() {
 
-//    private void getFoodItem() {
-//
-//        hawkerId = Long.parseLong(getIntent().getStringExtra("hawkerId"));
-//        Call<List<ArrayList<String>>> call = RetrofitClient
-//                .getInstance()
-//                .getFoodAPI()
-//                .viewFoodItems(hawkerId);
-//
-//        call.enqueue(new Callback<List<ArrayList<String>>>() {
-//            @Override
-//            public void onResponse(Call<List<ArrayList<String>>> call, Response<List<ArrayList<String>>> response) {
-//                if (!response.isSuccessful()) {
-//                    Toast.makeText(ViewOrderStatus.this, "fail to get response", Toast.LENGTH_LONG).show();
-//                    return;
-//                }
-//
-//                if (response.body() != null) {
-//                    foodItems.addAll(response.body());
-//                    for (int i = 0; i < foodItems.size(); i++) {
-//                        prices.add(0.0);
-//                    }
-//                    adaptor.notifyDataSetChanged();
-//                }
-//            }
-//
-//            @Override
-//            public void onFailure(Call<List<ArrayList<String>>> call, Throwable t) {
-//                Toast.makeText(ViewFoodItem.this, t.getMessage(), Toast.LENGTH_LONG).show();
-//            }
-//        });
+//        userOrderId = Long.parseLong(getIntent().getStringExtra("userOrderId"));
+        userOrderId=Long.parseLong("1");
+        Call<ArrayList<ArrayList<String>>> call = RetrofitClient
+                .getInstance()
+                .getCourierListingAPI()
+                .viewOrderFoodItems(userOrderId);
 
+        call.enqueue(new Callback<ArrayList<ArrayList<String>>>() {
+            @Override
+            public void onResponse(Call<ArrayList<ArrayList<String>>> call, Response<ArrayList<ArrayList<String>>> response) {
+                if (!response.isSuccessful()) {
+                    Toast.makeText(ViewOrderStatus.this, "fail to get response", Toast.LENGTH_LONG).show();
+                    return;
+                }
+
+                if (response.body() != null) {
+                    orderFoodData.addAll(response.body());
+                    adaptor.notifyDataSetChanged();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ArrayList<ArrayList<String>>> call, Throwable t) {
+                Toast.makeText(ViewOrderStatus.this, t.getMessage(), Toast.LENGTH_LONG).show();
+            }
+        });
+    }
 
 }
