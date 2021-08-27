@@ -34,7 +34,7 @@ public class ViewHawkerListingActivity extends AppCompatActivity {
     ProgressBar progressBar;
     LinearLayoutManager layoutManager;
     ListingAdaptor adaptor;
-    List<List<String>> hawkerData= new ArrayList<>();
+    List<List<String>> hawkerData = new ArrayList<>();
     EditText keywordSearch;
     BottomNavigationView bottomNav;
 
@@ -90,11 +90,11 @@ public class ViewHawkerListingActivity extends AppCompatActivity {
             public void afterTextChanged(Editable s) {
                 filter(s.toString());
             }
-            });
-        }
+        });
+    }
 
 
-        private void fetchListings(){
+    private void fetchListings() {
         Call<List<List<String>>> call = RetrofitClient
                 .getInstance(this)
                 .getHawkerListingAPI()
@@ -110,7 +110,7 @@ public class ViewHawkerListingActivity extends AppCompatActivity {
                     return;
                 }
 
-                if(response.body()!=null){
+                if (response.body() != null) {
                     hawkerData.addAll(response.body());
                     adaptor.notifyDataSetChanged();
                 }
@@ -121,24 +121,26 @@ public class ViewHawkerListingActivity extends AppCompatActivity {
                 Toast.makeText(ViewHawkerListingActivity.this, "Error" + t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
-        }
-        private void filter(String text) {
-        List<List<String>> filteredList = new ArrayList<>();
-
-        for (List<String> item: hawkerData){
-                    for (String string: item ){
-                        if(string != null){
-                            string.toLowerCase().contains(text.toLowerCase());
-                            filteredList.add(item);
-                        }
-                    }
-        }
-        adaptor.filterList(filteredList);
-
     }
 
+    private void filter(String text) {
+        ArrayList<List<String>> filteredList = new ArrayList<>();
+
+        for (List<String> item : hawkerData) {
+            for (String string : item) {
+                if (string != null) {
+                    string.toLowerCase().contains(text.toLowerCase());
+
+                    if (!filteredList.contains(item)) {
+                        filteredList.add(item);
+                    }
+                }
+            }
+            adaptor.filterList(filteredList);
+        }
 
 
+    }
 }
 
         /*private void fetchListings() {
