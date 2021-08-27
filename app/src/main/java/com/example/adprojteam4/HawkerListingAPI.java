@@ -13,8 +13,8 @@ import retrofit2.http.PUT;
 
 public interface HawkerListingAPI {
 
-    @GET("/hawkerlisting/All")
-    Call<List<HawkerListing>> viewAllHawkerListings();
+    @GET("/courier/hawker")
+    Call<List<List<String>>> viewAllHawkerListings();
 
     @POST("/hawkerlisting/add")
     Call<ResponseBody> addNewHawkerListing (
