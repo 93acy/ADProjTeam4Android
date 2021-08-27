@@ -127,9 +127,10 @@ public class ViewHawkerListingActivity extends AppCompatActivity {
 
         for (List<String> item: hawkerData){
                     for (String string: item ){
-                        if(string != null){
-                            string.toLowerCase().contains(text.toLowerCase());
-                            filteredList.add(item);
+                        if (string != null && (string.toLowerCase().contains(text.toLowerCase()))){
+                            if (!filteredList.contains(item)) {
+                                filteredList.add(item);
+                            }
                         }
                     }
         }
