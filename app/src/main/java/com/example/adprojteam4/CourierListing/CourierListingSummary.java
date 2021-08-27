@@ -57,98 +57,98 @@ public class CourierListingSummary extends AppCompatActivity {
             }
         });
 
-        }
+    }
 
-        private void getText(){
-            pickupDate.setText(null);
-            pickupLocation.setText(null);
-            pickupTime.setText(null);
-            orderBeforeTime.setText(null);
+    private void getText(){
+        pickupDate.setText(null);
+        pickupLocation.setText(null);
+        pickupTime.setText(null);
+        orderBeforeTime.setText(null);
 
-            pickupDate.addTextChangedListener(new TextWatcher() {
-                @Override
-                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                }
-                @Override
-                public void onTextChanged(CharSequence s, int start, int before, int count) {
-                }
-                @Override
-                public void afterTextChanged(Editable s) {
-                    puDate = pickupDate.getText().toString().trim();
-                }
-            });
+        pickupDate.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+            }
+            @Override
+            public void afterTextChanged(Editable s) {
+                puDate = pickupDate.getText().toString().trim();
+            }
+        });
 
-            pickupTime.addTextChangedListener(new TextWatcher() {
-                @Override
-                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                }
-                @Override
-                public void onTextChanged(CharSequence s, int start, int before, int count) {
-                }
-                @Override
-                public void afterTextChanged(Editable s) {
-                    puTime = pickupTime.getText().toString().trim();
-                }
-            });
+        pickupTime.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+            }
+            @Override
+            public void afterTextChanged(Editable s) {
+                puTime = pickupTime.getText().toString().trim();
+            }
+        });
 
-            pickupLocation.addTextChangedListener(new TextWatcher() {
-                @Override
-                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                }
-                @Override
-                public void onTextChanged(CharSequence s, int start, int before, int count) {
-                }
-                @Override
-                public void afterTextChanged(Editable s) {
-                    puLocation = pickupLocation.getText().toString().trim();
-                }
-            });
+        pickupLocation.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+            }
+            @Override
+            public void afterTextChanged(Editable s) {
+                puLocation = pickupLocation.getText().toString().trim();
+            }
+        });
 
-            orderBeforeTime.addTextChangedListener(new TextWatcher() {
-                @Override
-                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                }
-                @Override
-                public void onTextChanged(CharSequence s, int start, int before, int count) {
-                }
-                @Override
-                public void afterTextChanged(Editable s) {
-                    ordBeforeTime = orderBeforeTime.getText().toString().trim();
-                }
-            });
-        }
+        orderBeforeTime.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+            }
+            @Override
+            public void afterTextChanged(Editable s) {
+                ordBeforeTime = orderBeforeTime.getText().toString().trim();
+            }
+        });
+    }
 
-        private void createCourierListingDetails(){
+    private void createCourierListingDetails(){
 
-            CourierListing courierListing = new CourierListing(puLocation,puDate,puTime,ordBeforeTime);
-            Call<ResponseBody> call = RetrofitClient
-                    .getInstance(this)
-                    .getFoodAPI()
-                    .createCourierListing(courierListing,courierFoodItemDetailIds,FoodID);
+        CourierListing courierListing = new CourierListing(puLocation,puDate,puTime,ordBeforeTime,"Open");
+        Call<ResponseBody> call = RetrofitClient
+                .getInstance(this)
+                .getFoodAPI()
+                .createCourierListing(courierListing,courierFoodItemDetailIds,FoodID);
 
-            call.enqueue(new Callback<ResponseBody>() {
+        call.enqueue(new Callback<ResponseBody>() {
 
-                @Override
-                public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-                    String s = "";
-                    try {
-                        s = s + response.body().string();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-
-                    if (s.equals("SUCCESS")) {
-                        Toast.makeText(CourierListingSummary.this, "A new courier listing is created!", Toast.LENGTH_LONG).show();
-                        Intent intent = new Intent(CourierListingSummary.this,CourierListingStatus.class);
-                        CourierListingSummary.this.startActivity(intent);
-                    }
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                String s = "";
+                try {
+                    s = s + response.body().string();
+                } catch (IOException e) {
+                    e.printStackTrace();
                 }
 
-                @Override
-                public void onFailure(Call<ResponseBody> call, Throwable t) {
-                    Toast.makeText(CourierListingSummary.this, t.getMessage(), Toast.LENGTH_LONG).show();
+                if (s.equals("SUCCESS")) {
+                    Toast.makeText(CourierListingSummary.this, "A new courier listing is created!", Toast.LENGTH_LONG).show();
+                    Intent intent = new Intent(CourierListingSummary.this,CourierListingStatus.class);
+                    CourierListingSummary.this.startActivity(intent);
                 }
-            });
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                Toast.makeText(CourierListingSummary.this, t.getMessage(), Toast.LENGTH_LONG).show();
+            }
+        });
 
     }
 }

@@ -12,11 +12,12 @@ public class CourierListing {
     private String orderBeforeTime;
     private String courierOrderStatus;
 
-    public CourierListing(String pickupLocation, String pickupDate, String pickupTime, String orderBeforeTime) {
+    public CourierListing(String pickupLocation, String pickupDate, String pickupTime, String orderBeforeTime,String courierOrderStatus) {
         this.pickupLocation = pickupLocation;
         this.pickupDate = pickupDate;
         this.pickupTime = pickupTime;
         this.orderBeforeTime = orderBeforeTime;
+        this.courierOrderStatus = courierOrderStatus;
     }
 
     public Long getId() {

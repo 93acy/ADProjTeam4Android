@@ -5,21 +5,19 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.app.DownloadManager;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.adprojteam4.CourierListing.ViewFoodItem;
 import com.example.adprojteam4.R;
 import com.example.adprojteam4.RetrofitClient;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 import retrofit2.Call;
@@ -37,13 +35,77 @@ public class SelectFood extends AppCompatActivity {
     Button cancle,confirm;
     ConstraintLayout btn,text;
     RelativeLayout rl;
-    List<Integer> Quantity = new ArrayList<>();
+    ArrayList<Integer> Quantity = new ArrayList<>();
+    ArrayList<Double> Price = new ArrayList<>();
+    ArrayList<String> CourierFoodDetailId = new ArrayList<>();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_select_food);
 
+        setUpViewAndText();
+
+        recyclerView = findViewById(R.id.foodSelect_rv);
+        layoutManager= new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(layoutManager);
+        adaptor = new SelectFoodAdaptor(SelectFood.this,foodData, Quantity,Price);
+        recyclerView.setAdapter(adaptor);
+
+        getFoodItemInCourierListing();
+
+        confirm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //get food fee
+                Double foodFee = calculatePayment();
+
+                //get courierFoodItemDetailId
+                for (ArrayList<String> data : foodData){
+                    CourierFoodDetailId.add(data.get(5));
+                }
+
+                //filter unchosen food
+                if (Quantity.size() == 1 && Quantity.get(0)==0) {
+                    Toast.makeText(SelectFood.this, "You haven't choose any food yet", Toast.LENGTH_LONG).show();
+                }else{
+                    for(int i =0;i<Quantity.size();i++) {
+                        if (Quantity.get(i) == 0) {
+                            Quantity.remove(i);
+                            CourierFoodDetailId.remove(i);
+                            i--;
+                        }
+                    }
+
+                    if(Quantity.size()!=0){
+                        Intent intent = new Intent(SelectFood.this, ViewBill.class);
+                        intent.putExtra("foodFee",foodFee);
+                        intent.putStringArrayListExtra("CourierFoodDetailId",CourierFoodDetailId);
+                        intent.putIntegerArrayListExtra("Quantity",Quantity);
+                        intent.putExtra("CourierListingId",CourierListingId);
+                        SelectFood.this.startActivity(intent);
+                    }
+
+                }
+
+            }
+
+        });
+
+        cancle.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(SelectFood.this, ViewCourierListing.class);
+                SelectFood.this.startActivity(intent);
+            }
+        });
+
+
+
+    }
+
+    private void setUpViewAndText(){
         courierListingData.addAll(getIntent().getStringArrayListExtra("courierListingData"));
 
         btn = findViewById(R.id.btn_cl);
@@ -65,37 +127,8 @@ public class SelectFood extends AppCompatActivity {
 
         CourierListingId = Long.parseLong(courierListingData.get(0));
         hawkerId = Long.parseLong(courierListingData.get(6));
-
-        recyclerView = findViewById(R.id.foodSelect_rv);
-        layoutManager= new LinearLayoutManager(this);
-        recyclerView.setLayoutManager(layoutManager);
-        adaptor = new SelectFoodAdaptor(SelectFood.this,foodData, Quantity);
-        recyclerView.setAdapter(adaptor);
-
-        getFoodItemInCourierListing();
-
-        confirm.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                Intent intent = new Intent(SelectFood.this, ViewOrderStatus.class);
-                //intent.putStringArrayListExtra("courierListingData", data);
-                SelectFood.this.startActivity(intent);
-            }
-
-        });
-
-        cancle.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(SelectFood.this, ViewCourierListing.class);
-                SelectFood.this.startActivity(intent);
-            }
-        });
-
-
-
     }
+
 
     private void getFoodItemInCourierListing() {
         Call<ArrayList<ArrayList<String>>> call = RetrofitClient
@@ -127,4 +160,20 @@ public class SelectFood extends AppCompatActivity {
         });
 
     }
+
+    private Double calculatePayment(){
+        Double Pmt = 0.0;
+        for(int i=0;i<Quantity.size();i++){
+            Pmt += Quantity.get(i)*Price.get(i);
+        }
+
+        return Pmt;
+    }
+
+
+    private void SaveQuantity(){
+
+    }
+
+
 }
