@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -16,13 +15,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.adprojteam4.CourierListing.ViewFoodItem;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class ListingAdaptor extends RecyclerView.Adapter<ListingAdaptor.ViewHolder> {
 
     private Context context;
-    private List<List<String>>  hawkerData;
+    private List<List<String>> hawkerData;
 
     public ListingAdaptor(Context context, List<List<String>> hawkerData) {
         this.context = context;
@@ -62,7 +60,7 @@ public class ListingAdaptor extends RecyclerView.Adapter<ListingAdaptor.ViewHold
         return hawkerData.size();
     }
 
-    public void filterList(ArrayList<List<String>> filteredList) {
+    public void filterList(List<List<String>> filteredList) {
         hawkerData = filteredList;
         notifyDataSetChanged();
     }
