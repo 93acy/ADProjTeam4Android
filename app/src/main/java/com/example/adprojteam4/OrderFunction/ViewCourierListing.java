@@ -101,12 +101,17 @@ public class ViewCourierListing extends AppCompatActivity {
     private void filter(String text) {
         ArrayList<ArrayList<String>> filteredList = new ArrayList<>();
 
-        for (ArrayList<String> item: courierListingData){
-            if(item.get(1).toLowerCase().contains(text.toLowerCase())
-                    |item.get(2).toLowerCase().contains(text.toLowerCase())
-                    |item.get(3).toLowerCase().contains(text.toLowerCase())){
+        if(courierListingData.isEmpty()){
+            Toast.makeText(ViewCourierListing.this,  "There is no courier listing now", Toast.LENGTH_SHORT).show();
+        }
+        else{
+            for (ArrayList<String> item: courierListingData){
+                if(item.get(1).toLowerCase().contains(text.toLowerCase())
+                        |item.get(2).toLowerCase().contains(text.toLowerCase())
+                        |item.get(3).toLowerCase().contains(text.toLowerCase())){
 
-                filteredList.add(item);
+                    filteredList.add(item);
+                }
             }
         }
         adaptor.filterList(filteredList);

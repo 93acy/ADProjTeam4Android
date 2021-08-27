@@ -1,5 +1,6 @@
 package com.example.adprojteam4.OrderFunction;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -23,12 +24,15 @@ public class SelectFoodAdaptor extends RecyclerView.Adapter<SelectFoodAdaptor.Vi
     private Context context;
     private ArrayList<ArrayList<String>> foodData;
     private List<Integer> Quantity = new ArrayList<>();
+    private List<Double>  Price = new ArrayList<>();
     private Integer q=0;
 
-    public SelectFoodAdaptor(Context context, ArrayList<ArrayList<String>> foodData,List<Integer> Quantity) {
+    public SelectFoodAdaptor(Context context, ArrayList<ArrayList<String>> foodData,
+                             List<Integer> Quantity,List<Double>  Price) {
         this.context = context;
         this.foodData = foodData;
         this.Quantity = Quantity;
+        this.Price = Price;
     }
 
     @NonNull
@@ -46,10 +50,12 @@ public class SelectFoodAdaptor extends RecyclerView.Adapter<SelectFoodAdaptor.Vi
         holder.category.setText(foodData.get(position).get(2));
         holder.description.setText(foodData.get(position).get(3));
         holder.price.setText(foodData.get(position).get(4));
-        holder.quantity.setText(Quantity.get(position).toString());
+
+        Price.add(Double.parseDouble(foodData.get(position).get(4)));
 
 
         holder.minus.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("SetTextI18n")
             @Override
             public void onClick(View view) {
                 q = Integer.parseInt(holder.quantity.getText().toString());
@@ -58,19 +64,25 @@ public class SelectFoodAdaptor extends RecyclerView.Adapter<SelectFoodAdaptor.Vi
                 }
                 else{
                     q = q-1;
+                    holder.quantity.setText(q.toString());
                     updateQuantity(position, q);
+
                 }
             }
 
         });
 
         holder.plus.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("SetTextI18n")
             @Override
             public void onClick(View view) {
+                q = Integer.parseInt(holder.quantity.getText().toString());
                 q = q+1;
+                holder.quantity.setText(q.toString());
                 updateQuantity(position, q);
             }
         });
+
 
     }
 

@@ -12,7 +12,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ADProjTeam4"
         android:usesCleartextTraffic="true">
-        <activity android:name=".CourierListing.CourierListingStatus"></activity>
+        <activity android:name=".OrderFunction.ViewBill"></activity>
+        <activity android:name=".CourierListing.CourierListingStatus" />
         <activity android:name=".OrderFunction.ViewOrderStatus" />
         <activity android:name=".OrderFunction.SelectFood" />
         <activity android:name=".OrderFunction.ViewCourierListing">
@@ -23,23 +24,24 @@
             </intent-filter>
         </activity>
         <activity android:name=".CourierListing.CourierListingSummary" />
-        <activity android:name=".CourierListing.ViewFoodItem"/>
-
+        <activity android:name=".CourierListing.ViewFoodItem" />
         <activity android:name=".CreateHawkerListingActivity">
 
-<!--             <intent-filter> -->
-<!--             <action android:name="android.intent.action.MAIN" /> -->
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
 
 
-<!--             <category android:name="android.intent.category.LAUNCHER" /> -->
-<!--             </intent-filter> -->
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
         </activity>
         <activity android:name=".ViewHawkerListingActivity">
-<!--            <intent-filter>-->
-<!--                <action android:name="android.intent.action.MAIN" />-->
 
-<!--                <category android:name="android.intent.category.LAUNCHER" />-->
-<!--            </intent-filter>-->
+<!--             <intent-filter>-->
+<!--             <action android:name="android.intent.action.MAIN" />-->
+
+
+<!--             <category android:name="android.intent.category.LAUNCHER" />-->
+<!--             </intent-filter>-->
         </activity>
         <activity android:name=".DashboardActivity" />
         <activity android:name=".RegisterActivity" />

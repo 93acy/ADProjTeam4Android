@@ -120,7 +120,7 @@ public class CourierListingSummary extends AppCompatActivity {
 
         private void createCourierListingDetails(){
 
-            CourierListing courierListing = new CourierListing(puLocation,puDate,puTime,ordBeforeTime);
+            CourierListing courierListing = new CourierListing(puLocation,puDate,puTime,ordBeforeTime,"Open");
             Call<ResponseBody> call = RetrofitClient
                     .getInstance()
                     .getFoodAPI()
