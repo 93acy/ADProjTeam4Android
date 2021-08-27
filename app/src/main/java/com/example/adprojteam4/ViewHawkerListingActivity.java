@@ -94,11 +94,6 @@ public class ViewHawkerListingActivity extends AppCompatActivity {
         }
 
 
-
-
-
-
-
         private void fetchListings(){
         Call<List<List<String>>> call = RetrofitClient
                 .getInstance(this)
@@ -127,20 +122,16 @@ public class ViewHawkerListingActivity extends AppCompatActivity {
             }
         });
         }
-
         private void filter(String text) {
         List<List<String>> filteredList = new ArrayList<>();
 
         for (List<String> item: hawkerData){
-            if(
-                    item.get(0).toLowerCase().contains(text.toLowerCase())
-//                            |item.get(3).toLowerCase().contains(text.toLowerCase())
-//                            |item.get(4).toLowerCase().contains(text.toLowerCase())
-//                            |item.get(5).toLowerCase().contains(text.toLowerCase())
-            ){
-
-                filteredList.add(item);
-            }
+                    for (String string: item ){
+                        if(string != null){
+                            string.toLowerCase().contains(text.toLowerCase());
+                            filteredList.add(item);
+                        }
+                    }
         }
         adaptor.filterList(filteredList);
 
