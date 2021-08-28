@@ -17,6 +17,8 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.example.adprojteam4.CourierListing.ViewFoodItem;
+import com.example.adprojteam4.CourierListing.courier_ViewCourierListing;
+import com.example.adprojteam4.OrderFunction.ViewOrderStatus;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
@@ -76,6 +78,23 @@ public class ViewHawkerListingActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        findViewById((R.id.nav_courierSearch)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ViewHawkerListingActivity.this, courier_ViewCourierListing.class);
+                startActivity(intent);
+            }
+        });
+
+        findViewById((R.id.nav_home)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ViewHawkerListingActivity.this, ViewOrderStatus.class);
+                startActivity(intent);
+            }
+        });
+
 
         keywordSearch.addTextChangedListener(new TextWatcher() {
             @Override

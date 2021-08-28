@@ -52,20 +52,26 @@ public class courier_CourierListingAdapter extends RecyclerView.Adapter<courier_
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
         for(List<String> s : courierListings.get(position)){
+            if (s.get(0)!=null){
+            holder.txtHawkerName.setText(s.get(0));}
+            if (s.get(1)!=null){
+            foodItem += s.get(1) + System.getProperty ("line.separator");}
+            if (s.get(2)!=null){
+            pricePerUnit += s.get(2) + System.getProperty ("line.separator");}
+            if (s.get(3)!=null){
+            totalQuantity += s.get(3) + System.getProperty ("line.separator");}
 
-            holder.txtHawkerName.setText(s.get(0));
-            foodItem += s.get(1) + System.getProperty ("line.separator");
-            pricePerUnit += s.get(2) + System.getProperty ("line.separator");
-            totalQuantity += s.get(3) + System.getProperty ("line.separator");
             holder.txtCourierListingDetailsFoodItem.setText(foodItem);
             holder.txtCourierListingDetailsPricePerUnit.setText(pricePerUnit);
             holder.txtCourierListingDetailsTotalQuantity.setText(totalQuantity);
-
         }
 
         for(List<String> s : courierListings.get(position)){
+
+            if (s.get(2)!=null && s.get(3)!=null){
             foodPrice = foodPrice + Double.parseDouble(s.get(2)) * Double.parseDouble(s.get(3));
             holder.txtTotalFoodPrice.setText("Total Food Price:  " + foodPrice.toString());
+            }
 
         }
 

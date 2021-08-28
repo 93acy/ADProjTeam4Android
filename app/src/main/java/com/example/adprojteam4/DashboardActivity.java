@@ -28,8 +28,13 @@ public class DashboardActivity extends AppCompatActivity {
         tvWelcome.setText(welcomeText);
 
 
-
-
+        findViewById((R.id.nav_myAccount)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(DashboardActivity.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
 
     }
 }
