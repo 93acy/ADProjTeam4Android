@@ -6,4 +6,112 @@
     android:layout_height="match_parent"
     tools:context=".OrderFunction.ViewOrderStatus">
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/top_cl"
+        android:layout_width="match_parent"
+        android:layout_height="100sp"
+        android:background="@color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/hawker_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="108dp"
+            android:layout_marginTop="50dp"
+            android:layout_marginEnd="125dp"
+            android:fontFamily="cursive"
+            android:text="Hawker name"
+            android:textSize="45dp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <RelativeLayout
+        android:id="@+id/relativate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="40dp"
+        app:layout_constraintBottom_toTopOf="@+id/btm_cl"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/top_cl">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/foodList_rv"
+            android:layout_width="match_parent"
+            android:layout_height="300sp"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="0dp" />
+
+    </RelativeLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/btm_cl"
+        android:layout_width="match_parent"
+        android:layout_height="300sp"
+        android:background="@color/white"
+        app:layout_constraintTop_toBottomOf="@id/relativate"
+        tools:layout_editor_absoluteX="-112dp">
+
+
+        <TextView
+            android:id="@+id/pickup_location"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="50dp"
+            android:text="Pickup Location: "
+            android:textSize="20dp"
+            android:textStyle="italic"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/pickup_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="20dp"
+            android:text="Pickup Time: 3:00 pm"
+            android:textColor="@color/teal_700"
+            android:textSize="20dp"
+            android:textStyle="italic"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/pickup_location" />
+
+        <Button
+            android:id="@+id/cancel_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="80dp"
+            android:layout_marginBottom="80dp"
+            android:text="Cancel"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/received_btn"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/pickup_time"
+            app:layout_constraintVertical_bias="0.969" />
+
+        <Button
+            android:id="@+id/received_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="48dp"
+            android:layout_marginEnd="50dp"
+            android:layout_marginBottom="80dp"
+            android:text="Received"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/pickup_time" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,5 +1,6 @@
 package com.example.adprojteam4.OrderFunction;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -18,23 +19,26 @@ import com.example.adprojteam4.R;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SelectFoodAdaptor extends RecyclerView.Adapter<SelectFoodAdaptor.ViewHolder>{
+public class SelectFoodAdaptor extends RecyclerView.Adapter<SelectFoodAdaptor.ViewHolder> {
 
     private Context context;
     private ArrayList<ArrayList<String>> foodData;
     private List<Integer> Quantity = new ArrayList<>();
-    private Integer q=0;
+    private List<Double> Price = new ArrayList<>();
+    private Integer q = 0;
 
-    public SelectFoodAdaptor(Context context, ArrayList<ArrayList<String>> foodData,List<Integer> Quantity) {
+    public SelectFoodAdaptor(Context context, ArrayList<ArrayList<String>> foodData,
+                             List<Integer> Quantity, List<Double> Price) {
         this.context = context;
         this.foodData = foodData;
         this.Quantity = Quantity;
+        this.Price = Price;
     }
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view= LayoutInflater.from(context)
+        View view = LayoutInflater.from(context)
                 .inflate(R.layout.food_item_order, parent, false);
         return new SelectFoodAdaptor.ViewHolder(view);
     }
@@ -46,31 +50,38 @@ public class SelectFoodAdaptor extends RecyclerView.Adapter<SelectFoodAdaptor.Vi
         holder.category.setText(foodData.get(position).get(2));
         holder.description.setText(foodData.get(position).get(3));
         holder.price.setText(foodData.get(position).get(4));
-        holder.quantity.setText(Quantity.get(position).toString());
+
+        Price.add(Double.parseDouble(foodData.get(position).get(4)));
 
 
         holder.minus.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("SetTextI18n")
             @Override
             public void onClick(View view) {
                 q = Integer.parseInt(holder.quantity.getText().toString());
-                if(q==0){
+                if (q == 0) {
                     Toast.makeText(context, "Quantity cannot less than 0 !", Toast.LENGTH_LONG).show();
-                }
-                else{
-                    q = q-1;
+                } else {
+                    q = q - 1;
+                    holder.quantity.setText(q.toString());
                     updateQuantity(position, q);
+
                 }
             }
 
         });
 
         holder.plus.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("SetTextI18n")
             @Override
             public void onClick(View view) {
-                q = q+1;
+                q = Integer.parseInt(holder.quantity.getText().toString());
+                q = q + 1;
+                holder.quantity.setText(q.toString());
                 updateQuantity(position, q);
             }
         });
+
 
     }
 
@@ -81,30 +92,30 @@ public class SelectFoodAdaptor extends RecyclerView.Adapter<SelectFoodAdaptor.Vi
     }
 
 
-            @Override
-            public int getItemCount() {
+    @Override
+    public int getItemCount() {
 
-                return foodData.size();
-            }
-
-
-            public class ViewHolder extends RecyclerView.ViewHolder {
-                ImageView plus, minus;
-                TextView foodName, category, description, price, dollar, quantity;
-
-                public ViewHolder(@NonNull View listingView) {
-                    super(listingView);
-                    plus = listingView.findViewById(R.id.plus);
-                    minus = listingView.findViewById(R.id.minus);
-                    foodName = listingView.findViewById(R.id.food_name);
-                    category = listingView.findViewById(R.id.food_category);
-                    description = listingView.findViewById(R.id.food_description);
-                    price = listingView.findViewById(R.id.food_price);
-                    dollar = listingView.findViewById(R.id.food_dollar);
-                    quantity = listingView.findViewById(R.id.quantity);
+        return foodData.size();
+    }
 
 
-                }
-            }
+    public class ViewHolder extends RecyclerView.ViewHolder {
+        ImageView plus, minus;
+        TextView foodName, category, description, price, dollar, quantity;
+
+        public ViewHolder(@NonNull View listingView) {
+            super(listingView);
+            plus = listingView.findViewById(R.id.plus);
+            minus = listingView.findViewById(R.id.minus);
+            foodName = listingView.findViewById(R.id.food_name);
+            category = listingView.findViewById(R.id.food_category);
+            description = listingView.findViewById(R.id.food_description);
+            price = listingView.findViewById(R.id.food_price);
+            dollar = listingView.findViewById(R.id.food_dollar);
+            quantity = listingView.findViewById(R.id.quantity);
+
+
+        }
+    }
 
 }
