@@ -13,6 +13,7 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.example.adprojteam4.CourierListing.courier_ViewCourierListing;
 import com.example.adprojteam4.CreateHawkerListingActivity;
 import com.example.adprojteam4.HawkerListing;
 import com.example.adprojteam4.ListingAdaptor;
@@ -94,7 +95,7 @@ public class ViewCourierListing extends AppCompatActivity {
         findViewById(R.id.viewMyListing).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(ViewCourierListing.this, ViewOrderStatus.class);
+                Intent intent = new Intent(ViewCourierListing.this, courier_ViewCourierListing.class);
                 startActivity(intent);
             }
         });
