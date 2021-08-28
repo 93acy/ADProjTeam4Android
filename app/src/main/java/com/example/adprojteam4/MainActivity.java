@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import com.example.adprojteam4.OrderFunction.ViewCourierListing;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -42,6 +44,26 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+
+        findViewById((R.id.nav_courierSearch)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, ViewCourierListing.class);
+                startActivity(intent);
+            }
+        });
+
+
+        findViewById((R.id.nav_home)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, DashboardActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
 
 
 

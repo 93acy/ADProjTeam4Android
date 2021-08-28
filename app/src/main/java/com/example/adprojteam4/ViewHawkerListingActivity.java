@@ -99,7 +99,7 @@ public class ViewHawkerListingActivity extends AppCompatActivity {
         findViewById((R.id.nav_home)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(ViewHawkerListingActivity.this, ViewOrderStatus.class);
+                Intent intent = new Intent(ViewHawkerListingActivity.this, DashboardActivity.class);
                 startActivity(intent);
             }
         });
