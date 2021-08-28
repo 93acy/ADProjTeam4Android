@@ -18,6 +18,7 @@ import android.widget.Toast;
 
 import com.example.adprojteam4.CourierListing.ViewFoodItem;
 import com.example.adprojteam4.CourierListing.courier_ViewCourierListing;
+import com.example.adprojteam4.OrderFunction.ViewCourierListing;
 import com.example.adprojteam4.OrderFunction.ViewOrderStatus;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -82,7 +83,7 @@ public class ViewHawkerListingActivity extends AppCompatActivity {
         findViewById((R.id.nav_courierSearch)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(ViewHawkerListingActivity.this, courier_ViewCourierListing.class);
+                Intent intent = new Intent(ViewHawkerListingActivity.this, ViewCourierListing.class);
                 startActivity(intent);
             }
         });
