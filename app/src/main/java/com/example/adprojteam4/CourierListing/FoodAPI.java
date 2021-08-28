@@ -32,5 +32,8 @@ public interface FoodAPI {
              @Query("courierFoodItemDetailIds") ArrayList<String> courierFoodItemDetailIds,
              @Query("FoodID") ArrayList<String> FoodID);
 
+    @GET("/courier/food")
+    Call<List<ArrayList<String>>> FoodItems();
+
 
 }

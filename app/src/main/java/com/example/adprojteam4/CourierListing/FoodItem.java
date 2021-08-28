@@ -10,8 +10,6 @@ public class FoodItem {
     private String category;
     private Double upperPrice;
     private Double lowerPrice;
-    private HawkerListing hawkerListing;
-    private Long hawkerListingId;
 
     public FoodItem(String name, String category, String description) {
         this.name = name;
@@ -71,11 +69,4 @@ public class FoodItem {
         this.lowerPrice = lowerPrice;
     }
 
-    public HawkerListing getHawkerListing() {
-        return hawkerListing;
-    }
-
-    public void setHawkerListing(HawkerListing hawkerListing) {
-        this.hawkerListing = hawkerListing;
-    }
 }

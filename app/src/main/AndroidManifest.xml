@@ -14,7 +14,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.nav"
         android:usesCleartextTraffic="true">
-        <activity android:name=".CourierListing.CourierListingStatus" android:windowSoftInputMode="adjustPan"></activity>
         <activity android:name=".OrderFunction.ViewOrderStatus" android:windowSoftInputMode="adjustPan"/>
         <activity android:name=".OrderFunction.SelectFood" android:windowSoftInputMode="adjustPan"/>
         <activity android:name=".OrderFunction.ViewCourierListing" android:windowSoftInputMode="adjustPan">

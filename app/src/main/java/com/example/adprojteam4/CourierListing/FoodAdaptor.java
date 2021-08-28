@@ -121,7 +121,7 @@ public class FoodAdaptor extends RecyclerView.Adapter<FoodAdaptor.ViewHolder> {
             @Override
             public void onClick(View v) {
                 String FoodPrice = ((EditText)view.findViewById(R.id.textSetFoodPrice)).getText().toString();
-                Double foodPrice = Double.valueOf(FoodPrice);
+                Double foodPrice = Double.parseDouble(FoodPrice);
                 addData(position, foodPrice);
                 popWindow.dismiss();
             }

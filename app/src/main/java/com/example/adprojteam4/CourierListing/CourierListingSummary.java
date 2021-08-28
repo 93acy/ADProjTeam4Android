@@ -139,7 +139,7 @@ public class CourierListingSummary extends AppCompatActivity {
 
                 if (s.equals("SUCCESS")) {
                     Toast.makeText(CourierListingSummary.this, "A new courier listing is created!", Toast.LENGTH_LONG).show();
-                    Intent intent = new Intent(CourierListingSummary.this,CourierListingStatus.class);
+                    Intent intent = new Intent(CourierListingSummary.this,courier_ViewCourierListing.class);
                     CourierListingSummary.this.startActivity(intent);
                 }
             }
