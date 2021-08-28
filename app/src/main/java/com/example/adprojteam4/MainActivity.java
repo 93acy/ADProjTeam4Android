@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 
 import com.example.adprojteam4.OrderFunction.ViewCourierListing;
@@ -20,8 +21,15 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         SharedPreferences userPrefs = getSharedPreferences("userPrefs", Context.MODE_PRIVATE);
-        if( userPrefs.getBoolean("DabaoIsLoggedIn", false)==false){
+
+        if (userPrefs.getString("IsLoggedIn", null)=="yes"){
+            setContentView(R.layout.activity_main_loggedin);
+            Log.d("hello", "onCreate: IsloggedIn");// change to another xml which includes just user profile text and logout and set button to log out only
+        }
+
+        else{
             setContentView(R.layout.activity_main);
+            Log.d("hello", "onCreate: IsloggedOut");
 
             findViewById(R.id.btnToRegister).setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -36,11 +44,8 @@ public class MainActivity extends AppCompatActivity {
                     startActivity(new Intent(MainActivity.this, LoginActivity.class));
                 }
             });
+        }
 
-        }
-        if (userPrefs.getBoolean("DabaoIsLoggedIn", false)==true){
-            setContentView(R.layout.activity_main_loggedin); // change to another xml which includes just user profile text and logout and set button to log out only
-        }
 
         bottomNav = findViewById(R.id.bottomNavbar);
         bottomNav.setSelectedItemId(R.id.nav_myAccount);
