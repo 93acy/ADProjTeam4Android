@@ -1,17 +1,21 @@
 package com.example.adprojteam4.OrderFunction;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.content.Intent;
 import android.icu.text.DecimalFormat;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AppCompatActivity;
-
+import com.example.adprojteam4.CourierListing.ViewFoodItem;
 import com.example.adprojteam4.R;
 import com.example.adprojteam4.RetrofitClient;
+
+import org.w3c.dom.Text;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -21,6 +25,8 @@ import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import retrofit2.http.Body;
+import retrofit2.http.Query;
 
 public class ViewBill extends AppCompatActivity {
     TextView title,foodPrice,serviceFee,totalCost;
@@ -30,6 +36,7 @@ public class ViewBill extends AppCompatActivity {
     ArrayList<Long> CourierFoodDetailId = new ArrayList<>();
     ArrayList<Integer> Quantity = new ArrayList<>();
     Long userOrderId ;
+    Intent intent;
 
 
     @Override
@@ -96,6 +103,10 @@ public class ViewBill extends AppCompatActivity {
                 if (response.body() != null) {
                     userOrderId=Long.parseLong(response.body());
                     createUseOrderDetail();
+
+                    intent = new Intent(ViewBill.this,ViewOrderStatus.class);
+                    intent.putExtra("userOrderId",userOrderId);
+//                    ViewBill.this.startActivity(intent);
                 }
             }
 
@@ -132,8 +143,6 @@ public class ViewBill extends AppCompatActivity {
 
                 if (s.equals("SUCCESS")) {
                     Toast.makeText(ViewBill.this, "Your order has been placed", Toast.LENGTH_LONG).show();
-                    Intent intent = new Intent(ViewBill.this,ViewOrderStatus.class);
-                    intent.putExtra("userOrderId",userOrderId);
                     ViewBill.this.startActivity(intent);
                 }
             }

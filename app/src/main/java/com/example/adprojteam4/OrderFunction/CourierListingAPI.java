@@ -8,6 +8,7 @@ import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.DELETE;
 import retrofit2.http.GET;
+import retrofit2.http.PUT;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
 
@@ -23,6 +24,19 @@ public interface CourierListingAPI {
 
     @DELETE("/courier/cancelCourierListing/{id}")
     Call<ResponseBody> cancelCourierListing(@Path("id") String id);
+
+    @GET("/users/courierListingPickup/{id}")
+    Call<ArrayList<ArrayList<String>>> viewPickupDetails
+            (@Path("id") Long userOrderId);
+
+    @GET("/users/orders/foodItems/{id}")
+    Call<ArrayList<ArrayList<String>>> viewOrderFoodItems
+            (@Path("id") Long userOrderId);
+
+    @PUT("users/orders/orderStatus/update")
+    Call<ResponseBody> updateCourierOrderStatusById (
+            @Query("id") Long userOrderId,
+            @Query("status") String status);
 
 
 }

@@ -77,7 +77,7 @@ public class SelectFood extends AppCompatActivity {
                             i--;
                         }
                     }
-
+                    //start next activity
                     if(Quantity.size()!=0){
                         Intent intent = new Intent(SelectFood.this, ViewBill.class);
                         intent.putExtra("foodFee",foodFee);
@@ -170,10 +170,6 @@ public class SelectFood extends AppCompatActivity {
         return Pmt;
     }
 
-
-    private void SaveQuantity(){
-
-    }
 
 
 }
