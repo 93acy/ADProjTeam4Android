@@ -45,7 +45,7 @@ public class ViewCourierListing extends AppCompatActivity {
 
         keywordSearch = findViewById(R.id.Clist_search_bar);
         progressBar = findViewById(R.id.C_progressBar);
-        bottomNav = findViewById(R.id.C_bottomNavbar);
+        bottomNav = findViewById(R.id.bottomNavbar);
         recyclerView = findViewById(R.id.C_recyclerView);
         layoutManager= new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
