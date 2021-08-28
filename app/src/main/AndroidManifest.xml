@@ -3,8 +3,8 @@
     package="com.example.adprojteam4">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -14,48 +14,72 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.nav"
         android:usesCleartextTraffic="true">
-        <activity android:name=".OrderFunction.ViewOrderStatus" android:windowSoftInputMode="adjustPan"/>
-        <activity android:name=".OrderFunction.SelectFood" android:windowSoftInputMode="adjustPan"/>
-        <activity android:name=".OrderFunction.ViewCourierListing" android:windowSoftInputMode="adjustPan">
+        <activity android:name=".CourierListing.courier_ViewCourierListing"></activity>
+        <activity
+            android:name=".OrderFunction.ViewOrderStatus"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".OrderFunction.SelectFood"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".OrderFunction.ViewCourierListing"
+            android:windowSoftInputMode="adjustPan">
+
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
+
+
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
+        </activity>
+        <activity
+            android:name=".CourierListing.CourierListingSummary"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".CourierListing.ViewFoodItem"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".CreateHawkerListingActivity"
+            android:windowSoftInputMode="adjustPan">
+
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
+
+
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
+        </activity>
+        <activity
+            android:name=".ViewHawkerListingActivity"
+            android:windowSoftInputMode="adjustPan">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".CourierListing.CourierListingSummary" android:windowSoftInputMode="adjustPan"/>
-        <activity android:name=".CourierListing.ViewFoodItem" android:windowSoftInputMode="adjustPan"/>
-        <activity android:name=".CreateHawkerListingActivity" android:windowSoftInputMode="adjustPan">
-<!--        <intent-filter>-->
-<!--            <action android:name="android.intent.action.MAIN" />-->
+        <activity
+            android:name=".DashboardActivity"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".RegisterActivity"
+            android:windowSoftInputMode="adjustPan" /> <!-- <intent-filter> -->
+        <!-- <action android:name="android.intent.action.MAIN" /> -->
+        <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+        <!-- </intent-filter> -->
+        <activity
+            android:name=".LoginActivity"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".MainActivity"
+            android:windowSoftInputMode="adjustPan">
 
-<!--            <category android:name="android.intent.category.LAUNCHER" />-->
-<!--        </intent-filter>-->
-        </activity>
-        <activity android:name=".ViewHawkerListingActivity" android:windowSoftInputMode="adjustPan">
-
-<!--        <intent-filter>-->
-<!--            <action android:name="android.intent.action.MAIN" />-->
-
-<!--            <category android:name="android.intent.category.LAUNCHER" />-->
-<!--        </intent-filter>-->
-        </activity>
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
 
 
-        <activity android:name=".DashboardActivity" android:windowSoftInputMode="adjustPan"/>
-        <activity android:name=".RegisterActivity" android:windowSoftInputMode="adjustPan"/>
-<!--        <intent-filter>-->
-<!--            <action android:name="android.intent.action.MAIN" />-->
-
-<!--            <category android:name="android.intent.category.LAUNCHER" />-->
-<!--        </intent-filter>-->
-        <activity android:name=".LoginActivity" android:windowSoftInputMode="adjustPan"/>
-        <activity android:name=".MainActivity" android:windowSoftInputMode="adjustPan">
-<!--            <intent-filter>-->
-<!--                <action android:name="android.intent.action.MAIN" />-->
-
-<!--                <category android:name="android.intent.category.LAUNCHER" />-->
-<!--            </intent-filter>-->
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
         </activity>
     </application>
 
