@@ -2,18 +2,37 @@ package com.example.adprojteam4;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.ArrayList;
+
 public class HawkerListing {
 
     private Long Id;
     private String address;
     private String postalCode;
     private String stallNo;
-    private Long stallImage;
+//    private string stallImageUrl;
     private String name;
+//    private Long ogpId;
+//    private Long lastEditedId1;
+//    private String lastEditedDate1;
     private String foodType;
     private String carbType;
     private String proteinType;
 
+    public HawkerListing(String address, String postalCode, String stallNo, String name) {
+        this.address = address;
+        this.postalCode = postalCode;
+        this.stallNo = stallNo;
+        this.name = name;
+    }
+
+    public Long getId() {
+        return Id;
+    }
+
+    public void setId(Long id) {
+        Id = id;
+    }
 
     public String getAddress() {
         return address;
@@ -69,17 +88,5 @@ public class HawkerListing {
 
     public void setProteinType(String proteinType) {
         this.proteinType = proteinType;
-    }
-
-    //    private Long stallImage
-//    private Long ogpId;
-//    private Long lastEditedId1;
-//    private String lastEditedDate1;
-
-    public HawkerListing(String address, String postalCode, String stallNo, String name) {
-        this.address = address;
-        this.postalCode = postalCode;
-        this.stallNo = stallNo;
-        this.name = name;
     }
 }

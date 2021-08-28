@@ -6,14 +6,20 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.adprojteam4.CourierListing.ViewFoodItem;
@@ -21,7 +27,10 @@ import com.example.adprojteam4.CourierListing.courier_ViewCourierListing;
 import com.example.adprojteam4.OrderFunction.ViewCourierListing;
 import com.example.adprojteam4.OrderFunction.ViewOrderStatus;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -37,9 +46,14 @@ public class ViewHawkerListingActivity extends AppCompatActivity {
     ProgressBar progressBar;
     LinearLayoutManager layoutManager;
     ListingAdaptor adaptor;
-    List<List<String>> hawkerData= new ArrayList<>();
+    List<List<String>> hawkerData = new ArrayList<>();
     EditText keywordSearch;
     BottomNavigationView bottomNav;
+    LinearLayoutManager recommendationsLayoutManager;
+    RecyclerView recommendationsRecyclerView;
+    Button editUserPrefs;
+    RecommendationsAdaptor recommendationsAdaptor;
+    ArrayList<TempStall> recommendationsListingList = new ArrayList<>();
 
 
     @Override
@@ -61,7 +75,11 @@ public class ViewHawkerListingActivity extends AppCompatActivity {
         recyclerView.setAdapter(adaptor);
         bottomNav = findViewById(R.id.bottomNavbar);
 
-        fetchListings();
+        recommendationsRecyclerView = findViewById(R.id.recommendationsRecyclerView);
+        recommendationsLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
+        recommendationsRecyclerView.setLayoutManager(recommendationsLayoutManager);
+        recommendationsAdaptor = new RecommendationsAdaptor(recommendationsListingList);
+        recommendationsRecyclerView.setAdapter(recommendationsAdaptor);
 
         findViewById(R.id.addNewListing).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -101,28 +119,35 @@ public class ViewHawkerListingActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(ViewHawkerListingActivity.this, DashboardActivity.class);
                 startActivity(intent);
+
+        editUserPrefs = findViewById(R.id.editUserPrefs);
+        editUserPrefs.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ViewHawkerListingActivity.this, UserPreferencesActivity.class);
+                startActivity(intent);
             }
         });
 
+        fetchListings();
 
         keywordSearch.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-                filter(s.toString());
-            }
-            });
+        @Override
+        public void beforeTextChanged (CharSequence s,int start, int count, int after){
         }
 
+        @Override
+        public void onTextChanged (CharSequence s,int start, int before, int count){
+        }
 
-        private void fetchListings(){
+        @Override
+        public void afterTextChanged (Editable s){
+            filter(s.toString());
+        }
+    });}
+
+
+    private void fetchListings(){
         Call<List<List<String>>> call = RetrofitClient
                 .getInstance(this)
                 .getHawkerListingAPI()
@@ -138,7 +163,7 @@ public class ViewHawkerListingActivity extends AppCompatActivity {
                     return;
                 }
 
-                if(response.body()!=null){
+                if (response.body() != null) {
                     hawkerData.addAll(response.body());
                     adaptor.notifyDataSetChanged();
                 }
@@ -149,48 +174,25 @@ public class ViewHawkerListingActivity extends AppCompatActivity {
                 Toast.makeText(ViewHawkerListingActivity.this, "Error" + t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
-        }
-        private void filter(String text) {
+    }
+
+    private void filter(String text) {
         List<List<String>> filteredList = new ArrayList<>();
 
-        for (List<String> item: hawkerData){
-                    for (String string: item ){
-                        if (string != null && (string.toLowerCase().contains(text.toLowerCase()))){
-                            if (!filteredList.contains(item)) {
-                                filteredList.add(item);
-                            }
-                        }
+        for (List<String> item : hawkerData) {
+            for (String string : item) {
+                if (string != null && (string.toLowerCase().contains(text.toLowerCase()))) {
+                    if (!filteredList.contains(item)) {
+                        filteredList.add(item);
                     }
+                }
+            }
         }
         adaptor.filterList(filteredList);
 
     }
-
-
-
 }
 
-        /*private void fetchListings() {
-        RetrofitClient.getInstance().getHawkerListingAPI().viewAllHawkerListings().enqueue(new Callback<List<HawkerListing>>() {
-            @Override
-            public void onResponse(Call<List<HawkerListing>> call, Response<List<HawkerListing>> response) {
-                if(response.isSuccessful() && response.body()!=null){
-                    hawkerListingList.addAll(response.body());
-                    adaptor.notifyDataSetChanged();
-                    progressBar.setVisibility(View.GONE);
-                }
-            }
-
-            @Override
-            public void onFailure(Call<List<HawkerListing>> call, Throwable t) {
-                progressBar.setVisibility(View.GONE);
-                Toast.makeText(ViewHawkerListingActivity.this, "Error" + t.getMessage(), Toast.LENGTH_SHORT).show();
-            }
-        });
-
-
-    }
-*/
 //        private BottomNavigationView.OnNavigationItemSelectedListener navListener =
 //                new BottomNavigationView.OnNavigationItemSelectedListener() {
 //                    @Override
@@ -219,4 +221,5 @@ public class ViewHawkerListingActivity extends AppCompatActivity {
 //                }
 //
 //
-//
+//    };
+    }
