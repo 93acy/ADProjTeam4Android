@@ -54,6 +54,49 @@ public class ViewCourierListing extends AppCompatActivity {
 
         getCourierListing();
 
+
+
+        findViewById((R.id.nav_myAccount)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ViewCourierListing.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        findViewById((R.id.nav_courierSearch)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ViewCourierListing.this, ViewCourierListing.class);
+                startActivity(intent);
+            }
+        });
+
+        findViewById((R.id.nav_hawkerSearch)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ViewCourierListing.this, ViewHawkerListingActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        findViewById((R.id.nav_home)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ViewCourierListing.this, ViewOrderStatus.class);
+                startActivity(intent);
+            }
+        });
+
+
+        findViewById(R.id.viewMyListing).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ViewCourierListing.this, ViewOrderStatus.class);
+                startActivity(intent);
+            }
+        });
+
         keywordSearch.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {

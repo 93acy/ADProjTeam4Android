@@ -88,6 +88,14 @@ public class ViewHawkerListingActivity extends AppCompatActivity {
             }
         });
 
+        findViewById((R.id.nav_hawkerSearch)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ViewHawkerListingActivity.this, ViewHawkerListingActivity.class);
+                startActivity(intent);
+            }
+        });
+
         findViewById((R.id.nav_home)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
