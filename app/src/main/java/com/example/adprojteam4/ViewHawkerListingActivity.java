@@ -121,14 +121,14 @@ public class ViewHawkerListingActivity extends AppCompatActivity {
                 startActivity(intent);
             }});
 
-                editUserPrefs = findViewById(R.id.editUserPrefs);
-                editUserPrefs.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Intent intent = new Intent(ViewHawkerListingActivity.this, UserPreferencesActivity.class);
-                        startActivity(intent);
-                    }
-                });
+        editUserPrefs = findViewById(R.id.editUserPrefs);
+        editUserPrefs.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ViewHawkerListingActivity.this, UserPreferencesActivity.class);
+                startActivity(intent);
+            }
+        });
 
                 fetchListings();
 
@@ -146,7 +146,38 @@ public class ViewHawkerListingActivity extends AppCompatActivity {
                         filter(s.toString());
                     }
                 });
+
+        SharedPreferences userPrefs = getSharedPreferences("userPrefs", Context.MODE_PRIVATE);
+        Gson gson = new Gson();
+        String foodType = userPrefs.getString("foodType", "");
+        String json1 = userPrefs.getString("carbType", "");
+        String json2 = userPrefs.getString("proteinType", "");
+        Type type = new TypeToken<ArrayList<String>>() {}.getType();
+        ArrayList<String> carbType = gson.fromJson(json1, type);
+        ArrayList<String> proteinType = gson.fromJson(json2, type);
+
+        Call<List<TempStall>> recommendations = RetrofitClientML
+                .getInstance()
+                .getAPIML()
+                .recommend(new UserPreferences(foodType, carbType, proteinType));
+        recommendations.enqueue(new Callback<List<TempStall>>() {
+            @Override
+            public void onResponse(Call<List<TempStall>> call, Response<List<TempStall>> response) {
+                if(response.isSuccessful() && response.body()!=null){
+                    recommendationsListingList.addAll(response.body());
+                    recommendationsAdaptor.notifyDataSetChanged();
+                    progressBar.setVisibility(View.GONE);
+                }
             }
+
+            @Override
+            public void onFailure(Call<List<TempStall>> call, Throwable t) {
+                progressBar.setVisibility(View.GONE);
+                Toast.makeText(ViewHawkerListingActivity.this, "Error" + t.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+
+        });
+    }
 
 
     private void fetchListings(){

@@ -59,6 +59,10 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".UserPreferencesActivity"
+            android:windowSoftInputMode="adjustPan">
+        </activity>
+        <activity
             android:name=".DashboardActivity"
             android:windowSoftInputMode="adjustPan" />
         <activity
