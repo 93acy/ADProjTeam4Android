@@ -28,7 +28,7 @@
         android:textFontWeight="1000"
         android:textSize="35sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/hlist_search_bar"
+        app:layout_constraintBottom_toTopOf="@id/hlist_search_bar"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
@@ -37,42 +37,31 @@
 
     <EditText
         android:id="@+id/hlist_search_bar"
-        android:layout_width="350dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Keyword Search"
         android:textSize="20dp"
         android:textAlignment="center"
         android:inputType="text"
-        app:layout_constraintTop_toBottomOf="@+id/HawkerListing"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/HawkerListing"
         android:layout_marginTop="30dp"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
-        android:layout_width="350dp"
-        android:layout_height="500dp"
-        android:padding="20dp"
-        app:layout_constraintTop_toBottomOf="@+id/hlist_search_bar"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/bottomNavbar"/>
-
-    <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/recommendationsRecyclerView"
-        android:text="Recommendations"
-        android:textSize="20sp"
-        android:textColor="@color/black"
-        />
+        android:padding="20dp"
+        app:layout_constraintTop_toBottomOf="@id/hlist_search_bar"
+        app:layout_constraintStart_toEndOf="@id/hlist_search_bar"
+        app:layout_constraintEnd_toStartOf="@id/recommendationsRecyclerView"/>
+
+
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recommendationsRecyclerView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@id/editUserPrefs"
+        app:layout_constraintBottom_toTopOf="@id/bottomNavbar"
         app:layout_constraintLeft_toLeftOf="parent"
         tools:layout_editor_absoluteX="1dp" />
 
@@ -95,24 +84,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/editUserPrefs"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/bottomNavbar"
-        android:text="Edit User Preferences"/>
-
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/addNewListing"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:clickable="true"
         app:srcCompat="@android:drawable/ic_menu_add"
-        android:layout_marginBottom="20dp"
-        android:layout_marginRight="20dp"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/bottomNavbar"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="30dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/HawkerListing"
         tools:layout_editor_absoluteY="599dp"
         />
 

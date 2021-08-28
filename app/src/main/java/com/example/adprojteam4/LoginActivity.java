@@ -9,6 +9,8 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+
 import java.io.IOException;
 
 import okhttp3.ResponseBody;
@@ -18,12 +20,16 @@ import retrofit2.Callback;
 
 public class LoginActivity extends AppCompatActivity {
 
+    BottomNavigationView bottomNav;
     private EditText etUsername, etPassword;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        bottomNav = findViewById(R.id.bottomNavbar);
+        bottomNav.setSelectedItemId(R.id.nav_myAccount);
 
         etUsername = findViewById(R.id.etUserName);
         etPassword = findViewById(R.id.etPassword);

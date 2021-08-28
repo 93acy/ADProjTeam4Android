@@ -15,6 +15,7 @@ import com.example.adprojteam4.CourierListing.ViewFoodItem;
 import com.example.adprojteam4.OrderFunction.CourierListingAdaptor;
 import com.example.adprojteam4.R;
 import com.example.adprojteam4.RetrofitClient;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,11 +32,15 @@ public class courier_ViewCourierListing extends AppCompatActivity {
     courier_CourierListingAdapter cAdaptor;
     RecyclerView.LayoutManager layoutManager;
     List<List<List<String>>> courierListings = new ArrayList<>();
+    BottomNavigationView bottomNav;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_courier_view_courier_listing);
+
+        bottomNav = findViewById(R.id.bottomNavbar);
+        bottomNav.setSelectedItemId(R.id.nav_courierSearch);
 
         recyclerView = findViewById(R.id.rvCourierListing);
         layoutManager = new LinearLayoutManager(this);

@@ -7,13 +7,18 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.example.adprojteam4.OrderFunction.ViewCourierListing;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
+    BottomNavigationView bottomNav;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        bottomNav = findViewById(R.id.bottomNavbar);
+        bottomNav.setSelectedItemId(R.id.nav_myAccount);
 
         findViewById(R.id.btnToRegister).setOnClickListener(new View.OnClickListener() {
             @Override

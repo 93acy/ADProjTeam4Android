@@ -51,7 +51,6 @@ public class ViewHawkerListingActivity extends AppCompatActivity {
     BottomNavigationView bottomNav;
     LinearLayoutManager recommendationsLayoutManager;
     RecyclerView recommendationsRecyclerView;
-    Button editUserPrefs;
     RecommendationsAdaptor recommendationsAdaptor;
     ArrayList<TempStall> recommendationsListingList = new ArrayList<>();
 
@@ -60,6 +59,9 @@ public class ViewHawkerListingActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_hawker_listing);
+
+        bottomNav = findViewById(R.id.bottomNavbar);
+        bottomNav.setSelectedItemId(R.id.nav_hawkerSearch);
 
         Call<List<List<String>>> call = RetrofitClient
                 .getInstance(this)
@@ -73,7 +75,7 @@ public class ViewHawkerListingActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(layoutManager);
         adaptor = new ListingAdaptor(this, hawkerData);
         recyclerView.setAdapter(adaptor);
-        bottomNav = findViewById(R.id.bottomNavbar);
+
 
         recommendationsRecyclerView = findViewById(R.id.recommendationsRecyclerView);
         recommendationsLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
@@ -121,14 +123,7 @@ public class ViewHawkerListingActivity extends AppCompatActivity {
                 startActivity(intent);
             }});
 
-        editUserPrefs = findViewById(R.id.editUserPrefs);
-        editUserPrefs.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(ViewHawkerListingActivity.this, UserPreferencesActivity.class);
-                startActivity(intent);
-            }
-        });
+
 
                 fetchListings();
 
