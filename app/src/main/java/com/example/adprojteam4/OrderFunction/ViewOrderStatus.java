@@ -5,18 +5,24 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.adprojteam4.CourierListing.CourierListingStatus;
+import com.example.adprojteam4.CourierListing.CourierListingSummary;
 import com.example.adprojteam4.R;
 import com.example.adprojteam4.RetrofitClient;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -57,6 +63,24 @@ public class ViewOrderStatus extends AppCompatActivity {
 
         getPickupDetailsInUserOrder();
         getOrderFoodItem();
+
+
+
+        received.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                updateUserOrderStatus();
+            }
+
+        });
+
+        cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ViewOrderStatus.this, ViewCourierListing.class);
+                ViewOrderStatus.this.startActivity(intent);
+            }
+        });
 
 
 
@@ -124,6 +148,40 @@ public class ViewOrderStatus extends AppCompatActivity {
                 Toast.makeText(ViewOrderStatus.this, t.getMessage(), Toast.LENGTH_LONG).show();
             }
         });
+    }
+
+    public void updateUserOrderStatus(){
+        //        userOrderId = Long.parseLong(getIntent().getStringExtra("userOrderId"));
+        userOrderId=Long.parseLong("1");
+        Call<ResponseBody> call = RetrofitClient
+                .getInstance()
+                .getCourierListingAPI()
+                .updateCourierOrderStatusById(userOrderId,"Confirm Received");
+
+        call.enqueue(new Callback<ResponseBody>() {
+
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                String s = "";
+                try {
+                    s = s + response.body().string();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+                if (s.equals("SUCCESS")) {
+                    Toast.makeText(ViewOrderStatus.this, "Order Has Been Received!", Toast.LENGTH_LONG).show();
+                    Intent intent = new Intent(ViewOrderStatus.this, ViewCourierListing.class);
+                    ViewOrderStatus.this.startActivity(intent);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                Toast.makeText(ViewOrderStatus.this, t.getMessage(), Toast.LENGTH_LONG).show();
+            }
+        });
+
     }
 
 }

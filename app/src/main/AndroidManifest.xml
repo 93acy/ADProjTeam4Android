@@ -14,19 +14,15 @@
         android:usesCleartextTraffic="true">
         <activity android:name=".CourierListing.CourierListingStatus"></activity>
         <activity android:name=".OrderFunction.ViewOrderStatus">
+
+        </activity>
+        <activity android:name=".OrderFunction.SelectFood" />
+        <activity android:name=".OrderFunction.ViewCourierListing">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-        <activity android:name=".OrderFunction.SelectFood" />
-        <activity android:name=".OrderFunction.ViewCourierListing">
-<!--            <intent-filter>-->
-<!--                <action android:name="android.intent.action.MAIN" />-->
-
-<!--                <category android:name="android.intent.category.LAUNCHER" />-->
-<!--            </intent-filter>-->
         </activity>
         <activity android:name=".CourierListing.CourierListingSummary" />
         <activity android:name=".CourierListing.ViewFoodItem"/>
