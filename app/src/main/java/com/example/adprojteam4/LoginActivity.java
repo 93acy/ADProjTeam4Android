@@ -23,12 +23,11 @@ public class LoginActivity extends AppCompatActivity {
 
     BottomNavigationView bottomNav;
     private EditText etUsername, etPassword;
-    SharedPreferences userPrefs;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        SharedPreferences userPrefs = getSharedPreferences("userPrefs", Context.MODE_PRIVATE);
         bottomNav = findViewById(R.id.bottomNavbar);
         bottomNav.setSelectedItemId(R.id.nav_myAccount);
 
@@ -84,7 +83,10 @@ public class LoginActivity extends AppCompatActivity {
                 if (response.isSuccessful() && jwtResponse != null) {
                     sessionManager.saveAuthToken(jwtResponse.getToken());
                     Toast.makeText(LoginActivity.this, "User logged in!", Toast.LENGTH_LONG).show();
-                    userPrefs.edit().putBoolean("DabaoIsLoggedIn", true);
+                    SharedPreferences userPrefs = getSharedPreferences("userPrefs", Context.MODE_PRIVATE);
+                    SharedPreferences.Editor editor = userPrefs.edit();
+                    editor.putString("IsLoggedIn", "yes");
+                    editor.commit();
                     startActivity(new Intent(LoginActivity.this, DashboardActivity.class).putExtra("username", username));
                 } else {
                     Toast.makeText(LoginActivity.this, "Incorrect Credentials! Try again!", Toast.LENGTH_LONG).show();

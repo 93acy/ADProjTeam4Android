@@ -60,6 +60,7 @@ public class ViewHawkerListingActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_hawker_listing);
 
+
         bottomNav = findViewById(R.id.bottomNavbar);
         bottomNav.setSelectedItemId(R.id.nav_hawkerSearch);
 
