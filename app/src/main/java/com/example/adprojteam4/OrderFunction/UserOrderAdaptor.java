@@ -29,8 +29,8 @@ public class UserOrderAdaptor extends RecyclerView.Adapter<UserOrderAdaptor.View
     }
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.foodName.setText(orderFoodData.get(position).get(0));
-        holder.quantity.setText(orderFoodData.get(position).get(1));
+        holder.foodName.setText(orderFoodData.get(position).get(1));
+        holder.quantity.setText(orderFoodData.get(position).get(2));
     }
     @Override
     public int getItemCount() {
