@@ -60,7 +60,8 @@ public class CreateHawkerListingActivity extends AppCompatActivity {
         Call<ResponseBody> call = RetrofitClient
                 .getInstance(this)
                 .getHawkerListingAPI()
-                .addNewHawkerListing(new HawkerListing(name, address, postalCode, stallNo, locationArea));
+                .addNewHawkerListing(new HawkerListing(address, postalCode, stallNo, name, locationArea));
+
 
         call.enqueue(new Callback<ResponseBody>() {
             @Override
