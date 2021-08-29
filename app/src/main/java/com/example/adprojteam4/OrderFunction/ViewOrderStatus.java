@@ -5,6 +5,7 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -13,8 +14,12 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.adprojteam4.DashboardActivity;
+import com.example.adprojteam4.MainActivity;
 import com.example.adprojteam4.R;
 import com.example.adprojteam4.RetrofitClient;
+import com.example.adprojteam4.ViewHawkerListingActivity;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -39,12 +44,17 @@ public class ViewOrderStatus extends AppCompatActivity {
     ConstraintLayout btmCl,topCl;
     RelativeLayout rl;
     String orderStatus;
+    BottomNavigationView bottomNav;
+
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_order_status);
+
+        bottomNav = findViewById(R.id.bottomNavbar);
+        bottomNav.setSelectedItemId(R.id.nav_hawkerSearch);
 
         userOrderId = Long.parseLong(getIntent().getStringExtra("userOrderId"));
 
@@ -67,11 +77,44 @@ public class ViewOrderStatus extends AppCompatActivity {
         getPickupDetailsInUserOrder();
         getOrderFoodItem();
 
+        findViewById((R.id.nav_myAccount)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ViewOrderStatus.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        findViewById((R.id.nav_courierSearch)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ViewOrderStatus.this, ViewCourierListing.class);
+                startActivity(intent);
+            }
+        });
+
+        findViewById((R.id.nav_hawkerSearch)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ViewOrderStatus.this, ViewHawkerListingActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        findViewById((R.id.nav_home)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ViewOrderStatus.this, DashboardActivity.class);
+                startActivity(intent);
+            }});
+
         cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 orderStatus = "Cancled";
                 updateOrderStatus();
+                Intent intent = new Intent(ViewOrderStatus.this, DashboardActivity.class);
+                startActivity(intent);
             }
         });
 
@@ -80,6 +123,8 @@ public class ViewOrderStatus extends AppCompatActivity {
             public void onClick(View view) {
                 orderStatus = "Received";
                 updateOrderStatus();
+                Intent intent = new Intent(ViewOrderStatus.this, DashboardActivity.class);
+                startActivity(intent);
             }
         });
 

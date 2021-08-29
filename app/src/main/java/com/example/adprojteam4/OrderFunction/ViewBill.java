@@ -12,6 +12,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.adprojteam4.CourierListing.ViewFoodItem;
+import com.example.adprojteam4.DashboardActivity;
 import com.example.adprojteam4.R;
 import com.example.adprojteam4.RetrofitClient;
 
@@ -114,6 +115,8 @@ public class ViewBill extends AppCompatActivity {
                 if (response.body() != null) {
                     userOrderId=Long.parseLong(response.body());
                     createUseOrderDetail();
+                    intent = new Intent(ViewBill.this, DashboardActivity.class);
+                    startActivity(intent);
                 }
             }
 

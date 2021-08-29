@@ -80,7 +80,7 @@ public class DashboardActivity extends AppCompatActivity {
             }});
 
 
-        String welcomeText = "Welcome " + getIntent().getStringExtra("username") + "!";
+        String welcomeText = "Welcome " + /*getIntent().getStringExtra("username") + */"!";
         Toast.makeText(DashboardActivity.this, welcomeText, Toast.LENGTH_LONG).show();
 
 

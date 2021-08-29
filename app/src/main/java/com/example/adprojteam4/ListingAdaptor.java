@@ -40,11 +40,11 @@ public class ListingAdaptor extends RecyclerView.Adapter<ListingAdaptor.ViewHold
     public void onBindViewHolder(@NonNull ListingAdaptor.ViewHolder holder, int position) {
 
 
-        holder.hawkerName.setText(hawkerData.get(position).get(2));
-        holder.hawkerAddress.setText(hawkerData.get(position).get(4));
-        holder.hawkerLocation.setText(hawkerData.get(position).get(3));
+        holder.hawkerName.setText(hawkerData.get(position).get(1));
+        holder.hawkerAddress.setText(hawkerData.get(position).get(3));
+        holder.hawkerLocation.setText(hawkerData.get(position).get(4));
         holder.hawkerPostalCode.setText(hawkerData.get(position).get(5));
-        holder.hawkerStallNo.setText(hawkerData.get(position).get(1));
+        holder.hawkerStallNo.setText(hawkerData.get(position).get(2));
         holder.courierButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

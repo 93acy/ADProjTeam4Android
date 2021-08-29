@@ -67,6 +67,7 @@ public class CreateHawkerListingActivity extends AppCompatActivity {
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                 String s = "";
                 try {
+                    assert response.body() != null;
                     s = response.body().string();
                 } catch (IOException e) {
                     e.printStackTrace();
