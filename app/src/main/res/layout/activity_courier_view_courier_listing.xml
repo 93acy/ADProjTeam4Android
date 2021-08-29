@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background3"
     tools:context=".CourierListing.courier_ViewCourierListing">
 
     <androidx.recyclerview.widget.RecyclerView
@@ -17,6 +18,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavbar"
         android:layout_width="match_parent"
@@ -25,5 +27,6 @@
         app:menu="@menu/bottom_navigation"
         android:background="?android:attr/windowBackground"
         />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

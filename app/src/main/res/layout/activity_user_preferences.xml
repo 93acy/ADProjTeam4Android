@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/userlogin_bg"
     tools:context=".UserPreferencesActivity">
 
     <TextView
@@ -160,5 +161,6 @@
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/checkbox_proteinOthers"
         app:layout_constraintLeft_toLeftOf="parent"
-        android:text="Submit"/>
+        android:text="Submit"
+        android:textColor="@color/white"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

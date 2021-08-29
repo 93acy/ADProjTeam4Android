@@ -46,7 +46,7 @@ public class ViewOrderStatus extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_order_status);
 
-        userOrderId = getIntent().getLongExtra("userOrderId",0);
+        userOrderId = Long.parseLong(getIntent().getStringExtra("userOrderId"));
 
         btmCl = findViewById(R.id.btm_cl);
         topCl=findViewById(R.id.top_cl);

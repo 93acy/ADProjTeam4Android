@@ -5,6 +5,7 @@
     android:id="@+id/recyclerView"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/userlogin_bg"
     tools:context=".DashboardActivity">
 
     <RelativeLayout
@@ -54,6 +55,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="30dp"
         android:text="Edit User Preferences"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toTopOf="@id/bottomNavbar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"

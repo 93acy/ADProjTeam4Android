@@ -4,17 +4,23 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.adprojteam4.CourierListing.FoodAdaptor;
 import com.example.adprojteam4.CourierListing.ViewFoodItem;
+import com.example.adprojteam4.DashboardActivity;
+import com.example.adprojteam4.MainActivity;
 import com.example.adprojteam4.OrderFunction.CourierListingAdaptor;
+import com.example.adprojteam4.OrderFunction.ViewCourierListing;
 import com.example.adprojteam4.R;
 import com.example.adprojteam4.RetrofitClient;
+import com.example.adprojteam4.ViewHawkerListingActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
@@ -47,6 +53,37 @@ public class courier_ViewCourierListing extends AppCompatActivity {
         recyclerView.setLayoutManager(layoutManager);
         cAdaptor = new courier_CourierListingAdapter(this, courierListings);
         recyclerView.setAdapter(cAdaptor);
+
+        findViewById((R.id.nav_myAccount)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(courier_ViewCourierListing.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        findViewById((R.id.nav_courierSearch)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(courier_ViewCourierListing.this, ViewCourierListing.class);
+                startActivity(intent);
+            }
+        });
+
+        findViewById((R.id.nav_hawkerSearch)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(courier_ViewCourierListing.this, ViewHawkerListingActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        findViewById((R.id.nav_home)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(courier_ViewCourierListing.this, DashboardActivity.class);
+                startActivity(intent);
+            }});
 
         getCourierListing();
     }

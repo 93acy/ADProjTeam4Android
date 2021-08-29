@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="20dp"
+    android:background="@drawable/userlogin_bg"
     tools:context=".RegisterActivity">
 
     <TextView
@@ -63,7 +64,7 @@
 
     <Button
         android:id="@+id/btnRegister"
-        android:layout_width="match_parent"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:text="REGISTER"
         android:textColor="@android:color/background_dark"
