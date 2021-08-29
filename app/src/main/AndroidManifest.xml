@@ -14,7 +14,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.nav"
         android:usesCleartextTraffic="true">
-        <activity android:name=".CourierListing.courier_ViewCourierListing"></activity>
+        <activity android:name=".OrderFunction.ViewAllUserOrders"></activity>
+        <activity android:name=".CourierListing.courier_ViewCourierListing" />
         <activity
             android:name=".OrderFunction.ViewOrderStatus"
             android:windowSoftInputMode="adjustPan" />
@@ -60,8 +61,7 @@
         </activity>
         <activity
             android:name=".UserPreferencesActivity"
-            android:windowSoftInputMode="adjustPan">
-        </activity>
+            android:windowSoftInputMode="adjustPan"></activity>
         <activity
             android:name=".DashboardActivity"
             android:windowSoftInputMode="adjustPan" />
