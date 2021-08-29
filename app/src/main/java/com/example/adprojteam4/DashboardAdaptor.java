@@ -20,9 +20,9 @@ import java.util.ArrayList;
 
 public class DashboardAdaptor extends RecyclerView.Adapter<DashboardAdaptor.ViewHolder>{
     Context context;
-    ArrayList<ArrayList<String>> Data = new ArrayList<>();
+    ArrayList<ArrayList<ArrayList<String>>> Data = new ArrayList<>();
 
-    public DashboardAdaptor(Context context, ArrayList<ArrayList<String>> data) {
+    public DashboardAdaptor(Context context, ArrayList<ArrayList<ArrayList<String>>> data) {
         this.context = context;
         Data = data;
     }
@@ -37,15 +37,15 @@ public class DashboardAdaptor extends RecyclerView.Adapter<DashboardAdaptor.View
 
     @Override
     public void onBindViewHolder(@NonNull DashboardAdaptor.ViewHolder holder, int position) {
-        holder.hawkerName.setText(Data.get(position).get(1));
-        holder.totalCost.setText(Data.get(position).get(2));
-        holder.orderStatus.setText(Data.get(position).get(3));
+        holder.hawkerName.setText(Data.get(position).get(position).get(1));
+        holder.totalCost.setText(Data.get(position).get(position).get(2));
+        holder.orderStatus.setText(Data.get(position).get(position).get(3));
 
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(context, ViewOrderStatus.class);
-                intent.putExtra("userOrderId",Data.get(position).get(0));
+                intent.putExtra("userOrderId",Data.get(position).get(position).get(0));
                 context.startActivity(intent);
             }
         });

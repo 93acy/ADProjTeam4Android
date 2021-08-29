@@ -15,8 +15,10 @@
         android:theme="@style/Theme.nav"
         android:usesCleartextTraffic="true">
         <activity android:name=".CourierListing.courier_ViewCourierListing">
-<!-- -->
+
         </activity>
+        <activity android:name=".OrderFunction.ViewBill"
+            android:windowSoftInputMode="adjustPan"/>
         <activity
             android:name=".OrderFunction.ViewOrderStatus"
             android:windowSoftInputMode="adjustPan" />
@@ -69,7 +71,8 @@
             android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".RegisterActivity"
-            android:windowSoftInputMode="adjustPan" /> <!-- <intent-filter> -->
+            android:windowSoftInputMode="adjustPan" />
+        <!-- <intent-filter> -->
         <!-- <action android:name="android.intent.action.MAIN" /> -->
         <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
         <!-- </intent-filter> -->

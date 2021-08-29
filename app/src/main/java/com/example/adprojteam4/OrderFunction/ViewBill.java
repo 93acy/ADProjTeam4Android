@@ -44,6 +44,8 @@ public class ViewBill extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_bill);
 
+
+
         foodFee = getIntent().getDoubleExtra("foodFee",0);
         Quantity = getIntent().getIntegerArrayListExtra("Quantity");
         CourierListingId =getIntent().getLongExtra("CourierListingId",0);
@@ -65,6 +67,14 @@ public class ViewBill extends AppCompatActivity {
                 createUserOrder();
             }
         });
+
+        cancle.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                intent = new Intent(ViewBill.this, ViewCourierListing.class);
+                ViewBill.this.startActivity(intent);
+            }
+        });
     }
 
     public void setUpView(){
@@ -74,6 +84,7 @@ public class ViewBill extends AppCompatActivity {
         totalCost = findViewById(R.id.totalCost);
         confirm = findViewById(R.id.bill_confirm);
         cancle = findViewById(R.id.bill_cancle);
+
 
         DecimalFormat df = new DecimalFormat("#,###.##");
 
@@ -103,15 +114,13 @@ public class ViewBill extends AppCompatActivity {
                 if (response.body() != null) {
                     userOrderId=Long.parseLong(response.body());
                     createUseOrderDetail();
-
-                    intent = new Intent(ViewBill.this,ViewOrderStatus.class);
-                    intent.putExtra("userOrderId",userOrderId);
-//                    ViewBill.this.startActivity(intent);
                 }
             }
 
             @Override
             public void onFailure(Call<String> call, Throwable t) {
+                intent = new Intent(ViewBill.this,ViewCourierListing.class);
+                intent.putExtra("userOrderId",userOrderId);
                 Toast.makeText(ViewBill.this, t.getMessage(), Toast.LENGTH_LONG).show();
             }
         });

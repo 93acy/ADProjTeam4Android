@@ -31,7 +31,7 @@ public class DashboardActivity extends AppCompatActivity {
     RelativeLayout relativeLayout;
     LinearLayoutManager layoutManager;
     DashboardAdaptor adaptor;
-    ArrayList<ArrayList<String>> orderData = new ArrayList<>();
+    ArrayList<ArrayList<ArrayList<String>>> orderData = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -98,14 +98,14 @@ public class DashboardActivity extends AppCompatActivity {
     }
 
     private void getOrderData(){
-        Call<ArrayList<ArrayList<String>>> call = RetrofitClient
+        Call<ArrayList<ArrayList<ArrayList<String>>>> call = RetrofitClient
                 .getInstance(this)
                 .getUserAPI()
                 .viewOrderDta();
 
-        call.enqueue(new Callback<ArrayList<ArrayList<String>>>() {
+        call.enqueue(new Callback<ArrayList<ArrayList<ArrayList<String>>>>() {
             @Override
-            public void onResponse(Call<ArrayList<ArrayList<String>>> call, Response<ArrayList<ArrayList<String>>> response) {
+            public void onResponse(Call<ArrayList<ArrayList<ArrayList<String>>>> call, Response<ArrayList<ArrayList<ArrayList<String>>>> response) {
                 if (!response.isSuccessful()) {
                     Toast.makeText(DashboardActivity.this, "fail to get response", Toast.LENGTH_LONG).show();
                     return;
@@ -121,7 +121,7 @@ public class DashboardActivity extends AppCompatActivity {
 
 
             @Override
-            public void onFailure(Call<ArrayList<ArrayList<String>>> call, Throwable t) {
+            public void onFailure(Call<ArrayList<ArrayList<ArrayList<String>>>> call, Throwable t) {
                 Toast.makeText(DashboardActivity.this, t.getMessage(), Toast.LENGTH_LONG).show();
             }
         });
