@@ -14,15 +14,16 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
     BottomNavigationView bottomNav;
-    SharedPreferences userPrefs;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         SharedPreferences userPrefs = getSharedPreferences("userPrefs", Context.MODE_PRIVATE);
+        Log.d("hello",userPrefs.getString("IsLoggedIn", null));
 
-        if (userPrefs.getString("IsLoggedIn", null)=="yes"){
+        if (userPrefs.getString("IsLoggedIn", null)=="yes")
+        {
             setContentView(R.layout.activity_main_loggedin);
             Log.d("hello", "onCreate: IsloggedIn");// change to another xml which includes just user profile text and logout and set button to log out only
         }
