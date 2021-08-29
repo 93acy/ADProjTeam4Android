@@ -9,7 +9,7 @@
     <RelativeLayout
         android:id="@+id/relativate"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="438dp"
         app:layout_constraintBottom_toTopOf="@+id/btn_cl"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -18,7 +18,8 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/foodSelect_rv"
             android:layout_width="match_parent"
-            android:layout_height="400sp"
+            android:layout_height="match_parent"
+            android:background="@drawable/userlogin_bg"
             android:layout_alignParentTop="true"/>
 
     </RelativeLayout>
