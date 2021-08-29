@@ -7,9 +7,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.adprojteam4.DashboardActivity;
 import com.example.adprojteam4.R;
 import com.example.adprojteam4.RetrofitClient;
 
@@ -42,6 +44,12 @@ public class ViewCourierListingDetails extends AppCompatActivity {
         cdAdaptor = new CourierListingDetailsAdaptor(this, courierListingDetails, courierListingDetailInfo);
         recyclerView.setAdapter(cdAdaptor);
         txtHawkersName = findViewById(R.id.txtHawkersName);
+        Button home = findViewById(R.id.btnbackToHome);
+
+        home.setOnClickListener(v->{
+            Intent intent = new Intent(this, DashboardActivity.class);
+            startActivity(intent);
+        });
 
 
         Intent intent = getIntent();
