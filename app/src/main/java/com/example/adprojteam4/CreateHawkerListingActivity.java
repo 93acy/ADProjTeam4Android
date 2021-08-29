@@ -29,7 +29,7 @@ public class CreateHawkerListingActivity extends AppCompatActivity {
         hawkerAddress = findViewById(R.id.hawkerAddress);
         hawkerPostalCode = findViewById(R.id.hawkerPostalCode);
         hawkerStallNumber = findViewById(R.id.hawkerStallNumber);
-        hawkerLocationArea = findViewById(R.id.hawkerAddress);
+        hawkerLocationArea = findViewById(R.id.hawkerlocationArea);
 
 
         findViewById(R.id.btnRegister3).setOnClickListener(new View.OnClickListener() {
@@ -75,7 +75,8 @@ public class CreateHawkerListingActivity extends AppCompatActivity {
                 if (s.equals("Success")) {
                     Toast.makeText(CreateHawkerListingActivity.this, "Successfully Listed!", Toast.LENGTH_LONG).show();
                     startActivity(new Intent(CreateHawkerListingActivity.this, ViewHawkerListingActivity.class));
-                } else {
+                }
+                if (s.equals("Not Successful")){
                     Toast.makeText(CreateHawkerListingActivity.this, "Listing already exists!", Toast.LENGTH_LONG).show();
                 }
             }
