@@ -1,19 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="vertical">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
 
-    </TextView>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/txtUserName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="7"
+            android:text="UserName">
 
-    </TextView>
+        </TextView>
+
+        <TextView
+            android:id="@+id/txtStatus"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:text="Status">
+
+        </TextView>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/txtFoodItem"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="16"
+        android:text="FoodItem">
+
+        </TextView>
+
+        <TextView
+            android:id="@+id/txtFoodQuantity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:text="FoodQuantity">
+
+        </TextView>
+    </LinearLayout>
 
 </LinearLayout>

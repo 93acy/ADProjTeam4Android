@@ -14,9 +14,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.adprojteam4.R;
 import com.example.adprojteam4.RetrofitClient;
+import com.example.adprojteam4.ViewCourierListingDetails.ViewCourierListingDetails;
 
 import java.io.IOException;
 import java.util.List;
+
+import javax.net.ssl.HttpsURLConnection;
 
 import okhttp3.ResponseBody;
 import retrofit2.Call;
@@ -101,8 +104,7 @@ public class CourierListingAdaptor extends RecyclerView.Adapter<CourierListingAd
         holder.btnCloseOrder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent();
-
+                updateCourierListing(v,position);
             }
         });
 
@@ -156,6 +158,41 @@ public class CourierListingAdaptor extends RecyclerView.Adapter<CourierListingAd
             }
         });
     }
+
+    private void updateCourierListing(View v, int position){
+        String id = courierListings.get(position).get(0).get(0);
+        Call<ResponseBody> call = RetrofitClient
+                .getInstance()
+                .getCourierListingAPI()
+                .updateCourierListing(id);
+
+        call.enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+
+                /*String s = "";
+                try {
+                    s += response.body().string();
+                }
+                catch (IOException e) {
+                    e.printStackTrace();
+                }*/
+
+                if (response.code() == 200) {
+                    Toast.makeText(context, "close successfully", Toast.LENGTH_LONG).show();
+                    Intent intent = new Intent(context, ViewCourierListingDetails.class);
+                    intent.putExtra("id", courierListings.get(position).get(0).get(0));
+                    context.startActivity(intent);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                Toast.makeText(context, t.getMessage(), Toast.LENGTH_LONG).show();
+            }
+        });
+    }
+
 
 
     public class ViewHolder extends RecyclerView.ViewHolder{

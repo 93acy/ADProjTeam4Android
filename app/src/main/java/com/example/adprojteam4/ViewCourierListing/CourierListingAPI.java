@@ -10,6 +10,8 @@ import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;
 import retrofit2.http.GET;
+import retrofit2.http.POST;
+import retrofit2.http.PUT;
 import retrofit2.http.Path;
 
 public interface CourierListingAPI {
@@ -22,5 +24,8 @@ public interface CourierListingAPI {
 
         @DELETE("/courier/cancelCourierListing/{id}")
         Call<ResponseBody> cancelCourierListing(@Path("id") String id);
+
+        @PUT("/courier/updateCourierListing")
+        Call<ResponseBody> updateCourierListing(@Body String id);
 
 }

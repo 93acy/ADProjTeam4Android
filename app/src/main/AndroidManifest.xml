@@ -12,7 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ADProjTeam4"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ViewCourierListingDetails.ViewCourierListingDetails"></activity>
+        <activity android:name=".ViewCourierListingDetails.ViewCourierListingDetails">
+
+        </activity>
         <activity android:name=".ViewCourierListing.ViewCourierListing">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
