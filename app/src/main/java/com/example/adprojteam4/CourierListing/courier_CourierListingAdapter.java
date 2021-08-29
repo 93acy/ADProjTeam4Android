@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.adprojteam4.R;
 import com.example.adprojteam4.RetrofitClient;
+import com.example.adprojteam4.ViewCourierListingDetails.ViewCourierListingDetails;
 
 import java.io.IOException;
 import java.util.List;
@@ -95,7 +96,7 @@ public class courier_CourierListingAdapter extends RecyclerView.Adapter<courier_
         holder.btnCloseOrder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent();
+                updateCourierListing(v,position);
 
             }
         });
@@ -128,6 +129,32 @@ public class courier_CourierListingAdapter extends RecyclerView.Adapter<courier_
                 if (s.equals("successful")) {
                     Toast.makeText(context, "delete successfully", Toast.LENGTH_LONG).show();
                     Intent intent = new Intent(context, courier_ViewCourierListing.class);
+                    context.startActivity(intent);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                Toast.makeText(context, t.getMessage(), Toast.LENGTH_LONG).show();
+            }
+        });
+    }
+
+    private void updateCourierListing(View v, int position){
+        String id = courierListings.get(position).get(0).get(0);
+        Call<ResponseBody> call = RetrofitClient
+                .getInstance(context)
+                .getCourierListingAPI()
+                .updateCourierListing(id);
+
+        call.enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+
+                if (response.code() == 200) {
+                    Toast.makeText(context, "close successfully", Toast.LENGTH_LONG).show();
+                    Intent intent = new Intent(context, ViewCourierListingDetails.class);
+                    intent.putExtra("id", courierListings.get(position).get(0).get(0));
                     context.startActivity(intent);
                 }
             }
