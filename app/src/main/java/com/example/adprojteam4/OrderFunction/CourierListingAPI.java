@@ -13,7 +13,7 @@ import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 public interface CourierListingAPI {
-    @GET("/user/users/courierListing")
+    @GET("/users/courierListing")
     Call<ArrayList<ArrayList<String>>> viewAllCourierListings();
 
     @GET("/users/courierListing/{id}")
