@@ -70,7 +70,7 @@ public class CreateHawkerListingActivity extends AppCompatActivity {
                     e.printStackTrace();
                 }
 
-                if (s.equals("SUCCESS")) {
+                if (s.equals("Success")) {
                     Toast.makeText(CreateHawkerListingActivity.this, "Successfully Listed!", Toast.LENGTH_LONG).show();
                     startActivity(new Intent(CreateHawkerListingActivity.this, ViewHawkerListingActivity.class));
                 } else {
