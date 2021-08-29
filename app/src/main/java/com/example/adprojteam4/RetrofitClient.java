@@ -5,6 +5,7 @@ import android.content.Context;
 import com.example.adprojteam4.CourierListing.FoodAPI;
 import com.example.adprojteam4.OrderFunction.CourierListingAPI;
 import com.example.adprojteam4.OrderFunction.UserAPI;
+import com.example.adprojteam4.ViewCourierListingDetails.CourierListingDetailsAPI;
 
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
@@ -58,6 +59,8 @@ public class RetrofitClient {
     public UserAPI getUserAPI() {
         return retrofit.create(UserAPI.class);
     }
+
+    public CourierListingDetailsAPI getCourierListingDetailsAPI() { return retrofit.create(CourierListingDetailsAPI.class); }
 
 
 }
