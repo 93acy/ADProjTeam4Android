@@ -59,6 +59,22 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/hawkerName" />
 
+
+    <EditText
+        android:id="@+id/hawkerlocationArea"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:ems="10"
+        android:hint="Location Vicinity"
+        android:inputType="text"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/hawkerAddress" />
+
+
     <EditText
         android:id="@+id/hawkerPostalCode"
         android:layout_width="match_parent"
@@ -71,7 +87,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/hawkerAddress" />
+        app:layout_constraintTop_toBottomOf="@+id/hawkerlocationArea" />
 
     <EditText
         android:id="@+id/hawkerStallNumber"

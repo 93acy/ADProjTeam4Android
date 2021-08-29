@@ -10,6 +10,7 @@ public class HawkerListing {
     private String address;
     private String postalCode;
     private String stallNo;
+    private String locationArea;
 //    private string stallImageUrl;
     private String name;
 //    private Long ogpId;
@@ -19,11 +20,12 @@ public class HawkerListing {
     private String carbType;
     private String proteinType;
 
-    public HawkerListing(String address, String postalCode, String stallNo, String name) {
+    public HawkerListing(String address, String postalCode, String stallNo, String name, String locationArea) {
         this.address = address;
         this.postalCode = postalCode;
         this.stallNo = stallNo;
         this.name = name;
+        this.locationArea = locationArea;
     }
 
     public Long getId() {
@@ -88,5 +90,13 @@ public class HawkerListing {
 
     public void setProteinType(String proteinType) {
         this.proteinType = proteinType;
+    }
+
+    public String getLocationArea() {
+        return locationArea;
+    }
+
+    public void setLocationArea(String locationArea) {
+        this.locationArea = locationArea;
     }
 }

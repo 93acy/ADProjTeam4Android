@@ -18,7 +18,7 @@ import retrofit2.Response;
 
 public class CreateHawkerListingActivity extends AppCompatActivity {
 
-    private EditText hawkerName, hawkerAddress, hawkerPostalCode, hawkerStallNumber;
+    private EditText hawkerName, hawkerAddress, hawkerPostalCode, hawkerStallNumber, hawkerLocationArea;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +29,7 @@ public class CreateHawkerListingActivity extends AppCompatActivity {
         hawkerAddress = findViewById(R.id.hawkerAddress);
         hawkerPostalCode = findViewById(R.id.hawkerPostalCode);
         hawkerStallNumber = findViewById(R.id.hawkerStallNumber);
+        hawkerLocationArea = findViewById(R.id.hawkerAddress);
 
 
         findViewById(R.id.btnRegister3).setOnClickListener(new View.OnClickListener() {
@@ -43,6 +44,7 @@ public class CreateHawkerListingActivity extends AppCompatActivity {
         String address = hawkerAddress.getText().toString().trim();
         String postalCode= hawkerPostalCode.getText().toString().trim();
         String stallNo = hawkerStallNumber.getText().toString().trim();
+        String locationArea = hawkerLocationArea.getText().toString().trim();
 
         if (name.isEmpty()) {
             hawkerName.setError("Stall Name is required");
@@ -58,7 +60,7 @@ public class CreateHawkerListingActivity extends AppCompatActivity {
         Call<ResponseBody> call = RetrofitClient
                 .getInstance(this)
                 .getHawkerListingAPI()
-                .addNewHawkerListing(new HawkerListing(name, address, postalCode, stallNo));
+                .addNewHawkerListing(new HawkerListing(name, address, postalCode, stallNo, locationArea));
 
         call.enqueue(new Callback<ResponseBody>() {
             @Override
