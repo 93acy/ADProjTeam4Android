@@ -55,29 +55,31 @@
         app:layout_constraintStart_toStartOf="@+id/serviceFee"
         app:layout_constraintTop_toBottomOf="@+id/serviceFee" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/bill_confirm"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="150dp"
-        android:layout_marginEnd="50dp"
         android:layout_marginBottom="125dp"
         android:text="Confirm"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/totalCost" />
+        app:layout_constraintHorizontal_bias="0.7"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/totalCost"
+        app:layout_constraintVertical_bias="0.75" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/bill_cancle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="148dp"
-        android:layout_marginBottom="126dp"
-        android:text="Cancle"
+        android:layout_marginTop="150dp"
+        android:layout_marginBottom="125dp"
+        android:text="Cancel"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/bill_confirm"
-        app:layout_constraintHorizontal_bias="0.008"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.3"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/totalCost" />
+        app:layout_constraintTop_toBottomOf="@+id/totalCost"
+        app:layout_constraintVertical_bias="0.75" />
 </androidx.constraintlayout.widget.ConstraintLayout>
