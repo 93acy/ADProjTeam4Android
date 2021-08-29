@@ -76,7 +76,7 @@ public class CreateHawkerListingActivity extends AppCompatActivity {
                     Toast.makeText(CreateHawkerListingActivity.this, "Successfully Listed!", Toast.LENGTH_LONG).show();
                     startActivity(new Intent(CreateHawkerListingActivity.this, ViewHawkerListingActivity.class));
                 }
-                if (s.equals("Not Successful")){
+                else{
                     Toast.makeText(CreateHawkerListingActivity.this, "Listing already exists!", Toast.LENGTH_LONG).show();
                 }
             }
