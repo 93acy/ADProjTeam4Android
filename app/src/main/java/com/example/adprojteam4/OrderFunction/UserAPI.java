@@ -22,5 +22,5 @@ public interface UserAPI {
                                               @Query("courierFoodItemDetail") List<Long> courierFoodItemDetail);
 
     @GET("/users/viewOrderData")
-    Call<ArrayList<ArrayList<ArrayList<String>>>> viewOrderDta();
+    Call<ArrayList<ArrayList<String>>> viewOrderDta();
 }
