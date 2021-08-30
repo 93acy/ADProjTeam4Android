@@ -111,7 +111,7 @@ public class ViewOrderStatus extends AppCompatActivity {
         cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                orderStatus = "Cancled";
+                orderStatus = "Canceled";
                 updateOrderStatus();
                 Intent intent = new Intent(ViewOrderStatus.this, DashboardActivity.class);
                 startActivity(intent);
@@ -207,6 +207,9 @@ public class ViewOrderStatus extends AppCompatActivity {
 
                 if (s.equals("SUCCESS")) {
                     Toast.makeText(ViewOrderStatus.this, "Your order has been "+orderStatus.toLowerCase(), Toast.LENGTH_LONG).show();
+                }
+                else{
+                    Toast.makeText(ViewOrderStatus.this, "You may have received or cancled the order.".toLowerCase(), Toast.LENGTH_LONG).show();
                 }
             }
 
