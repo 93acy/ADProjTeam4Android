@@ -6,8 +6,8 @@
     android:layout_margin="8dp"
     app:cardCornerRadius="5dp"
     app:cardElevation="3dp"
-    android:background="#91E4DDD7"
-    android:backgroundTint="#91E4DDD7"
+    android:background="#E4DDD7"
+    android:backgroundTint="#E4DDD7"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     \
     <androidx.constraintlayout.widget.ConstraintLayout
