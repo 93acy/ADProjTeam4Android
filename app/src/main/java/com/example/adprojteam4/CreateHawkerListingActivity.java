@@ -9,6 +9,9 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.adprojteam4.OrderFunction.ViewCourierListing;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+
 import java.io.IOException;
 
 import okhttp3.ResponseBody;
@@ -19,12 +22,15 @@ import retrofit2.Response;
 public class CreateHawkerListingActivity extends AppCompatActivity {
 
     private EditText hawkerName, hawkerAddress, hawkerPostalCode, hawkerStallNumber, hawkerLocationArea;
+    BottomNavigationView bottomNav;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_hawker_listing);
 
+        bottomNav = findViewById(R.id.bottomNavbar);
+        bottomNav.setSelectedItemId(R.id.nav_hawkerSearch);
         hawkerName = findViewById(R.id.hawkerName);
         hawkerAddress = findViewById(R.id.hawkerAddress);
         hawkerPostalCode = findViewById(R.id.hawkerPostalCode);
@@ -56,6 +62,38 @@ public class CreateHawkerListingActivity extends AppCompatActivity {
             return;
         }
         // the rest can just fuck it
+
+        findViewById((R.id.nav_myAccount)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(CreateHawkerListingActivity.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        findViewById((R.id.nav_courierSearch)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(CreateHawkerListingActivity.this, ViewCourierListing.class);
+                startActivity(intent);
+            }
+        });
+
+        findViewById((R.id.nav_hawkerSearch)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(CreateHawkerListingActivity.this, ViewHawkerListingActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        findViewById((R.id.nav_home)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(CreateHawkerListingActivity.this, DashboardActivity.class);
+                startActivity(intent);
+            }});
+
 
         Call<ResponseBody> call = RetrofitClient
                 .getInstance(this)
