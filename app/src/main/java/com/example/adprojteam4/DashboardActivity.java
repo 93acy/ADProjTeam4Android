@@ -40,7 +40,6 @@ public class DashboardActivity extends AppCompatActivity {
 
         bottomNav = findViewById(R.id.bottomNavbar);
         bottomNav.setSelectedItemId(R.id.nav_home);
-        relativeLayout = findViewById(R.id.dashBroad_rl);
         recyclerView = findViewById(R.id.dashBroad_rv);
 
         layoutManager= new LinearLayoutManager(this);

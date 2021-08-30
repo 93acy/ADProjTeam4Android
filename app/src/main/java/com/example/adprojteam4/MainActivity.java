@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         SharedPreferences userPrefs = getSharedPreferences("userPrefs", Context.MODE_PRIVATE);
-        Log.d("hello",userPrefs.getString("IsLoggedIn", null));
+//        Log.d("hello",userPrefs.getString("IsLoggedIn", null));
 
         if (userPrefs.getString("IsLoggedIn", null)=="yes")
         {
