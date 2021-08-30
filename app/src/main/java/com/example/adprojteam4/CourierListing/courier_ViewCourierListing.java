@@ -105,7 +105,6 @@ public class courier_ViewCourierListing extends AppCompatActivity {
 
                 if (response.body() != null) {
                     courierListings.addAll(response.body());
-                    //Log.i("courierListings",courierListings.get(0).get(0).get(0));
                     cAdaptor.notifyDataSetChanged();
                 }
             }

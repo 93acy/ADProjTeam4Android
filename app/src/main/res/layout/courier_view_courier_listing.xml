@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-
+    android:background="@color/lightnude"
     android:orientation="vertical">
 
     <!--
@@ -17,12 +17,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:weightSum="4"
+        android:layout_marginTop="20dp"
         android:orientation="horizontal">
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+
             android:text="ListingID">
 
         </TextView>
@@ -133,8 +135,8 @@
             android:id="@+id/cancelOrder"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="cancel order"
-            android:layout_weight="1">
+            android:layout_weight="1"
+            android:text="cancel order">
 
         </Button>
 
