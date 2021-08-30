@@ -2,14 +2,21 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@drawable/userlogin_bg">
 
     <TextView
         android:id="@+id/txtHawkersName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="HawkersName">
+        android:text="Hawkers Name"
+        android:textColor="#444444"
+        android:textFontWeight="1000"
+        android:textSize="35sp"
+        android:textStyle="bold"
+        android:layout_marginTop="30dp"
+        android:fontFamily="cursive">
 
     </TextView>
 
@@ -25,7 +32,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="home"
-        android:layout_gravity="center">
+        android:layout_gravity="center"
+        android:layout_marginTop="30dp">
     </Button>
 
 </LinearLayout>

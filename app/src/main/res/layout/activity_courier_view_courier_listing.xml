@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background3"
+    android:background="@drawable/userlogin_bg"
     tools:context=".CourierListing.courier_ViewCourierListing">
 
 
@@ -15,8 +15,10 @@
         android:fontFamily="cursive"
         android:padding="10dp"
         android:text="My Courier Listings"
+        android:layout_marginTop="30dp"
         android:textSize="40sp"
         android:textStyle="bold"
+        android:textFontWeight="1000"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
