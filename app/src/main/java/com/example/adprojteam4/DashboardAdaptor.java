@@ -47,7 +47,6 @@ public class DashboardAdaptor extends RecyclerView.Adapter<DashboardAdaptor.View
             public void onClick(View view) {
                 Intent intent = new Intent(context, ViewOrderStatus.class);
                 intent.putExtra("userOrderId",String.valueOf(Data.get(position).get(0)));
-                //Log.i("userOrderId",Data.get(position).get(0));
                 context.startActivity(intent);
             }
         });

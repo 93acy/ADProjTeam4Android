@@ -38,6 +38,7 @@ public class ViewBill extends AppCompatActivity {
     ArrayList<Integer> Quantity = new ArrayList<>();
     Long userOrderId ;
     Intent intent;
+    Double TotalCost = 0.0;
 
 
     @Override
@@ -91,14 +92,15 @@ public class ViewBill extends AppCompatActivity {
 
         String s = df.format(foodFee*0.1);
         Double ServiceCost =Double.parseDouble(s);
+        TotalCost = foodFee + ServiceCost;
         foodPrice.setText("Total food prrice: "+String.valueOf(foodFee));
         serviceFee.setText("Service fee(10%): "+String.valueOf(ServiceCost));
-        totalCost.setText("Total cost: "+String.valueOf(foodFee+ServiceCost));
+        totalCost.setText("Total cost: "+String.valueOf(TotalCost));
     }
 
 
     public void createUserOrder(){
-        UserOrder userOrder = new UserOrder(foodFee);
+        UserOrder userOrder = new UserOrder(TotalCost);
 
         Call<String> call = RetrofitClient
                 .getInstance(this)
@@ -164,8 +166,5 @@ public class ViewBill extends AppCompatActivity {
                 Toast.makeText(ViewBill.this, t.getMessage(), Toast.LENGTH_LONG).show();
             }
         });
-
-
-
     }
 }

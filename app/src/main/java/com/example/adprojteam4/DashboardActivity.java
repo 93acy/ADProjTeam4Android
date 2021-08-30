@@ -28,7 +28,6 @@ public class DashboardActivity extends AppCompatActivity {
     Button editUserPrefs;
     BottomNavigationView bottomNav;
     RecyclerView recyclerView;
-    RelativeLayout relativeLayout;
     LinearLayoutManager layoutManager;
     DashboardAdaptor adaptor;
     ArrayList<ArrayList<String>> orderData = new ArrayList<>();
