@@ -91,7 +91,7 @@ public class ViewBill extends AppCompatActivity {
 
         String s = df.format(foodFee*0.1);
         Double ServiceCost =Double.parseDouble(s);
-        foodPrice.setText("Total food prrice: "+String.valueOf(foodFee));
+        foodPrice.setText("Total food price: "+String.valueOf(foodFee));
         serviceFee.setText("Service fee(10%): "+String.valueOf(ServiceCost));
         totalCost.setText("Total cost: "+String.valueOf(foodFee+ServiceCost));
     }

@@ -6,12 +6,22 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/userlogin_bg"
+
     tools:context=".DashboardActivity">
+    <ImageView
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:background="@drawable/nasilemak"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:isScrollContainer="false"/>
 
     <RelativeLayout
         android:id="@+id/dashBroad_rl"
         android:layout_width="match_parent"
-        android:layout_height="400sp"
+        android:layout_height="wrap_content"
         app:layout_constraintBottom_toTopOf="@+id/editUserPrefs"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -23,15 +33,7 @@
             android:layout_height="wrap_content" />
     </RelativeLayout>
 
-    <ImageView
-        android:layout_width="250dp"
-        android:layout_height="250dp"
-        android:background="@drawable/nasilemak"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:isScrollContainer="false"/>
+
 
     <TextView
         android:id="@+id/tvTitle"
