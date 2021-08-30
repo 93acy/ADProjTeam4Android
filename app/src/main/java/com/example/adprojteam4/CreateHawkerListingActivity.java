@@ -37,32 +37,6 @@ public class CreateHawkerListingActivity extends AppCompatActivity {
         hawkerStallNumber = findViewById(R.id.hawkerStallNumber);
         hawkerLocationArea = findViewById(R.id.hawkerlocationArea);
 
-
-        findViewById(R.id.btnRegister3).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                registerhawker();
-            }
-        });
-    }
-    private void registerhawker() {
-        String name = hawkerName.getText().toString().trim();
-        String address = hawkerAddress.getText().toString().trim();
-        String postalCode= hawkerPostalCode.getText().toString().trim();
-        String stallNo = hawkerStallNumber.getText().toString().trim();
-        String locationArea = hawkerLocationArea.getText().toString().trim();
-
-        if (name.isEmpty()) {
-            hawkerName.setError("Stall Name is required");
-            hawkerName.requestFocus();
-            return;
-        } else if (address.isEmpty()) {
-            hawkerAddress.setError("Address is required");
-            hawkerAddress.requestFocus();
-            return;
-        }
-        // the rest can just fuck it
-
         findViewById((R.id.nav_myAccount)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -93,6 +67,34 @@ public class CreateHawkerListingActivity extends AppCompatActivity {
                 Intent intent = new Intent(CreateHawkerListingActivity.this, DashboardActivity.class);
                 startActivity(intent);
             }});
+
+
+        findViewById(R.id.btnRegister3).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                registerhawker();
+            }
+        });
+    }
+    private void registerhawker() {
+        String name = hawkerName.getText().toString().trim();
+        String address = hawkerAddress.getText().toString().trim();
+        String postalCode= hawkerPostalCode.getText().toString().trim();
+        String stallNo = hawkerStallNumber.getText().toString().trim();
+        String locationArea = hawkerLocationArea.getText().toString().trim();
+
+        if (name.isEmpty()) {
+            hawkerName.setError("Stall Name is required");
+            hawkerName.requestFocus();
+            return;
+        } else if (address.isEmpty()) {
+            hawkerAddress.setError("Address is required");
+            hawkerAddress.requestFocus();
+            return;
+        }
+        // the rest can just fuck it
+
+
 
 
         Call<ResponseBody> call = RetrofitClient
