@@ -65,14 +65,8 @@ public class CreateHawkerListingActivity extends AppCompatActivity {
         call.enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-                String s = "";
-                try {
-                    s = response.body().string();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
 
-                if (s.equals("Success")) {
+                if (response.isSuccessful()) {
                     Toast.makeText(CreateHawkerListingActivity.this, "Successfully Listed!", Toast.LENGTH_LONG).show();
                     startActivity(new Intent(CreateHawkerListingActivity.this, ViewHawkerListingActivity.class));
                 }

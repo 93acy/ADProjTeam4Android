@@ -20,7 +20,7 @@ public class HawkerListing {
     private String carbType;
     private String proteinType;
 
-    public HawkerListing(String address, String postalCode, String stallNo, String name, String locationArea) {
+    public HawkerListing(String name, String address, String postalCode, String stallNo, String locationArea) {
         this.address = address;
         this.postalCode = postalCode;
         this.stallNo = stallNo;
