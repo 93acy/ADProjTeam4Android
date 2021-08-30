@@ -8,20 +8,14 @@
     android:background="@drawable/userlogin_bg"
     tools:context=".DashboardActivity">
 
-    <RelativeLayout
-        android:id="@+id/dashBroad_rl"
-        android:layout_width="match_parent"
-        android:layout_height="400sp"
-        app:layout_constraintBottom_toTopOf="@+id/editUserPrefs"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvSubtitle" >
+
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/dashBroad_rv"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-    </RelativeLayout>
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toTopOf="@+id/editUserPrefs"
+            app:layout_constraintTop_toBottomOf="@+id/tvSubtitle"/>
 
     <TextView
         android:id="@+id/tvTitle"
