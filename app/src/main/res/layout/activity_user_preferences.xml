@@ -10,10 +10,18 @@
     <TextView
         android:id="@+id/userPrefs"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="User Preferences"
-        android:textSize="25sp"/>
+        android:layout_marginTop="30dp"
+        android:textFontWeight="1000"
+        android:textSize="40sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:padding="10dp"/>
+
+
 
     <TextView
         android:id="@+id/foodType"
@@ -21,8 +29,10 @@
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/userPrefs"
         app:layout_constraintLeft_toLeftOf="parent"
-        android:textColor="@color/black"
-        android:text="Food Type:"/>
+        android:textColor="@color/brown"
+        android:text="Food Type:"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="50dp"/>
 
     <Spinner
         android:id="@+id/foodTypeSpinner"
@@ -30,7 +40,8 @@
         android:layout_height="wrap_content"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/foodType"
-        />
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="10dp"/>
     
     <TextView
         android:id="@+id/carbType"
@@ -39,7 +50,9 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/foodTypeSpinner"
         android:text="Carbohydrate Type:"
-        android:textColor="@color/black"/>
+        android:textColor="@color/brown"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="10dp"/>
     <CheckBox
         android:id="@+id/checkbox_rice"
         android:layout_width="wrap_content"
@@ -47,7 +60,9 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/carbType"
         android:text="@string/rice"
-        android:onClick="onCarbTypeCheckboxClicked"/>
+        android:onClick="onCarbTypeCheckboxClicked"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"/>
     <CheckBox
         android:id="@+id/checkbox_noodles"
         android:layout_width="wrap_content"
@@ -55,7 +70,9 @@
         app:layout_constraintLeft_toRightOf="@id/checkbox_rice"
         app:layout_constraintTop_toBottomOf="@id/carbType"
         android:text="@string/noodles"
-        android:onClick="onCarbTypeCheckboxClicked"/>
+        android:onClick="onCarbTypeCheckboxClicked"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="10dp"/>
     <CheckBox
         android:id="@+id/checkbox_potato"
         android:layout_width="wrap_content"
@@ -63,7 +80,9 @@
         app:layout_constraintLeft_toRightOf="@id/checkbox_noodles"
         app:layout_constraintTop_toBottomOf="@id/carbType"
         android:text="@string/potato"
-        android:onClick="onCarbTypeCheckboxClicked"/>
+        android:onClick="onCarbTypeCheckboxClicked"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="10dp"/>
     <CheckBox
         android:id="@+id/checkbox_others"
         android:layout_width="wrap_content"
@@ -71,7 +90,9 @@
         app:layout_constraintLeft_toRightOf="@id/checkbox_potato"
         app:layout_constraintTop_toBottomOf="@id/carbType"
         android:text="@string/others"
-        android:onClick="onCarbTypeCheckboxClicked"/>
+        android:onClick="onCarbTypeCheckboxClicked"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="10dp"/>
     <CheckBox
         android:id="@+id/checkbox_none"
         android:layout_width="wrap_content"
@@ -79,7 +100,9 @@
         app:layout_constraintLeft_toRightOf="@id/checkbox_others"
         app:layout_constraintTop_toBottomOf="@id/carbType"
         android:text="@string/none"
-        android:onClick="onCarbTypeCheckboxClicked"/>
+        android:onClick="onCarbTypeCheckboxClicked"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="10dp"/>
 
 
     <TextView
@@ -89,7 +112,9 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/checkbox_rice"
         android:text="Protein Type:"
-        android:textColor="@color/black"/>
+        android:textColor="@color/brown"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="10dp"/>
     <CheckBox
         android:id="@+id/checkbox_proteinPork"
         android:layout_width="wrap_content"
@@ -97,7 +122,9 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/proteinType"
         android:text="@string/pork"
-        android:onClick="onProteinTypeCheckboxClicked"/>
+        android:onClick="onProteinTypeCheckboxClicked"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="10dp"/>
     <CheckBox
         android:id="@+id/checkbox_proteinChicken"
         android:layout_width="wrap_content"
@@ -105,7 +132,9 @@
         app:layout_constraintLeft_toRightOf="@id/checkbox_proteinPork"
         app:layout_constraintTop_toBottomOf="@id/proteinType"
         android:text="@string/chicken"
-        android:onClick="onProteinTypeCheckboxClicked"/>
+        android:onClick="onProteinTypeCheckboxClicked"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="10dp"/>
     <CheckBox
         android:id="@+id/checkbox_proteinBeef"
         android:layout_width="wrap_content"
@@ -113,7 +142,9 @@
         app:layout_constraintLeft_toRightOf="@id/checkbox_proteinChicken"
         app:layout_constraintTop_toBottomOf="@id/proteinType"
         android:text="@string/beef"
-        android:onClick="onProteinTypeCheckboxClicked"/>
+        android:onClick="onProteinTypeCheckboxClicked"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="10dp"/>
     <CheckBox
         android:id="@+id/checkbox_proteinLamb"
         android:layout_width="wrap_content"
@@ -121,7 +152,9 @@
         app:layout_constraintLeft_toRightOf="@id/checkbox_proteinBeef"
         app:layout_constraintTop_toBottomOf="@id/proteinType"
         android:text="@string/lamb"
-        android:onClick="onProteinTypeCheckboxClicked"/>
+        android:onClick="onProteinTypeCheckboxClicked"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="10dp"/>
     <CheckBox
         android:id="@+id/checkbox_proteinFish"
         android:layout_width="wrap_content"
@@ -129,23 +162,29 @@
         app:layout_constraintLeft_toRightOf="@id/checkbox_proteinLamb"
         app:layout_constraintTop_toBottomOf="@id/proteinType"
         android:text="@string/fish"
-        android:onClick="onProteinTypeCheckboxClicked"/>
+        android:onClick="onProteinTypeCheckboxClicked"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="10dp"/>
     <CheckBox
         android:id="@+id/checkbox_proteinSeafood"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintLeft_toRightOf="@id/checkbox_proteinFish"
-        app:layout_constraintTop_toBottomOf="@id/proteinType"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/checkbox_proteinPork"
         android:text="@string/seafood"
-        android:onClick="onProteinTypeCheckboxClicked"/>
+        android:onClick="onProteinTypeCheckboxClicked"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="10dp"/>
     <CheckBox
         android:id="@+id/checkbox_proteinOthers"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintLeft_toRightOf="@+id/checkbox_proteinSeafood"
         app:layout_constraintTop_toBottomOf="@id/checkbox_proteinPork"
         android:text="@string/proteinOthers"
-        android:onClick="onProteinTypeCheckboxClicked"/>
+        android:onClick="onProteinTypeCheckboxClicked"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="10dp"/>
     <CheckBox
         android:id="@+id/checkbox_proteinNone"
         android:layout_width="wrap_content"
@@ -153,14 +192,17 @@
         app:layout_constraintLeft_toRightOf="@id/checkbox_proteinOthers"
         app:layout_constraintTop_toBottomOf="@id/checkbox_proteinPork"
         android:text="@string/proteinNone"
-        android:onClick="onProteinTypeCheckboxClicked"/>
+        android:onClick="onProteinTypeCheckboxClicked"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="10dp"/>
 
-    <androidx.appcompat.widget.AppCompatButton
+    <Button
         android:id="@+id/userPrefsSubmit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/checkbox_proteinOthers"
         app:layout_constraintLeft_toLeftOf="parent"
         android:text="Submit"
-        android:textColor="@color/white"/>
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="30dp"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

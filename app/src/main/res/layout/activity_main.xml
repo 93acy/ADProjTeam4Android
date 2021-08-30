@@ -4,8 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/mainbg"
+    android:background="@drawable/userlogin_bg"
     tools:context=".MainActivity">
+
+    <ImageView
+        android:id="@+id/login"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:background="@drawable/login"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:isScrollContainer="false"/>
 
 
     <TextView
@@ -22,7 +33,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="@+id/btnToRegister"/>
+        app:layout_constraintBottom_toTopOf="@id/login"/>
 
     <Button
         android:id="@+id/btnToRegister"

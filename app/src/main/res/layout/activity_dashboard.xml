@@ -8,14 +8,30 @@
     android:background="@drawable/userlogin_bg"
     tools:context=".DashboardActivity">
 
-
+    <RelativeLayout
+        android:id="@+id/dashBroad_rl"
+        android:layout_width="match_parent"
+        android:layout_height="400sp"
+        app:layout_constraintBottom_toTopOf="@+id/editUserPrefs"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvTitle" >
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/dashBroad_rv"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintBottom_toTopOf="@+id/editUserPrefs"
-            app:layout_constraintTop_toBottomOf="@+id/tvSubtitle"/>
+            android:layout_height="wrap_content" />
+    </RelativeLayout>
+
+    <ImageView
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:background="@drawable/nasilemak"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:isScrollContainer="false"/>
 
     <TextView
         android:id="@+id/tvTitle"
@@ -23,25 +39,16 @@
         android:layout_height="wrap_content"
         android:fontFamily="cursive"
         android:padding="10dp"
-        android:text="ADProjTeam4"
+        android:text="User Dashboard"
+        android:layout_marginTop="30dp"
+        android:textFontWeight="1000"
         android:textSize="60sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/tvSubtitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="USER DASHBOARD"
-        android:textColor="#000"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvTitle" />
+
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/editUserPrefs"
