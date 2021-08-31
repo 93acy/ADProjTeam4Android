@@ -116,6 +116,7 @@ public class ViewBill extends AppCompatActivity {
                     userOrderId=Long.parseLong(response.body());
                     createUseOrderDetail();
                     intent = new Intent(ViewBill.this, DashboardActivity.class);
+                    intent.putExtra("CourierListingId",CourierListingId);
                     startActivity(intent);
                 }
             }
@@ -123,7 +124,7 @@ public class ViewBill extends AppCompatActivity {
             @Override
             public void onFailure(Call<String> call, Throwable t) {
                 intent = new Intent(ViewBill.this,ViewCourierListing.class);
-                intent.putExtra("userOrderId",userOrderId);
+                //intent.putExtra("userOrderId",userOrderId);
                 Toast.makeText(ViewBill.this, t.getMessage(), Toast.LENGTH_LONG).show();
             }
         });

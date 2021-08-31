@@ -42,6 +42,7 @@ public class CourierListingAdaptor extends RecyclerView.Adapter<CourierListingAd
         holder.pickupTime.setText(data.get(1));
         holder.hawkerName.setText(data.get(2));
         holder.locationArea.setText(data.get(3));
+        holder.date.setText(data.get(7));
 
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -60,7 +61,7 @@ public class CourierListingAdaptor extends RecyclerView.Adapter<CourierListingAd
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
-        TextView hawkerName,locationArea,pickupTime,text;
+        TextView hawkerName,locationArea,pickupTime,text,date;
         CardView cardView;
 
         public ViewHolder(@NonNull View listingView) {
@@ -70,6 +71,7 @@ public class CourierListingAdaptor extends RecyclerView.Adapter<CourierListingAd
             pickupTime = listingView.findViewById(R.id.pickupTime);
             text = listingView.findViewById(R.id.text);
             cardView = listingView.findViewById(R.id.cl_cv);
+            date = listingView.findViewById(R.id.date);
         }
     }
 
