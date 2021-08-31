@@ -33,6 +33,7 @@ public class ViewBill extends AppCompatActivity {
     TextView title,foodPrice,serviceFee,totalCost;
     Button confirm,cancle;
     Double foodFee =0.0;
+    Double TotalCost=0.0;
     Long CourierListingId;
     ArrayList<Long> CourierFoodDetailId = new ArrayList<>();
     ArrayList<Integer> Quantity = new ArrayList<>();
@@ -91,9 +92,12 @@ public class ViewBill extends AppCompatActivity {
 
         String s = df.format(foodFee*0.1);
         Double ServiceCost =Double.parseDouble(s);
+
+        String s2 = df.format(foodFee+ServiceCost);
+        TotalCost =Double.parseDouble(s2);
         foodPrice.setText("Total food price: "+String.valueOf(foodFee));
         serviceFee.setText("Service fee(10%): "+String.valueOf(ServiceCost));
-        totalCost.setText("Total cost: "+String.valueOf(foodFee+ServiceCost));
+        totalCost.setText("Total cost: "+String.valueOf(TotalCost));
     }
 
 
@@ -116,7 +120,7 @@ public class ViewBill extends AppCompatActivity {
                     userOrderId=Long.parseLong(response.body());
                     createUseOrderDetail();
                     intent = new Intent(ViewBill.this, DashboardActivity.class);
-                    intent.putExtra("CourierListingId",CourierListingId);
+                    //intent.putExtra("CourierListingId",CourierListingId);
                     startActivity(intent);
                 }
             }

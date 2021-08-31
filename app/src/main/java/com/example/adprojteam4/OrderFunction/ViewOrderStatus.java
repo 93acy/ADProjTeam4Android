@@ -40,7 +40,7 @@ public class ViewOrderStatus extends AppCompatActivity {
     LinearLayoutManager layoutManager;
     UserOrderAdaptor adaptor;
     Long userOrderId;
-    Long courierListingId;
+    //Long courierListingId;
     Button cancel,received;
     ConstraintLayout btmCl,topCl;
     RelativeLayout rl;
@@ -58,7 +58,7 @@ public class ViewOrderStatus extends AppCompatActivity {
         bottomNav.setSelectedItemId(R.id.nav_hawkerSearch);
 
         userOrderId = Long.parseLong(getIntent().getStringExtra("userOrderId"));
-        courierListingId = Long.parseLong(getIntent().getStringExtra("courierListingId"));
+        //courierListingId = Long.parseLong(getIntent().getStringExtra("courierListingId"));
 
         btmCl = findViewById(R.id.btm_cl);
         topCl=findViewById(R.id.top_cl);
@@ -195,7 +195,7 @@ public class ViewOrderStatus extends AppCompatActivity {
         Call<ResponseBody> call = RetrofitClient
                 .getInstance(this)
                 .getCourierListingAPI()
-                .updateCourierOrderStatusById(userOrderId,orderStatus,courierListingId);
+                .updateCourierOrderStatusById(userOrderId,orderStatus);
 
         call.enqueue(new Callback<ResponseBody>() {
             @Override

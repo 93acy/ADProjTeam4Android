@@ -37,8 +37,7 @@ public interface CourierListingAPI {
     @PUT("users/orders/orderStatus/update")
     Call<ResponseBody> updateCourierOrderStatusById (
             @Query("id") Long userOrderId,
-            @Query("status") String status,
-            @Query("courierListingId") Long courierListingId);
+            @Query("status") String status);
 
     @PUT("/courier/updateCourierListing")
     Call<ResponseBody> updateCourierListing(@Body String id);
