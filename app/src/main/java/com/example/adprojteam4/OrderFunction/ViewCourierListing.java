@@ -51,13 +51,12 @@ public class ViewCourierListing extends AppCompatActivity {
         keywordSearch = findViewById(R.id.Clist_search_bar);
         progressBar = findViewById(R.id.C_progressBar);
         recyclerView = findViewById(R.id.C_recyclerView);
-        layoutManager= new LinearLayoutManager(this);
+        layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
-        adaptor = new CourierListingAdaptor(ViewCourierListing.this,courierListingData);
+        adaptor = new CourierListingAdaptor(ViewCourierListing.this, courierListingData);
         recyclerView.setAdapter(adaptor);
 
         getCourierListing();
-
 
 
         findViewById((R.id.nav_myAccount)).setOnClickListener(new View.OnClickListener() {
@@ -127,7 +126,7 @@ public class ViewCourierListing extends AppCompatActivity {
         call.enqueue(new Callback<ArrayList<ArrayList<String>>>() {
             @Override
             public void onResponse(Call<ArrayList<ArrayList<String>>> call, Response<ArrayList<ArrayList<String>>> response) {
-                if(response.isSuccessful() && response.body()!=null){
+                if (response.isSuccessful() && response.body() != null) {
                     courierListingData.addAll(response.body());
                     adaptor.notifyDataSetChanged();
                     progressBar.setVisibility(View.GONE);
@@ -147,21 +146,21 @@ public class ViewCourierListing extends AppCompatActivity {
     private void filter(String text) {
         ArrayList<ArrayList<String>> filteredList = new ArrayList<>();
 
-        if(courierListingData.isEmpty()){
-            Toast.makeText(ViewCourierListing.this,  "There is no courier listing now", Toast.LENGTH_SHORT).show();
-        }
-        else{
-            for (ArrayList<String> item: courierListingData){
-                if(item.get(1).toLowerCase().contains(text.toLowerCase())
-                        |item.get(2).toLowerCase().contains(text.toLowerCase())
-                        |item.get(3).toLowerCase().contains(text.toLowerCase())){
-
-                    filteredList.add(item);
+        if (courierListingData.isEmpty()) {
+            Toast.makeText(ViewCourierListing.this, "There is no courier listing now", Toast.LENGTH_SHORT).show();
+        } else {
+            for (ArrayList<String> item : courierListingData) {
+                for (String string : item) {
+                    if (string != null && (string.toLowerCase().contains(text.toLowerCase()))) {
+                        if (!filteredList.contains(item)) {
+                            filteredList.add(item);
+                        }
+                    }
                 }
+                adaptor.filterList(filteredList);
+
             }
+
         }
-        adaptor.filterList(filteredList);
-
     }
-
 }

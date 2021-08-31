@@ -119,14 +119,7 @@ public class courier_CourierListingAdapter extends RecyclerView.Adapter<courier_
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
 
-                String s = "";
-                try {
-                    s += response.body().string();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-
-                if (s.equals("successful")) {
+                if (response.code()==200) {
                     Toast.makeText(context, "delete successfully", Toast.LENGTH_LONG).show();
                     Intent intent = new Intent(context, courier_ViewCourierListing.class);
                     context.startActivity(intent);
