@@ -33,6 +33,7 @@ public class courier_CourierListingAdapter extends RecyclerView.Adapter<courier_
     private String foodItem ="";
     private String pricePerUnit ="";
     private String totalQuantity ="";
+    private String status ="";
 
 
     public courier_CourierListingAdapter(Context context, List<List<List<String>>> courierListings) {
@@ -61,10 +62,25 @@ public class courier_CourierListingAdapter extends RecyclerView.Adapter<courier_
             pricePerUnit += s.get(2) + System.getProperty ("line.separator");}
             if (s.get(3)!=null){
             totalQuantity += s.get(3) + System.getProperty ("line.separator");}
+            if (s.get(4)!=null){
+                status = s.get(4);}
 
             holder.txtCourierListingDetailsFoodItem.setText(foodItem);
             holder.txtCourierListingDetailsPricePerUnit.setText(pricePerUnit);
             holder.txtCourierListingDetailsTotalQuantity.setText(totalQuantity);
+
+            if (status.equals("Open")){
+                holder.btnCancelOrder.setVisibility(View.VISIBLE);
+                holder.btnCloseOrder.setVisibility(View.VISIBLE);
+                holder.closedText.setVisibility(View.INVISIBLE);}
+
+            if (status.equals("Close")){
+                holder.btnCancelOrder.setVisibility(View.GONE);
+                holder.btnCloseOrder.setVisibility(View.GONE);
+                holder.closedText.setVisibility(View.VISIBLE);
+            }
+
+
         }
 
         for(List<String> s : courierListings.get(position)){
@@ -160,7 +176,7 @@ public class courier_CourierListingAdapter extends RecyclerView.Adapter<courier_
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
-        TextView txtHawkerName, txtCourierListingDetailsFoodItem, txtCourierListingDetailsPricePerUnit, txtCourierListingDetailsTotalQuantity, txtTotalFoodPrice, txtServiceFee, txtTotalPrice;
+        TextView txtHawkerName, txtCourierListingDetailsFoodItem, txtCourierListingDetailsPricePerUnit, txtCourierListingDetailsTotalQuantity, txtTotalFoodPrice, txtServiceFee, txtTotalPrice, closedText;
         Button btnCloseOrder, btnCancelOrder;
 
 
@@ -176,6 +192,8 @@ public class courier_CourierListingAdapter extends RecyclerView.Adapter<courier_
             txtTotalPrice = listingView.findViewById(R.id.txtTotalPrice);
             btnCloseOrder = listingView.findViewById(R.id.closeOrder);
             btnCancelOrder = listingView.findViewById(R.id.cancelOrder);
+            closedText = listingView.findViewById(R.id.cancel_text);
+
         }
     }
 }

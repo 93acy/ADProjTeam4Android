@@ -124,19 +124,29 @@
             android:id="@+id/closeOrder"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="close order">
+            android:text="close order"
+            android:visibility="visible"
+            >
 
         </Button>
 
+        <TextView
+            android:id="@+id/cancel_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Order Closed"
+            android:textColor="#FF0000"
+            android:visibility="invisible" />
         <Button
             android:id="@+id/cancelOrder"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="cancel order"
-            android:layout_marginLeft="50dp"
-           >
+            android:visibility="visible">
 
         </Button>
+
+
 
     </LinearLayout>
 
