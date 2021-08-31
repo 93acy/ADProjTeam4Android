@@ -71,7 +71,7 @@ public class CourierListingAdaptor extends RecyclerView.Adapter<CourierListingAd
             pickupTime = listingView.findViewById(R.id.pickupTime);
             text = listingView.findViewById(R.id.text);
             cardView = listingView.findViewById(R.id.cl_cv);
-            date = listingView.findViewById(R.id.date);
+            date = listingView.findViewById(R.id.pickupDate);
         }
     }
 
